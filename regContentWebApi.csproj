@@ -1,0 +1,1161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9142AB1E-1A94-47D3-A038-B12166ED9A4C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>regContentWebApi</RootNamespace>
+    <AssemblyName>regCongtentWebApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <ApplicationInsightsResourceId>/subscriptions/af45e5a4-2e8d-4c4f-8b85-5432310d248d/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/DpdWebApi</ApplicationInsightsResourceId>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Oracle Developer Tools for VS2013\odp.net\managed\common\EF6\EntityFramework.DLL</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GoC.WebTemplateMVC, Version=4.0.20.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\GoC.WebTemplateMVC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="mono.security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\mono.security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="npgsql">
+      <HintPath>Libraries\npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core">
+      <HintPath>..\packages\Swashbuckle.Core.5.0.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Tracing, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dpdWebApi\dpdWebApi\bin\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebTemplateCore, Version=1.0.5851.20464, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\WebTemplateCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Data\DBConnection.cs" />
+    <Compile Include="App_Data\ExceptionHelper.cs" />
+    <Compile Include="App_Data\JsonHelper.cs" />
+    <Compile Include="App_Data\QueryStringHelper.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BasisDecisionController.cs" />
+    <Compile Include="Controllers\BasisDecisionControllerMD.cs" />
+    <Compile Include="Controllers\BasisDecisionMedicalDeviceController.cs" />
+    <Compile Include="Controllers\RegulatoryDecisionController.cs" />
+    <Compile Include="Controllers\SafetyReviewController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BasisDecision.cs" />
+    <Compile Include="Models\BasisDecisionMedicalDevice.cs" />
+    <Compile Include="Models\BasisDecisionMilestone.cs" />
+    <Compile Include="Models\BasisDecisionPaat.cs" />
+    <Compile Include="Models\BasisDecisionRepository.cs" />
+    <Compile Include="Models\IBasisDecisionRepository.cs" />
+    <Compile Include="Models\IRegulatoryDecisionRepository.cs" />
+    <Compile Include="Models\ISafetyReviewRepository.cs" />
+    <Compile Include="Models\RegulatoryDecision.cs" />
+    <Compile Include="Models\RegulatoryDecisionRepository.cs" />
+    <Compile Include="Models\SafetyReview.cs" />
+    <Compile Include="Models\SafetyReviewRepository.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\GoC.WebTemplateMVC.dll" />
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.dll" />
+    <Content Include="bin\Microsoft.Data.OData.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Mono.Security.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Npgsql.dll" />
+    <Content Include="bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="bin\regCongtentWebApi.dll" />
+    <Content Include="bin\regCongtentWebApi.pdb" />
+    <Content Include="bin\Swashbuckle.Core.dll" />
+    <Content Include="bin\System.Net.Http.Extensions.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Primitives.dll" />
+    <Content Include="bin\System.Spatial.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.OData.dll" />
+    <Content Include="bin\System.Web.Http.Tracing.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Providers.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebActivatorEx.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\WebTemplateCore.dll" />
+    <Content Include="Global.asax" />
+    <Content Include="Libraries\GoC.WebTemplateMVC.dll" />
+    <Content Include="Libraries\Mono.Security.dll" />
+    <Content Include="Libraries\Npgsql.dll" />
+    <Content Include="Libraries\WebTemplateCore.dll" />
+    <Content Include="logs\20160827.txt" />
+    <Content Include="logs\20160907.txt" />
+    <Content Include="logs\20160908.txt" />
+    <Content Include="logs\20160916.txt" />
+    <Content Include="logs\20160917.txt" />
+    <Content Include="logs\20160922.txt" />
+    <Content Include="logs\20160923.txt" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Antlr3.Runtime.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\EntityFramework.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\EntityFramework.SqlServer.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\GoC.WebTemplateMVC.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.AI.Web.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.Data.Edm.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.Data.OData.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.QualityTools.Testing.Fakes.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Mono.Security.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Newtonsoft.Json.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Npgsql.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\regCongtentWebApi.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Swashbuckle.Core.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Net.Http.Extensions.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Net.Http.Formatting.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Net.Http.Primitives.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Spatial.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Helpers.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Http.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Http.OData.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Http.Tracing.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Http.WebHost.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Mvc.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Optimization.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Providers.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.Razor.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.WebPages.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\WebActivatorEx.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\WebGrease.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\WebTemplateCore.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Global.asax" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Libraries\GoC.WebTemplateMVC.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Libraries\Mono.Security.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Libraries\Npgsql.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Libraries\WebTemplateCore.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\reference-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\search-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\ChangeLog.txt" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\refTop.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splash.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splashTop.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\Shared\Error404.htm" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\Shared\Error500.htm" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\Shared\GenericError.htm" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Antlr3.Runtime.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\App_global.asax.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\EntityFramework.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\EntityFramework.SqlServer.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\GoC.WebTemplateMVC.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.AI.Web.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.Data.Edm.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.Data.OData.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.QualityTools.Testing.Fakes.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Mono.Security.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Newtonsoft.Json.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Npgsql.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\regCongtentWebApi.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\Swashbuckle.Core.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Net.Http.Extensions.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Net.Http.Formatting.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Net.Http.Primitives.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Spatial.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Helpers.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Http.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Http.OData.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Http.Tracing.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Http.WebHost.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Mvc.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Optimization.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Providers.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.Razor.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.WebPages.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\WebActivatorEx.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\WebGrease.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\WebTemplateCore.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Libraries\GoC.WebTemplateMVC.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Libraries\Mono.Security.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Libraries\Npgsql.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Libraries\WebTemplateCore.dll" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\reference-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\search-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\ChangeLog.txt" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\refTop.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splash.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splashTop.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-en.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-fr.html" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\Shared\Error404.htm" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\Shared\Error500.htm" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\Shared\GenericError.htm" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Antlr3.Runtime.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\App_global.asax.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\EntityFramework.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\EntityFramework.SqlServer.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\GoC.WebTemplateMVC.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.Web.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Data.Edm.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Data.OData.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.QualityTools.Testing.Fakes.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Mono.Security.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Newtonsoft.Json.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Npgsql.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\regCongtentWebApi.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\Swashbuckle.Core.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Net.Http.Extensions.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Net.Http.Formatting.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Net.Http.Primitives.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Spatial.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Helpers.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Http.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Http.OData.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Http.Tracing.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Http.WebHost.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Mvc.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Optimization.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Providers.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.Razor.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.WebPages.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\WebActivatorEx.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\WebGrease.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\WebTemplateCore.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\Libraries\GoC.WebTemplateMVC.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\Libraries\Mono.Security.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\Libraries\Npgsql.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\Libraries\WebTemplateCore.dll" />
+    <Content Include="obj\Release\Package\PackageTmp\reference-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\search-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\ChangeLog.txt" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\refTop.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splash.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splashTop.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-en.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-fr.html" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\Error404.htm" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\Error500.htm" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Shared\GenericError.htm" />
+    <Content Include="obj\Release\regCongtentWebApi.dll" />
+    <Content Include="obj\Release\regCongtentWebApi.pdb" />
+    <Content Include="obj\Release\regContentWebApi.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\_WPPLastBuildInfo.txt" />
+    <Content Include="packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll" />
+    <Content Include="packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.pdb" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\about_EntityFramework.help.txt" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.PowerShell.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.PowerShell.Utility.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\migrate.exe" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\ApplicationInsights.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\bin\regCongtentWebApi.dll.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\packages.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\GoCWebTemplate.LeftMenu_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\GoC.WebTemplate\GoCWebTemplate_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\Home\IndexEN.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\Home\IndexFR.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Views\Web.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\Source\Web.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\ApplicationInsights.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\App_global.asax.compiled" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\bin\regCongtentWebApi.dll.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\packages.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\PrecompiledApp.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\GoCWebTemplate.LeftMenu_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\GoC.WebTemplate\GoCWebTemplate_Layout.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\Home\IndexEN.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\Home\IndexFR.cshtml" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Views\Web.config" />
+    <Content Include="obj\Release\AspnetCompileMerge\TempBuildDir\Web.config" />
+    <Content Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\ApplicationInsights.config" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\App_global.asax.compiled" />
+    <Content Include="obj\Release\Package\PackageTmp\bin\regCongtentWebApi.dll.config" />
+    <Content Include="obj\Release\Package\PackageTmp\packages.config" />
+    <Content Include="obj\Release\Package\PackageTmp\PrecompiledApp.config" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\GoCWebTemplate.LeftMenu_Layout.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\GoC.WebTemplate\GoCWebTemplate_Layout.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Home\IndexEN.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Home\IndexFR.cshtml" />
+    <Content Include="obj\Release\Package\PackageTmp\Views\Web.config" />
+    <Content Include="obj\Release\Package\PackageTmp\Web.config" />
+    <Content Include="obj\Release\regContentWebApi.csprojResolveAssemblyReference.cache" />
+    <None Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.js" />
+    <None Include="packages\jQuery.2.1.4\Tools\jquery-2.1.4.intellisense.js" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\accordion.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\all.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\autocomplete.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\base.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\button.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\core.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\datepicker.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\dialog.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\draggable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\menu.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\progressbar.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\resizable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\selectable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\selectmenu.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\slider.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\sortable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\spinner.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\tabs.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\theme.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Content\themes\base\tooltip.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Content\Scripts\jquery-ui-1.11.4.min.js" />
+    <None Include="packages\jQuery.Validation.1.14.0\Content\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="packages\jQuery.Validation.1.14.0\Content\Scripts\jquery.validate.js" />
+    <Content Include="packages\jQuery.Validation.1.14.0\Content\Scripts\jquery.validate.min.js" />
+    <Content Include="packages\knockoutjs.3.4.0\Content\Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="packages\knockoutjs.3.4.0\Content\Scripts\knockout-3.4.0.js" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net40\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net40\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\wp8\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\wp8\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net40\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net40\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net40\Microsoft.AI.DependencyCollector.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\content\scripts\ai.0.15.0-build58334.js" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\content\scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\tools\prefix.html" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net40\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net40\Microsoft.AI.Web.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net40\Microsoft.AI.Web.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net40\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net40\Microsoft.AI.WindowsServer.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net40\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net40\Microsoft.AI.ServerTelemetryChannel.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.XML" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.xml" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.FixedDisplayModes.5.0.0\readme.txt" />
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll" />
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.xml" />
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.2.0.0\ReadMe.txt" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\system.web.optimization.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\ReadMe.txt" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp71+wpa81\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8+wp8+wpa81\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl4+win8\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8+wp8+wpa81\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net40+win8\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4-windowsphone71\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl4\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl5\System.IO.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl5\System.IO.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl5\System.Runtime.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl5\System.Runtime.xml" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl5\System.Threading.Tasks.dll" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\sl5\System.Threading.Tasks.xml" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.Tasks.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.xml" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\net40\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Data.Edm.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Data.Edm.xml" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.Edm.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.Edm.xml" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\portable-net45+wp8+win8+wpa\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\Microsoft.Data.Edm.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\Microsoft.Data.Edm.xml" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\lib\sl4\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.xml" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\net40\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Data.OData.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Data.OData.xml" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.OData.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\Microsoft.Data.OData.xml" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\portable-net45+wp8+win8+wpa\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\Microsoft.Data.OData.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\Microsoft.Data.OData.xml" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\lib\sl4\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Ajax.3.2.3\Content\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Ajax.3.2.3\Content\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monotouch\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monotouch\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monotouch\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\monotouch\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net45\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\ensureRedirect.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.XML" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.xml" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="packages\Modernizr.2.8.3\Content\Scripts\modernizr-2.8.3.js" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.xml" />
+    <Content Include="packages\Swashbuckle.Core.5.0.0\lib\net40\Swashbuckle.Core.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\de\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\es\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\fr\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\it\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\ja\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\ko\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\ru\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\System.Spatial.xml" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\net40\zh-Hant\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\de\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\es\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\fr\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\it\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ja\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ko\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\ru\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\System.Spatial.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\System.Spatial.xml" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net40+sl5+wp8+win8+wpa\zh-Hant\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\de\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\es\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\fr\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\it\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\ja\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\ko\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\ru\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\System.Spatial.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\System.Spatial.xml" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\portable-net45+wp8+win8+wpa\zh-Hant\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\de\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\es\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\fr\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\it\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\ja\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\ko\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\ru\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\System.Spatial.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\System.Spatial.xml" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="packages\System.Spatial.5.7.0\lib\sl4\zh-Hant\System.Spatial.resources.dll" />
+    <Content Include="packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll" />
+    <Content Include="packages\WebGrease.1.6.0\lib\WebGrease.dll" />
+    <Content Include="packages\WebGrease.1.6.0\tools\WG.EXE" />
+    <Content Include="reference-en.html" />
+    <Content Include="search-en.html" />
+    <Content Include="Views\GoC.WebTemplate\ChangeLog.txt" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\refTop.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splash.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splashTop.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-fr.html" />
+    <Content Include="Views\Shared\Error404.htm" />
+    <Content Include="Views\Shared\Error500.htm" />
+    <Content Include="Views\Shared\GenericError.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.LeftMenu_Layout.cshtml" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate_Layout.cshtml" />
+    <Content Include="Views\Home\IndexEN.cshtml" />
+    <Content Include="Views\Home\IndexFR.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\de\" />
+    <Folder Include="bin\es\" />
+    <Folder Include="bin\fr\" />
+    <Folder Include="bin\it\" />
+    <Folder Include="bin\ja\" />
+    <Folder Include="bin\ko\" />
+    <Folder Include="bin\ru\" />
+    <Folder Include="bin\zh-Hans\" />
+    <Folder Include="bin\zh-Hant\" />
+    <Folder Include="obj\Release\ProfileTransformWebConfig\transformed\Views\" />
+    <Folder Include="obj\Release\TempPE\" />
+    <Folder Include="obj\Release\TransformWebConfig\transformed\Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\ApplicationInsights.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\regCongtentWebApi.dll.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\Antlr.3.4.1.9004\Antlr.3.4.1.9004.nupkg" />
+    <Content Include="packages\EntityFramework.6.1.3\content\App.config.transform" />
+    <Content Include="packages\EntityFramework.6.1.3\content\Web.config.transform" />
+    <Content Include="packages\EntityFramework.6.1.3\EntityFramework.6.1.3.nupkg" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.psd1" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.psm1" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\init.ps1" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\install.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.map" />
+    <Content Include="packages\jQuery.2.1.4\jQuery.2.1.4.nupkg" />
+    <Content Include="packages\jQuery.2.1.4\Tools\common.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Tools\install.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\jQuery.UI.Combined.1.11.4.nupkg" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Tools\common.ps1" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Tools\install.ps1" />
+    <Content Include="packages\jQuery.UI.Combined.1.11.4\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.Validation.1.14.0\jQuery.Validation.1.14.0.nupkg" />
+    <Content Include="packages\knockoutjs.3.4.0\knockoutjs.3.4.0.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\Microsoft.ApplicationInsights.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\Microsoft.ApplicationInsights.DependencyCollector.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\Microsoft.ApplicationInsights.Web.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\Microsoft.ApplicationInsights.WindowsServer.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\Tools\install.ps1" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Microsoft.AspNet.Mvc.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.FixedDisplayModes.5.0.0\Microsoft.AspNet.Mvc.FixedDisplayModes.5.0.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.2.0.0\Microsoft.AspNet.Providers.Core.2.0.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Providers.LocalDB.2.0.0\content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.Providers.LocalDB.2.0.0\Microsoft.AspNet.Providers.LocalDB.2.0.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Providers.LocalDB.2.0.0\tools\Install.ps1" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\Microsoft.AspNet.Razor.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\Microsoft.AspNet.Web.Optimization.1.1.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.5.2.3\Microsoft.AspNet.WebApi.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\Microsoft.AspNet.WebApi.Client.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\Content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\Microsoft.AspNet.WebApi.Core.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.OData.5.7.0\Microsoft.AspNet.WebApi.OData.5.7.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\Microsoft.AspNet.WebApi.Tracing.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\Microsoft.AspNet.WebApi.WebHost.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Microsoft.AspNet.WebPages.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\monoandroid\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\monotouch\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\net45\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net45+win8+wp8+wpa81\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net45+win8+wpa81\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net451+win81+wpa81\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-net451+win81\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\portable-win81+wp81+wpa81\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\win8\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\wp8\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\wpa81\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\lib\Xamarin.iOS10\_._" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\License-Stable.rtf" />
+    <Content Include="packages\Microsoft.Bcl.1.1.10\Microsoft.Bcl.1.1.10.nupkg" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\content\net40\_._" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\content\netcore45\_._" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\content\portable-net40+win8+sl4+wp71+wpa81\_._" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\content\sl4-windowsphone71\_._" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\content\sl4\_._" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\License-Stable.rtf" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\Microsoft.Bcl.Build.1.0.14.nupkg" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\tools\Install.ps1" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" />
+    <Content Include="packages\Microsoft.Bcl.Build.1.0.14\tools\Uninstall.ps1" />
+    <Content Include="packages\Microsoft.Data.Edm.5.7.0\Microsoft.Data.Edm.5.7.0.nupkg" />
+    <Content Include="packages\Microsoft.Data.OData.5.7.0\Microsoft.Data.OData.5.7.0.nupkg" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Ajax.3.2.3\Microsoft.jQuery.Unobtrusive.Ajax.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Microsoft.jQuery.Unobtrusive.Validation.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\License-Stable.rtf" />
+    <Content Include="packages\Microsoft.Net.Http.2.2.29\Microsoft.Net.Http.2.2.29.nupkg" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg" />
+    <Content Include="packages\Modernizr.2.8.3\Modernizr.2.8.3.nupkg" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\common.ps1" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\install.ps1" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\uninstall.ps1" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\Newtonsoft.Json.7.0.1.nupkg" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\tools\install.ps1" />
+    <Content Include="packages\Swashbuckle.5.0.0\Content\App_Start\SwaggerConfig.cs.pp" />
+    <Content Include="packages\Swashbuckle.5.0.0\Swashbuckle.5.0.0.nupkg" />
+    <Content Include="packages\Swashbuckle.Core.5.0.0\Swashbuckle.Core.5.0.0.nupkg" />
+    <Content Include="packages\System.Spatial.5.7.0\System.Spatial.5.7.0.nupkg" />
+    <Content Include="packages\WebActivatorEx.2.0.6\WebActivatorEx.2.0.6.nupkg" />
+    <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
+    <None Include="Properties\PublishProfiles\regContent.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51195/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!--<Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

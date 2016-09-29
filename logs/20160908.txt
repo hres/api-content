@@ -1,0 +1,150 @@
+********** 7:48:33 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42703: column "milestone_date2" does not exist
+Source: DbConnection.cs - GetDecisionMilestoneListById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetApplicationMilestoneListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 698
+
+********** 7:54:38 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42703: column "milestone_date2" does not exist
+Source: DbConnection.cs - GetDecisionMilestoneListById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetApplicationMilestoneListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 698
+
+********** 7:56:49 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42703: column "milestone_date2" does not exist
+Source: DbConnection.cs - GetDecisionMilestoneListById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetApplicationMilestoneListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 698
+
+********** 7:59:13 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42703: column "milestone_date2" does not exist
+Source: DbConnection.cs - GetDecisionMilestoneListById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetApplicationMilestoneListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 698
+
+********** 8:03:27 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:04:10 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:04:29 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:04:33 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:06:33 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:07:25 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:08:38 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:09:14 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+
+********** 8:13:21 AM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetPostAuthActivityListById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetPostLicensingActivityListById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 599
+

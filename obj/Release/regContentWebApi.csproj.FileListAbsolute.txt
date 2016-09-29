@@ -1,0 +1,9 @@
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\bin\regCongtentWebApi.dll.config
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\bin\regCongtentWebApi.dll
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\bin\regCongtentWebApi.pdb
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\bin\Mono.Security.dll
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\bin\Npgsql.dll
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\obj\Release\regCongtentWebApi.dll
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\obj\Release\regCongtentWebApi.pdb
+C:\Users\hcuser\Documents\regContentWebApi\api-content\regContentWebApi\obj\Release\regContentWebApi.csprojResolveAssemblyReference.cache

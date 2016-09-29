@@ -1,0 +1,305 @@
+********** 11:29:06 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42883: operator does not exist: @ text
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 117
+
+********** 11:55:53 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42883: operator does not exist: @ text
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 117
+
+********** 11:55:57 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42883: operator does not exist: @ text
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 117
+
+********** 11:58:43 AM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42883: operator does not exist: @ text
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 117
+
+********** 12:05:02 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42883: operator does not exist: @ text
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 117
+
+********** 3:03:15 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:03:50 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:03:52 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:06:22 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:06:25 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:06:25 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:06:26 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:06:26 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "OUTER"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 325
+
+********** 3:13:50 PM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 343
+
+********** 3:16:08 PM **********
+Exception Type: System.IndexOutOfRangeException
+Exception: Field not found
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlRowDescription.FieldIndex(String fieldName)
+   at Npgsql.NpgsqlDataReader.GetOrdinal(String Name)
+   at Npgsql.NpgsqlDataReader.get_Item(String name)
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 343
+
+********** 3:32:40 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "english"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 323
+
+********** 3:32:51 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "english"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 323
+
+********** 3:33:09 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "english"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 323
+
+********** 3:33:38 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "english"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id) in C:\Users\hcuser\Documents\api-content\api-content\regContentWebApi\App_Data\DBConnection.cs:line 323
+
+********** 3:35:01 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42601: syntax error at or near "english"
+Source: DbConnection.cs - GetBasisDecisionById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetBasisDecisionMedicalDeviceById(String id)
+
+********** 3:38:45 PM **********
+Exception Type: Npgsql.NpgsqlException
+Exception: ERROR: 42703: column "milestone_date2" does not exist
+Source: DbConnection.cs - GetDecisionMilestoneListById()
+Stack Trace: 
+   at Npgsql.NpgsqlState.<ProcessBackendResponses>d__0.MoveNext()
+   at Npgsql.ForwardsOnlyDataReader.GetNextResponseObject(Boolean cleanup)
+   at Npgsql.ForwardsOnlyDataReader.GetNextRowDescription()
+   at Npgsql.ForwardsOnlyDataReader.NextResultInternal()
+   at Npgsql.ForwardsOnlyDataReader..ctor(IEnumerable`1 dataEnumeration, CommandBehavior behavior, NpgsqlCommand command, NotificationThreadBlock threadBlock, Boolean preparedStatement, NpgsqlRowDescription rowDescription)
+   at Npgsql.NpgsqlCommand.GetReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior cb)
+   at Npgsql.NpgsqlCommand.ExecuteReader()
+   at regContentWebApi.DBConnection.GetApplicationMilestoneListById(String id)
+

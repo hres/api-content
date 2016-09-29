@@ -1,0 +1,216 @@
+********** 8:20:12 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 55
+
+********** 8:20:12 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 55
+
+********** 8:20:14 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 116
+
+********** 8:20:14 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 116
+
+********** 8:20:32 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllRegulatoryDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllRegulatoryDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 898
+
+********** 8:33:21 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllRegulatoryDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllRegulatoryDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 898
+
+********** 8:34:54 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 55
+
+********** 8:34:55 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 55
+
+********** 8:34:56 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 116
+
+********** 8:35:10 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 116
+
+********** 8:39:53 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecision() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 55
+
+********** 8:39:55 AM **********
+Inner Exception Type: System.Net.Sockets.SocketException
+Inner Exception: No connection could be made because the target machine actively refused it 127.0.0.1:5432
+Inner Source: Npgsql
+Inner Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+Exception Type: Npgsql.NpgsqlException
+Exception: Failed to establish a connection to 'localhost'.
+Source: DbConnection.cs - GetAllBasisDecision()
+Stack Trace: 
+   at Npgsql.NpgsqlClosedState.Open(NpgsqlConnector context, Int32 timeout)
+   at Npgsql.NpgsqlConnector.Open()
+   at Npgsql.NpgsqlConnectorPool.GetPooledConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestPooledConnectorInternal(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnectorPool.RequestConnector(NpgsqlConnection Connection)
+   at Npgsql.NpgsqlConnection.Open()
+   at regContentWebApi.DBConnection.GetAllBasisDecisionMedicalDevice() in C:\Users\hcuser\Documents\RegContent\App_Data\DBConnection.cs:line 116
+

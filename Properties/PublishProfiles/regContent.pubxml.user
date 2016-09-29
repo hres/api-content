@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Publish\regContent</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/13/2016 09:53:03</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>04/13/2016 09:50:39</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>06/13/2016 15:22:07</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>06/13/2016 15:22:07</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/08/2014 15:55:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/13/2015 15:24:17</publishTime>
+    </File>
+    <File Include="bin/GoC.WebTemplateMVC.dll">
+      <publishTime>04/13/2016 09:50:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>04/13/2016 09:53:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>04/13/2016 09:53:01</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>04/13/2016 09:53:01</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>04/13/2016 09:53:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>04/13/2016 09:53:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>04/13/2016 09:53:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>04/13/2016 09:53:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Edm.dll">
+      <publishTime>03/26/2015 02:35:24</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.OData.dll">
+      <publishTime>03/26/2015 02:35:24</publishTime>
+    </File>
+    <File Include="bin/Microsoft.QualityTools.Testing.Fakes.dll">
+      <publishTime>07/07/2015 01:51:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/13/2016 09:53:06</publishTime>
+    </File>
+    <File Include="bin/Mono.Security.dll">
+      <publishTime>11/21/2014 05:43:34</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/02/2015 22:55:58</publishTime>
+    </File>
+    <File Include="bin/Npgsql.dll">
+      <publishTime>11/21/2014 05:43:34</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>09/26/2015 11:19:20</publishTime>
+    </File>
+    <File Include="bin/regCongtentWebApi.dll">
+      <publishTime>06/10/2016 16:16:32</publishTime>
+    </File>
+    <File Include="bin/regCongtentWebApi.dll.config">
+      <publishTime>06/13/2016 15:11:33</publishTime>
+    </File>
+    <File Include="bin/Swashbuckle.Core.dll">
+      <publishTime>04/13/2016 09:53:09</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Extensions.dll">
+      <publishTime>04/13/2016 09:53:10</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/13/2016 09:53:03</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Primitives.dll">
+      <publishTime>04/13/2016 09:53:10</publishTime>
+    </File>
+    <File Include="bin/System.Spatial.dll">
+      <publishTime>03/26/2015 02:35:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/13/2016 09:53:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/13/2016 09:53:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.OData.dll">
+      <publishTime>04/13/2016 09:53:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Tracing.dll">
+      <publishTime>04/13/2016 09:53:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/13/2016 09:53:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/13/2016 09:53:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/13/2016 09:53:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>04/13/2016 09:53:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/13/2016 09:53:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/13/2016 09:53:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/13/2016 09:53:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/13/2016 09:53:04</publishTime>
+    </File>
+    <File Include="bin/WebActivatorEx.dll">
+      <publishTime>04/13/2016 09:53:07</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/13/2016 09:53:08</publishTime>
+    </File>
+    <File Include="bin/WebTemplateCore.dll">
+      <publishTime>04/13/2016 09:50:43</publishTime>
+    </File>
+    <File Include="Libraries/GoC.WebTemplateMVC.dll">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="Libraries/Mono.Security.dll">
+      <publishTime>11/21/2014 05:43:34</publishTime>
+    </File>
+    <File Include="Libraries/Npgsql.dll">
+      <publishTime>11/21/2014 05:43:34</publishTime>
+    </File>
+    <File Include="Libraries/WebTemplateCore.dll">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/13/2016 10:53:21</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>06/13/2016 15:22:02</publishTime>
+    </File>
+    <File Include="reference-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="search-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/ChangeLog.txt">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/GoCWebTemplate.LeftMenu_Layout.cshtml">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/GoCWebTemplate.Transactional_Layout.cshtml">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/GoCWebTemplate_Layout.cshtml">
+      <publishTime>06/02/2016 14:32:20</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/footer-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/footer-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/prefooter-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/prefooter-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/refTop.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/secMenu-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/secMenu-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/secMenuTop-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/secMenuTop-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/splash.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/splashTop.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/top-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/top-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/transactFooter-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/transactFooter-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/transactTop-en.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/GoC.WebTemplate/StaticFallbackFiles/gcweb/transactTop-fr.html">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/Home/IndexEN.cshtml">
+      <publishTime>06/13/2016 15:21:40</publishTime>
+    </File>
+    <File Include="Views/Home/IndexFR.cshtml">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/Shared/Error404.htm">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/Shared/Error500.htm">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/Shared/GenericError.htm">
+      <publishTime>06/02/2016 14:32:21</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>06/13/2016 15:01:57</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/13/2016 15:11:33</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

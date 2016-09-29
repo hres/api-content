@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/GoC.WebTemplate/GoCWebTemplate_Layout.cshtml";
+}
+
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h1>Regulatory Content APIs</h1>
+
+            <table class="wb-tables table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Request Type:
+                        </th>
+                        <th></th>
+                        <th>Format:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basis Decision:</td>
+                        <td><a class="btn btn-default" href="./regcontent/api-v1/basisdecision/?lang=en&type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./regcontent/api-v1/basisdecision/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Safety Review:</td>
+                        <td><a class="btn btn-default" href="./regcontent/api-v1/safetyreview/?lang=en&type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./regcontent/api-v1/safetyreview/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Regulatory Decision:</td>
+                        <td><a class="btn btn-default" href="./regcontent/api-v1/regulatorydecision/?lang=en&type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./regcontent/api-v1/regulatorydecision/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
