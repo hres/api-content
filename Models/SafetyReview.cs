@@ -8,52 +8,52 @@ namespace regContentWebApi.Models
     public class SafetyReview
     {
        
-        public int Template { get; set; }
-        public string LinkId { get; set; }
-        public DateTime? ReviewDate { get; set; }
-        public string DrugName { get; set; }
-        public string Safetyissue { get; set; }
+        public int template { get; set; }
+        public string link_id { get; set; }
+        public DateTime? review_date { get; set; }
+        public string drug_name { get; set; }
+        public string safety_issue { get; set; }
         
-        public string Issue { get; set; }
+        public string issue { get; set; }
        
-        public string Background { get; set; }
+        public string background { get; set; }
         
-        public string Objective { get; set; }
+        public string objective { get; set; }
         
-        public string KeyFindings { get; set; }
+        public string key_findings { get; set; }
        
-        public int KeyMessages { get; set; }       
+        public int key_messages { get; set; }       
 
-        public string Overview { get; set; }
+        public string overview { get; set; }
         
-        public int UseCanada { get; set; }
+        public int use_canada { get; set; }
         
-        public int Findings { get; set; }
+        public int findings { get; set; }
        
-        public int Conclusion { get; set; }
+        public int conclusion { get; set; }
         
-        public string Additional { get; set; }
+        public string additional { get; set; }
        
-        public string FullReview { get; set; }
+        public string full_review { get; set; }
        
-        public int References { get; set; }
+        public int references { get; set; }
         
-        public int Footnotes { get; set; }
+        public int footnotes { get; set; }
        
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public List<BullePoint> KeyMessageList { get; set; }
-        public List<BullePoint> FootnotesList { get; set; }
-        public List<BullePoint> ReferenceList { get; set; }
-        public List<BullePoint> UseCanadaList { get; set; }
-        public List<BullePoint> FindingList { get; set; }
-        public List<BullePoint> ConclusionList { get; set; }
+        public DateTime? created_date { get; set; }
+        public DateTime? modified_date { get; set; }
+        public List<BullePoint> key_message_list { get; set; }
+        public List<BullePoint> footnotes_list { get; set; }
+        public List<BullePoint> reference_list { get; set; }
+        public List<BullePoint> use_canada_list { get; set; }
+        public List<BullePoint> finding_list { get; set; }
+        public List<BullePoint> conclusion_list { get; set; }
     }
 
     public class BullePoint 
     {
-        public int FieldId{ get; set; }
-        public int OrderNo { get; set; }
-        public string Bullet { get; set; }    
+        public int field_id{ get; set; }
+        public int order_no { get; set; }
+        public string bullet { get; set; }    
     }
 }

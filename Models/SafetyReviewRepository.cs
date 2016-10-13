@@ -21,31 +21,31 @@ namespace regContentWebApi.Models
         {
             DBConnection dbConnection = new DBConnection(lang);
             _safetyReview = dbConnection.GetSafetyReviewById(id);
-            if(_safetyReview != null && !string.IsNullOrEmpty(_safetyReview.LinkId) )
+            if(_safetyReview != null && !string.IsNullOrEmpty(_safetyReview.link_id) )
             {
 
                 var bulletList = dbConnection.GetSafetyReviewBulletListById(id);
                 if(bulletList != null && bulletList.Count > 0)
                 {
-                    _safetyReview.KeyMessageList = new List<BullePoint>();
-                    _safetyReview.FootnotesList = new List<BullePoint>();
-                    _safetyReview.UseCanadaList = new List<BullePoint>();
-                    _safetyReview.FindingList = new List<BullePoint>();
-                    _safetyReview.ConclusionList = new List<BullePoint>();
-                    _safetyReview.ReferenceList = new List<BullePoint>();
+                    _safetyReview.key_message_list = new List<BullePoint>();
+                    _safetyReview.footnotes_list = new List<BullePoint>();
+                    _safetyReview.use_canada_list = new List<BullePoint>();
+                    _safetyReview.finding_list = new List<BullePoint>();
+                    _safetyReview.conclusion_list = new List<BullePoint>();
+                    _safetyReview.reference_list = new List<BullePoint>();
 
                     //KeyMessage
-                    _safetyReview.KeyMessageList = bulletList.Where(x => x.FieldId == _safetyReview.KeyMessages).OrderBy(x => x.OrderNo).ToList();
+                    _safetyReview.key_message_list = bulletList.Where(x => x.field_id == _safetyReview.key_messages).OrderBy(x => x.order_no).ToList();
                     //footnotes
-                    _safetyReview.FootnotesList = bulletList.Where(x => x.FieldId == _safetyReview.Footnotes).OrderBy(x => x.OrderNo).ToList();
+                    _safetyReview.footnotes_list = bulletList.Where(x => x.field_id == _safetyReview.footnotes).OrderBy(x => x.order_no).ToList();
                     //UseCanada
-                    _safetyReview.UseCanadaList = bulletList.Where(x => x.FieldId == _safetyReview.UseCanada).OrderBy(x => x.OrderNo).ToList();
+                    _safetyReview.use_canada_list = bulletList.Where(x => x.field_id == _safetyReview.use_canada).OrderBy(x => x.order_no).ToList();
                     //Findings
-                    _safetyReview.FindingList = bulletList.Where(x => x.FieldId == _safetyReview.Findings).OrderBy(x => x.OrderNo).ToList();
+                    _safetyReview.finding_list = bulletList.Where(x => x.field_id == _safetyReview.findings).OrderBy(x => x.order_no).ToList();
                     //Conclusion
-                    _safetyReview.ConclusionList = bulletList.Where(x => x.FieldId == _safetyReview.Conclusion).OrderBy(x => x.OrderNo).ToList();
+                    _safetyReview.conclusion_list = bulletList.Where(x => x.field_id == _safetyReview.conclusion).OrderBy(x => x.order_no).ToList();
                     //Reference
-                    _safetyReview.ReferenceList = bulletList.Where(x => x.FieldId == _safetyReview.References).OrderBy(x => x.OrderNo).ToList();
+                    _safetyReview.reference_list = bulletList.Where(x => x.field_id == _safetyReview.references).OrderBy(x => x.order_no).ToList();
                 }
             }
 

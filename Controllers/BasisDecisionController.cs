@@ -21,6 +21,7 @@ namespace regContentWebApi.Controllers
 
         public BasisDecision GetBasisDecisionByID(string lang, string id)
         {
+
             BasisDecision basisDecision = databasePlaceholder.Get(lang,id);
             if (basisDecision == null)
             {

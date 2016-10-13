@@ -33,19 +33,23 @@ namespace regContentWebApi
 
         public List<BasisDecision> GetAllBasisDecision()
         {
-            var items = new List<BasisDecision>();            
+            var items = new List<BasisDecision>();
+
 
             string commandText = string.Empty;
-            commandText = "SELECT link_id, brandname, manufacturer, date_issued, control_num, template, ";
+            commandText = "SELECT a.link_id, a.brandname, a.manufacturer, a.date_issued, a.control_num, a.template ";
+            commandText += "FROM SBD as a, bd_tombstone as b WHERE a.link_id = b.link_id AND ";
+            
+
             if (this.Lang.Equals("fr"))
             {
-                commandText += " med_ingredient_fr as med_ingredient";
+                commandText += " upper(b.language)='FRENCH';";
             }
             else
             {
-                commandText += " med_ingredient_en as med_ingredient";
+                commandText += " upper(b.language)='ENGLISH';";
             }
-            commandText += " FROM SBD";
+           
 
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
@@ -60,15 +64,15 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var item = new BasisDecision();
-                                    item.ControlNum = dr["control_num"] == DBNull.Value ? string.Empty : dr["control_num"].ToString().Trim();
-                                    item.DateIssued = dr["date_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_issued"]);
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.Brandname = dr["brandname"] == DBNull.Value ? string.Empty : dr["brandname"].ToString().Trim();
-                                    item.Manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
-                                    item.MedIngredient = dr["med_ingredient"] == DBNull.Value ? string.Empty : dr["med_ingredient"].ToString().Trim();
-                                    item.Template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
-                                    item.IsMd = false;
-                                    item.LicenseNo = "";
+                                    item.control_number = dr["control_num"] == DBNull.Value ? string.Empty : dr["control_num"].ToString().Trim();
+                                    item.date_issued = dr["date_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_issued"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.brand_name = dr["brandname"] == DBNull.Value ? string.Empty : dr["brandname"].ToString().Trim();
+                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();                                    
+                                    item.med_ingredient = "";
+                                    item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
+                                    item.is_md = false;
+                                    item.licence_number = "";
                                     items.Add(item);
                                 }
                             }
@@ -121,15 +125,15 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var item = new BasisDecision();
-                                    item.ControlNum = dr["application_num"] == DBNull.Value ? string.Empty : dr["application_num"].ToString().Trim();
-                                    item.DateIssued = dr["updated_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["updated_date"]);
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.Brandname = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();
-                                    item.Manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
-                                    item.MedIngredient = "N/A";
-                                    item.Template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
-                                    item.IsMd = true;
-                                    item.LicenseNo = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
+                                    item.control_number = dr["application_num"] == DBNull.Value ? string.Empty : dr["application_num"].ToString().Trim();
+                                    item.date_issued = dr["updated_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["updated_date"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.brand_name = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();
+                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
+                                    item.med_ingredient = "N/A";
+                                    item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
+                                    item.is_md = true;
+                                    item.licence_number = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
                                     items.Add(item);
                                 }
                             }
@@ -157,13 +161,13 @@ namespace regContentWebApi
             var items = new List<BasisDecision>();
 
             string commandText = string.Empty;
-            commandText = "SELECT a.link_id, a.template, a.bd_din_list, a.date_submission, a.date_authorization, a.brandname, a.manufacturer, a.date_issued, a.control_num, ";
+            commandText = "SELECT a.link_id, a.template, a.date_submission, a.date_authorization, a.brandname, a.manufacturer, a.date_issued, a.control_num, a.bd_din_list, ";
+                       // + " b.nonprop_name as nonprop_name, b.strength as strength,  b.dosageform as dosageform, b.route_admin as route_admin, "
+                       // + " b.thera_class as thera_class, b.med_ingredient as med_ingredient, b.nonmed_ingredient as nonmed_ingredient,";
 
             if (this.Lang.Equals("fr"))
             {
-                commandText += "a.nonprop_name_fr as nonprop_name, a.strength_fr as strength, a.dosageform_fr as dosageform,"
-                            + " a.route_admin_fr as route_admin, a.thera_class_fr as thera_class, a.med_ingredient_fr as med_ingredient,"
-                            + " a.nonmed_ingredient_fr as nonmed_ingredient, a.sub_type_num_fr as sub_type_num, a.notice_decision_fr as notice_decision,"
+                commandText +=" a.sub_type_num_fr as sub_type_num, a.notice_decision_fr as notice_decision,"
                             + " a.sci_reg_decision_fr as sci_reg_decision, a.quality_basis_fr as quality_basis, a.nonclin_basis_fr as nonclin_basis,"
                             + " a.nonclin_basis2_fr as nonclin_basis2, a.clin_basis_fr as clin_basis, a.clin_basis2_fr as clin_basis2, a.clin_basis3_fr as clin_basis3,"
                             + " a.benefit_risk_fr as benefit_risk, a.radioisotope_fr as radioisotope, a.summary_fr as summary,"
@@ -171,15 +175,14 @@ namespace regContentWebApi
                             + " a.followup_measures_fr as followup_measures, "
                             + " a.post_auth_fr as post_auth, other_info_fr as other_info, a.a_sci_reg_decision_fr as a_sci_reg_decision,"
                             + " a.science_rationale_fr as science_rationale, a.a_clin_basis_fr as a_clin_basis, a.a_clin_basis2_fr as a_clin_basis2,"
-                            + " a.a_non_clin_basis_fr as a_non_clin_basis, a.a_non_clin_basis2_fr as a_non_clin_basis2, a.b_quality_basis_fr as b_quality_basis, a.contact_fr as contact";
-                            
+                            + " a.a_non_clin_basis_fr as a_non_clin_basis, a.a_non_clin_basis2_fr as a_non_clin_basis2, a.b_quality_basis_fr as b_quality_basis, a.contact_fr as contact"                            
+                            + " FROM SBD as a WHERE a.link_ID = @link_id;";
+
 
             }
             else
             {
-                commandText += " a.nonprop_name_en as nonprop_name, a.strength_en as strength, a.dosageform_en as dosageform,"
-                            + " a.route_admin_en as route_admin, a.thera_class_en as thera_class, a.med_ingredient_en as med_ingredient,"
-                            + " a.nonmed_ingredient_en as nonmed_ingredient, a.sub_type_num_en as sub_type_num, a.notice_decision_en as notice_decision,"
+                commandText += "a.sub_type_num_en as sub_type_num, a.notice_decision_en as notice_decision,"
                             + " a.sci_reg_decision_en as sci_reg_decision, a.quality_basis_en as quality_basis, a.nonclin_basis_en as nonclin_basis,"
                             + " a.nonclin_basis2_en as nonclin_basis2, a.clin_basis_en as clin_basis, a.clin_basis2_en as clin_basis2, a.clin_basis3_en as clin_basis3,"
                             + " a.benefit_risk_en as benefit_risk, a.radioisotope_en as radioisotope, a.summary_en as summary,"
@@ -187,11 +190,12 @@ namespace regContentWebApi
                             + " a.followup_measures_en as followup_measures, "
                             + " a.post_auth_en as post_auth, other_info_en as other_info, a.a_sci_reg_decision_en as a_sci_reg_decision,"
                             + " a.science_rationale_en as science_rationale, a.a_clin_basis_en as a_clin_basis, a.a_clin_basis2_en as a_clin_basis2,"
-                            + " a.a_non_clin_basis_en as a_non_clin_basis, a.a_non_clin_basis2_en as a_non_clin_basis2, a.b_quality_basis_en as b_quality_basis, a.contact_en as contact";
+                            + " a.a_non_clin_basis_en as a_non_clin_basis, a.a_non_clin_basis2_en as a_non_clin_basis2, a.b_quality_basis_en as b_quality_basis, a.contact_en as contact"                            
+                            + " FROM SBD as a WHERE a.link_ID = @link_id;";
             }
-                 commandText += " FROM SBD as a"                            
-                             + " WHERE a.link_ID = @link_id";
-            
+                
+                 
+
 
             using ( NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
@@ -208,61 +212,62 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var item = new BasisDecision();
-                                    item.Template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
-                                    item.ControlNum = dr["control_num"] == DBNull.Value ? string.Empty : dr["control_num"].ToString().Trim();
-                                    item.DateIssued = dr["date_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_issued"]);
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.Brandname = dr["brandname"] == DBNull.Value ? string.Empty : dr["brandname"].ToString().Trim();
-                                    item.Manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
-                                    item.MedIngredient = dr["med_ingredient"] == DBNull.Value ? string.Empty : dr["med_ingredient"].ToString().Trim();
-                                    item.NonpropName = dr["nonprop_name"] == DBNull.Value ? string.Empty : dr["nonprop_name"].ToString().Trim();
-                                    item.Strength = dr["strength"] == DBNull.Value ? string.Empty : dr["strength"].ToString().Trim();
-                                    item.Dosageform = dr["dosageform"] == DBNull.Value ? string.Empty : dr["dosageform"].ToString().Trim();
-                                    item.RouteAdmin = dr["route_admin"] == DBNull.Value ? string.Empty : dr["route_admin"].ToString().Trim();
-                                    item.BdDinList = dr["bd_din_list"] == DBNull.Value ? 0 : Convert.ToInt32(dr["bd_din_list"]);
-                                    item.TheraClass = dr["thera_class"] == DBNull.Value ? string.Empty : dr["thera_class"].ToString().Trim();
-                                    item.NonmedIngredient = dr["nonmed_ingredient"] == DBNull.Value ? string.Empty : dr["nonmed_ingredient"].ToString().Trim();
-                                    item.SubTypeNum = dr["sub_type_num"] == DBNull.Value ? string.Empty : dr["sub_type_num"].ToString().Trim();
-                                    item.DateSubmission = dr["date_submission"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submission"]);
-                                    item.DateAuthorization = dr["date_authorization"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_authorization"]);
-                                    item.NoticeDecision = dr["notice_decision"] == DBNull.Value ? string.Empty : dr["notice_decision"].ToString().Trim();
-                                    item.SciRegDecision = dr["sci_reg_decision"] == DBNull.Value ? string.Empty : dr["sci_reg_decision"].ToString().Trim();
-                                    item.QualityBasis = dr["quality_basis"] == DBNull.Value ? string.Empty : dr["quality_basis"].ToString().Trim();
-                                    item.NonclinBasis = dr["nonclin_basis"] == DBNull.Value ? string.Empty : dr["nonclin_basis"].ToString().Trim();
-                                    item.NonclinBasis2 = dr["nonclin_basis2"] == DBNull.Value ? string.Empty : dr["nonclin_basis2"].ToString().Trim();
-                                    item.ClinBasis = dr["clin_basis"] == DBNull.Value ? string.Empty : dr["clin_basis"].ToString().Trim();
-                                    item.ClinBasis2 = dr["clin_basis2"] == DBNull.Value ? string.Empty : dr["clin_basis2"].ToString().Trim();
-                                    item.ClinBasis3 = dr["clin_basis3"] == DBNull.Value ? string.Empty : dr["clin_basis3"].ToString().Trim();
-                                    item.BenefitRisk = dr["benefit_risk"] == DBNull.Value ? string.Empty : dr["benefit_risk"].ToString().Trim();
-                                    item.Radioisotope = dr["radioisotope"] == DBNull.Value ? string.Empty : dr["radioisotope"].ToString().Trim();
-                                    item.Summary = dr["summary"] == DBNull.Value ? string.Empty : dr["summary"].ToString().Trim();
-                                    item.WhatApproved = dr["what_approved"] == DBNull.Value ? string.Empty : dr["what_approved"].ToString().Trim();
-                                    item.WhyApproved = dr["why_approved"] == DBNull.Value ? string.Empty : dr["why_approved"].ToString().Trim();
-                                    item.StepsApproval = dr["steps_approval"] == DBNull.Value ? string.Empty : dr["steps_approval"].ToString().Trim();
-                                    item.AssessBasis = dr["assess_basis"] == DBNull.Value ? string.Empty : dr["assess_basis"].ToString().Trim();
-                                    item.FollowupMeasures = dr["followup_measures"] == DBNull.Value ? string.Empty : dr["followup_measures"].ToString().Trim();
-                                    item.PostAuth = dr["post_auth"] == DBNull.Value ? string.Empty : dr["post_auth"].ToString().Trim();
-                                    item.OtherInfo = dr["other_info"] == DBNull.Value ? string.Empty : dr["other_info"].ToString().Trim();
-                                    item.ASciRegDcision = dr["a_sci_reg_decision"] == DBNull.Value ? string.Empty : dr["a_sci_reg_decision"].ToString().Trim();
-                                    item.ScienceRationale = dr["science_rationale"] == DBNull.Value ? string.Empty : dr["science_rationale"].ToString().Trim();
-                                    item.AClinBasis = dr["a_clin_basis"] == DBNull.Value ? string.Empty : dr["a_clin_basis"].ToString().Trim();
-                                    item.AClinBasis2 = dr["a_clin_basis2"] == DBNull.Value ? string.Empty : dr["a_clin_basis2"].ToString().Trim();
-                                    item.ANonClinBasis = dr["a_non_clin_basis"] == DBNull.Value ? string.Empty : dr["a_non_clin_basis"].ToString().Trim();
-                                    item.ANonClinBasis2 = dr["a_non_clin_basis2"] == DBNull.Value ? string.Empty : dr["a_non_clin_basis2"].ToString().Trim();
-                                    item.BQualityBasis = dr["b_quality_basis"] == DBNull.Value ? string.Empty : dr["b_quality_basis"].ToString().Trim();
-                                    item.Contact = dr["contact"] == DBNull.Value ? string.Empty : dr["contact"].ToString().Trim();
+                                    item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
+                                    item.control_number = dr["control_num"] == DBNull.Value ? string.Empty : dr["control_num"].ToString().Trim();
+                                    item.date_issued = dr["date_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_issued"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.brand_name = dr["brandname"] == DBNull.Value ? string.Empty : dr["brandname"].ToString().Trim();
+                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
+                                    //item.med_ingredient = dr["med_ingredient"] == DBNull.Value ? string.Empty : dr["med_ingredient"].ToString().Trim();
+                                    //item.non_prop_name = dr["nonprop_name"] == DBNull.Value ? string.Empty : dr["nonprop_name"].ToString().Trim();
+                                    //item.strength = dr["strength"] == DBNull.Value ? string.Empty : dr["strength"].ToString().Trim();
+                                    //item.dosage_form = dr["dosageform"] == DBNull.Value ? string.Empty : dr["dosageform"].ToString().Trim();
+                                    //item.route_admin = dr["route_admin"] == DBNull.Value ? string.Empty : dr["route_admin"].ToString().Trim();
+                                    item.bd_din_list = dr["bd_din_list"] == DBNull.Value ? 0 : Convert.ToInt32(dr["bd_din_list"]);
+                                    //item.thera_class = dr["thera_class"] == DBNull.Value ? string.Empty : dr["thera_class"].ToString().Trim();
+                                    //item.non_med_ingredient = dr["nonmed_ingredient"] == DBNull.Value ? string.Empty : dr["nonmed_ingredient"].ToString().Trim();
+                                    item.sub_type_number = dr["sub_type_num"] == DBNull.Value ? string.Empty : dr["sub_type_num"].ToString().Trim();
+                                    item.date_submission = dr["date_submission"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submission"]);
+                                    item.date_authorization = dr["date_authorization"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_authorization"]);
+                                    item.notice_decision = dr["notice_decision"] == DBNull.Value ? string.Empty : dr["notice_decision"].ToString().Trim();
+                                    item.sci_reg_decision = dr["sci_reg_decision"] == DBNull.Value ? string.Empty : dr["sci_reg_decision"].ToString().Trim();
+                                    item.quality_basis = dr["quality_basis"] == DBNull.Value ? string.Empty : dr["quality_basis"].ToString().Trim();
+                                    item.non_clin_basis = dr["nonclin_basis"] == DBNull.Value ? string.Empty : dr["nonclin_basis"].ToString().Trim();
+                                    item.non_clin_basis2 = dr["nonclin_basis2"] == DBNull.Value ? string.Empty : dr["nonclin_basis2"].ToString().Trim();
+                                    item.clin_basis = dr["clin_basis"] == DBNull.Value ? string.Empty : dr["clin_basis"].ToString().Trim();
+                                    item.clin_basis2 = dr["clin_basis2"] == DBNull.Value ? string.Empty : dr["clin_basis2"].ToString().Trim();
+                                    item.clin_basis3 = dr["clin_basis3"] == DBNull.Value ? string.Empty : dr["clin_basis3"].ToString().Trim();
+                                    item.benefit_risk = dr["benefit_risk"] == DBNull.Value ? string.Empty : dr["benefit_risk"].ToString().Trim();
+                                    item.radioisotope = dr["radioisotope"] == DBNull.Value ? string.Empty : dr["radioisotope"].ToString().Trim();
+                                    item.summary = dr["summary"] == DBNull.Value ? string.Empty : dr["summary"].ToString().Trim();
+                                    item.what_approved = dr["what_approved"] == DBNull.Value ? string.Empty : dr["what_approved"].ToString().Trim();
+                                    item.why_approved = dr["why_approved"] == DBNull.Value ? string.Empty : dr["why_approved"].ToString().Trim();
+                                    item.steps_approval = dr["steps_approval"] == DBNull.Value ? string.Empty : dr["steps_approval"].ToString().Trim();
+                                    item.assess_basis = dr["assess_basis"] == DBNull.Value ? string.Empty : dr["assess_basis"].ToString().Trim();
+                                    item.followup_measures = dr["followup_measures"] == DBNull.Value ? string.Empty : dr["followup_measures"].ToString().Trim();
+                                    item.post_auth = dr["post_auth"] == DBNull.Value ? string.Empty : dr["post_auth"].ToString().Trim();
+                                    item.other_info = dr["other_info"] == DBNull.Value ? string.Empty : dr["other_info"].ToString().Trim();
+                                    item.a_sci_reg_dcision = dr["a_sci_reg_decision"] == DBNull.Value ? string.Empty : dr["a_sci_reg_decision"].ToString().Trim();
+                                    item.science_rationale = dr["science_rationale"] == DBNull.Value ? string.Empty : dr["science_rationale"].ToString().Trim();
+                                    item.a_clin_basis = dr["a_clin_basis"] == DBNull.Value ? string.Empty : dr["a_clin_basis"].ToString().Trim();
+                                    item.a_clin_basis2 = dr["a_clin_basis2"] == DBNull.Value ? string.Empty : dr["a_clin_basis2"].ToString().Trim();
+                                    item.a_non_clin_basis = dr["a_non_clin_basis"] == DBNull.Value ? string.Empty : dr["a_non_clin_basis"].ToString().Trim();
+                                    item.a_non_clin_basis2 = dr["a_non_clin_basis2"] == DBNull.Value ? string.Empty : dr["a_non_clin_basis2"].ToString().Trim();
+                                    item.b_quality_basis = dr["b_quality_basis"] == DBNull.Value ? string.Empty : dr["b_quality_basis"].ToString().Trim();
+                                    item.contact = dr["contact"] == DBNull.Value ? string.Empty : dr["contact"].ToString().Trim();
                                     items.Add(item);
                                 }
 
                                 if (items != null && items.Count > 0)
                                 {
                                     returnItem = items.FirstOrDefault();
-                                    returnItem.DinList = new List<string>();
+                                    returnItem.din_list = new List<string>();
+                                    returnItem.tombstone_list = new List<Tombstone>();
 
-                                    foreach (var tempDin in items)
+                                    foreach (var temp in items)
                                     {
-                                        if (!string.IsNullOrWhiteSpace(tempDin.Din))
-                                            returnItem.DinList.Add(tempDin.Din);
+                                        if (!string.IsNullOrWhiteSpace(temp.din))
+                                            returnItem.din_list.Add(temp.din);
                                     }
                                 }
 
@@ -327,41 +332,41 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var item = new BasisDecisionMedicalDevice();
-                                    item.Template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.DeviceName = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();
-                                    item.ApplicationNum = dr["application_num"] == DBNull.Value ? string.Empty : dr["application_num"].ToString().Trim();
-                                    item.RecentActivity = dr["recent_activity"] == DBNull.Value ? string.Empty : dr["recent_activity"].ToString().Trim();
-                                    item.UpdatedDate = dr["updated_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["updated_date"]);
-                                    item.SummaryBasisIntro = dr["summary_basis_intro"] == DBNull.Value ? string.Empty : dr["summary_basis_intro"].ToString().Trim();
-                                    item.WhatApproved = dr["what_approved"] == DBNull.Value ? string.Empty : dr["what_approved"].ToString().Trim();
-                                    item.WhyDeviceApproved = dr["why_device_approved"] == DBNull.Value ? string.Empty : dr["why_device_approved"].ToString().Trim();
-                                    item.StepsApprovalIntro = dr["steps_approval_intro"] == DBNull.Value ? string.Empty : dr["steps_approval_intro"].ToString().Trim();
-                                    item.FollowupMeasures = dr["followup_measures"] == DBNull.Value ? string.Empty : dr["followup_measures"].ToString().Trim();
-                                    item.PostLicenceActivity = dr["post_licence_activity"] == DBNull.Value ? string.Empty : dr["post_licence_activity"].ToString().Trim();
-                                    item.OtherInfo = dr["other_info"] == DBNull.Value ? string.Empty : dr["other_info"].ToString().Trim();
-                                    item.ScientificRationale = dr["scientific_rationale"] == DBNull.Value ? string.Empty : dr["scientific_rationale"].ToString().Trim();
-                                    item.ScientificRationale2 = dr["scientific_rationale2"] == DBNull.Value ? string.Empty : dr["scientific_rationale2"].ToString().Trim();
-                                    item.ScientificRationale3 = dr["scientific_rationale3"] == DBNull.Value ? string.Empty : dr["scientific_rationale3"].ToString().Trim();
-                                    item.DateSbdIssued = dr["date_sbd_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_sbd_issued"]);
-                                    item.Egalement = dr["egalement"] == DBNull.Value ? string.Empty : dr["egalement"].ToString().Trim();
-                                    item.Manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
-                                    item.MedicalDeviceGroup = dr["medical_device_group"] == DBNull.Value ? string.Empty : dr["medical_device_group"].ToString().Trim();
-                                    item.BiologicalMaterial = dr["biological_material"] == DBNull.Value ? string.Empty : dr["biological_material"].ToString().Trim();
-                                    item.CombinationProduct = dr["combination_product"] == DBNull.Value ? string.Empty : dr["combination_product"].ToString().Trim();
-                                    item.DrugMaterial = dr["drug_material"] == DBNull.Value ? string.Empty : dr["drug_material"].ToString().Trim();
-                                    item.ApplicationTypeAndNum = dr["application_type_and_num"] == DBNull.Value ? string.Empty : dr["application_type_and_num"].ToString().Trim();
-                                    item.DateLicenceIssued = dr["date_licence_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_licence_issued"]);
-                                    item.IntendedUse = dr["intended_use"] == DBNull.Value ? string.Empty : dr["intended_use"].ToString().Trim();
-                                    item.NoticeOfDecision = dr["notice_of_decision"] == DBNull.Value ? string.Empty : dr["notice_of_decision"].ToString().Trim();
-                                    item.SciRegBasisDecision1 = dr["sci_reg_basis_decision1"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision1"].ToString().Trim();
-                                    item.SciRegBasisDecision2 = dr["sci_reg_basis_decision2"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision2"].ToString().Trim();
-                                    item.SciRegBasisDecision3 = dr["sci_reg_basis_decision3"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision3"].ToString().Trim();
-                                    item.ResponseToCondition = dr["response_to_condition"] == DBNull.Value ? string.Empty : dr["response_to_condition"].ToString().Trim();
-                                    item.Conclusion = dr["conclusion"] == DBNull.Value ? string.Empty : dr["conclusion"].ToString().Trim();
-                                    item.Recommendation = dr["recommendation"] == DBNull.Value ? string.Empty : dr["recommendation"].ToString().Trim();
-                                    item.LicenseNo = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
-                                    item.IsMd = true;
+                                    item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.device_name = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();
+                                    item.application_num = dr["application_num"] == DBNull.Value ? string.Empty : dr["application_num"].ToString().Trim();
+                                    item.recent_activity = dr["recent_activity"] == DBNull.Value ? string.Empty : dr["recent_activity"].ToString().Trim();
+                                    item.updated_date = dr["updated_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["updated_date"]);
+                                    item.summary_basis_intro = dr["summary_basis_intro"] == DBNull.Value ? string.Empty : dr["summary_basis_intro"].ToString().Trim();
+                                    item.what_approved = dr["what_approved"] == DBNull.Value ? string.Empty : dr["what_approved"].ToString().Trim();
+                                    item.why_device_approved = dr["why_device_approved"] == DBNull.Value ? string.Empty : dr["why_device_approved"].ToString().Trim();
+                                    item.steps_approval_intro = dr["steps_approval_intro"] == DBNull.Value ? string.Empty : dr["steps_approval_intro"].ToString().Trim();
+                                    item.followup_measures = dr["followup_measures"] == DBNull.Value ? string.Empty : dr["followup_measures"].ToString().Trim();
+                                    item.post_licence_activity = dr["post_licence_activity"] == DBNull.Value ? string.Empty : dr["post_licence_activity"].ToString().Trim();
+                                    item.other_info = dr["other_info"] == DBNull.Value ? string.Empty : dr["other_info"].ToString().Trim();
+                                    item.scientific_rationale = dr["scientific_rationale"] == DBNull.Value ? string.Empty : dr["scientific_rationale"].ToString().Trim();
+                                    item.scientific_rationale2 = dr["scientific_rationale2"] == DBNull.Value ? string.Empty : dr["scientific_rationale2"].ToString().Trim();
+                                    item.scientific_rationale3 = dr["scientific_rationale3"] == DBNull.Value ? string.Empty : dr["scientific_rationale3"].ToString().Trim();
+                                    item.date_sbd_issued = dr["date_sbd_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_sbd_issued"]);
+                                    item.egalement = dr["egalement"] == DBNull.Value ? string.Empty : dr["egalement"].ToString().Trim();
+                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
+                                    item.medical_device_group = dr["medical_device_group"] == DBNull.Value ? string.Empty : dr["medical_device_group"].ToString().Trim();
+                                    item.biological_material = dr["biological_material"] == DBNull.Value ? string.Empty : dr["biological_material"].ToString().Trim();
+                                    item.combination_product = dr["combination_product"] == DBNull.Value ? string.Empty : dr["combination_product"].ToString().Trim();
+                                    item.drug_material = dr["drug_material"] == DBNull.Value ? string.Empty : dr["drug_material"].ToString().Trim();
+                                    item.application_type_and_num = dr["application_type_and_num"] == DBNull.Value ? string.Empty : dr["application_type_and_num"].ToString().Trim();
+                                    item.date_licence_issued = dr["date_licence_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_licence_issued"]);
+                                    item.intended_use = dr["intended_use"] == DBNull.Value ? string.Empty : dr["intended_use"].ToString().Trim();
+                                    item.notice_of_decision = dr["notice_of_decision"] == DBNull.Value ? string.Empty : dr["notice_of_decision"].ToString().Trim();
+                                    item.sci_reg_basis_decision1 = dr["sci_reg_basis_decision1"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision1"].ToString().Trim();
+                                    item.sci_reg_basis_decision2 = dr["sci_reg_basis_decision2"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision2"].ToString().Trim();
+                                    item.sci_reg_basis_decision3 = dr["sci_reg_basis_decision3"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision3"].ToString().Trim();
+                                    item.response_to_condition = dr["response_to_condition"] == DBNull.Value ? string.Empty : dr["response_to_condition"].ToString().Trim();
+                                    item.conclusion = dr["conclusion"] == DBNull.Value ? string.Empty : dr["conclusion"].ToString().Trim();
+                                    item.recommendation = dr["recommendation"] == DBNull.Value ? string.Empty : dr["recommendation"].ToString().Trim();
+                                    item.licence_number = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
+                                    item.is_md = true;
                                     items.Add(item);
                                 }
 
@@ -421,12 +426,12 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var item = new SafetyReview();
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.Template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
-                                    item.DrugName = dr["drug_name"] == DBNull.Value ? string.Empty : dr["drug_name"].ToString().Trim();
-                                    item.Safetyissue = dr["safteyissue"] == DBNull.Value ? string.Empty : dr["safteyissue"].ToString().Trim();
-                                    item.CreatedDate = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
-                                    item.ModifiedDate = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
+                                    item.drug_name = dr["drug_name"] == DBNull.Value ? string.Empty : dr["drug_name"].ToString().Trim();
+                                    item.safety_issue = dr["safteyissue"] == DBNull.Value ? string.Empty : dr["safteyissue"].ToString().Trim();
+                                    item.created_date = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
+                                    item.modified_date = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
                                     items.Add(item);
                                 }
                             }
@@ -479,9 +484,9 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var bullet = new BullePoint();
-                                    bullet.FieldId = dr["fieldID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["fieldID"].ToString().Trim());
-                                    bullet.OrderNo = dr["orderNo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["orderNo"].ToString().Trim());
-                                    bullet.Bullet = dr["bullet"] == DBNull.Value ? string.Empty : dr["bullet"].ToString().Trim();
+                                    bullet.field_id = dr["fieldID"] == DBNull.Value ? 0 : Convert.ToInt32(dr["fieldID"].ToString().Trim());
+                                    bullet.order_no = dr["orderNo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["orderNo"].ToString().Trim());
+                                    bullet.bullet = dr["bullet"] == DBNull.Value ? string.Empty : dr["bullet"].ToString().Trim();
                                     items.Add(bullet);
                                 }
                             }
@@ -535,16 +540,16 @@ namespace regContentWebApi
                                     while (dr.Read())
                                     {
                                         var paat = new PostAuthActivity();
-                                        paat.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                        paat.RowNum = dr["row_num"] == DBNull.Value ? 0 : Convert.ToInt32(dr["row_num"].ToString().Trim());
-                                        paat.ActContrNum = dr["act_contr_num"] == DBNull.Value ? string.Empty : dr["act_contr_num"].ToString().Trim();
-                                        paat.DateSubmit = dr["date_submit"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submit"]);
-                                        paat.SubmitText = dr["date_submit_text"] == DBNull.Value ? string.Empty : dr["date_submit_text"].ToString().Trim();
-                                        paat.PaatDecision = dr["paat_decision"] == DBNull.Value ? string.Empty : dr["paat_decision"].ToString().Trim();
-                                        paat.DecisionStartDate = dr["paat_decision_start_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["paat_decision_start_date"]);
-                                        paat.DateText = dr["paat_date_text"] == DBNull.Value ? string.Empty : dr["paat_date_text"].ToString().Trim();
-                                        paat.DecisionEndDate = dr["paat_decision_end_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["paat_decision_end_date"]);
-                                        paat.SummActivity = dr["summ_activ"] == DBNull.Value ? string.Empty : dr["summ_activ"].ToString().Trim();
+                                        paat.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                        paat.row_num = dr["row_num"] == DBNull.Value ? 0 : Convert.ToInt32(dr["row_num"].ToString().Trim());
+                                        paat.act_contr_num = dr["act_contr_num"] == DBNull.Value ? string.Empty : dr["act_contr_num"].ToString().Trim();
+                                        paat.date_submit = dr["date_submit"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submit"]);
+                                        paat.submit_text = dr["date_submit_text"] == DBNull.Value ? string.Empty : dr["date_submit_text"].ToString().Trim();
+                                        paat.paat_decision = dr["paat_decision"] == DBNull.Value ? string.Empty : dr["paat_decision"].ToString().Trim();
+                                        paat.decision_start_date = dr["paat_decision_start_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["paat_decision_start_date"]);
+                                        paat.date_text = dr["paat_date_text"] == DBNull.Value ? string.Empty : dr["paat_date_text"].ToString().Trim();
+                                        paat.decision_end_date = dr["paat_decision_end_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["paat_decision_end_date"]);
+                                        paat.summ_activity = dr["summ_activ"] == DBNull.Value ? string.Empty : dr["summ_activ"].ToString().Trim();
                                         items.Add(paat);
                                     }
                                 }
@@ -596,12 +601,12 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var plat = new PostLicensingActivity();
-                                    plat.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    plat.DateSubmit = dr["date_submitted"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submitted"]);
-                                    plat.NumOrder = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
-                                    plat.AppTypeNum = dr["app_type_num"] == DBNull.Value ? string.Empty : dr["app_type_num"].ToString().Trim();
-                                    plat.DecisionAndDate = dr["decision_and_date"] == DBNull.Value ? string.Empty : dr["decision_and_date"].ToString().Trim();
-                                    plat.SummActivity = dr["summ_activities"] == DBNull.Value ? string.Empty : dr["summ_activities"].ToString().Trim();
+                                    plat.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    plat.date_submit = dr["date_submitted"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submitted"]);
+                                    plat.num_order = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
+                                    plat.app_type_num = dr["app_type_num"] == DBNull.Value ? string.Empty : dr["app_type_num"].ToString().Trim();
+                                    plat.decision_and_date = dr["decision_and_date"] == DBNull.Value ? string.Empty : dr["decision_and_date"].ToString().Trim();
+                                    plat.summ_activity = dr["summ_activities"] == DBNull.Value ? string.Empty : dr["summ_activities"].ToString().Trim();
 
                                     items.Add(plat);
                                 }
@@ -653,12 +658,12 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var milestone = new DecisionMilestone();
-                                    milestone.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    milestone.NumOrder = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
-                                    milestone.Milestone = dr["milestone"] == DBNull.Value ? string.Empty : dr["milestone"].ToString().Trim();
-                                    milestone.Separator = dr["separator"] == DBNull.Value ? string.Empty : dr["separator"].ToString().Trim();
-                                    milestone.CompletedDate = dr["completed_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["completed_date"]);
-                                    milestone.CompletedDate2 = dr["completed_date2"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["completed_date2"]);
+                                    milestone.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    milestone.num_order = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
+                                    milestone.milestone = dr["milestone"] == DBNull.Value ? string.Empty : dr["milestone"].ToString().Trim();
+                                    milestone.separator = dr["separator"] == DBNull.Value ? string.Empty : dr["separator"].ToString().Trim();
+                                    milestone.completed_date = dr["completed_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["completed_date"]);
+                                    milestone.completed_date2 = dr["completed_date2"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["completed_date2"]);
                                     items.Add(milestone);
                                 }
                             }
@@ -667,6 +672,68 @@ namespace regContentWebApi
                     catch (Exception ex)
                     {
                         string errorMessages = string.Format("DbConnection.cs - GetDecisionMilestoneListById()");
+                        ExceptionHelper.LogException(ex, errorMessages);
+                        Console.WriteLine(errorMessages);
+                    }
+                    finally
+                    {
+                        if (con.State == ConnectionState.Open)
+                            con.Close();
+                    }
+                }
+            }
+            return items;
+        }
+
+
+        public List<Tombstone> GetBasicDecisionTombstoneListById(string id)
+        {
+            var items = new List<Tombstone>();
+
+            string commandText = string.Empty;
+            commandText = "SELECT link_id, num_order, med_ingredient, nonprop_name, strength, dosageform, route_admin, thera_class, nonmed_ingredient FROM bd_tombstone WHERE link_id = @link_id";
+            if (this.Lang.Equals("fr"))
+            {
+                commandText += " AND upper(language)='FRENCH';";
+            }
+            else
+            {
+                commandText += " AND upper(language)='ENGLISH';";
+            }
+
+            using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
+            {
+                using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
+                {
+                    cmd.Parameters.AddWithValue("@link_id", id.ToUpper().Trim());
+                    try
+                    {
+                        con.Open();
+                        using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    var tombstone = new Tombstone();
+                                    tombstone.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    tombstone.num_order = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
+                                    tombstone.med_ingredient = dr["med_ingredient"] == DBNull.Value ? string.Empty : dr["med_ingredient"].ToString().Trim();
+                                    tombstone.nonprop_name = dr["nonprop_name"] == DBNull.Value ? string.Empty : dr["nonprop_name"].ToString().Trim();
+                                    tombstone.strength = dr["strength"] == DBNull.Value ? string.Empty : dr["strength"].ToString().Trim();
+                                    tombstone.dosageform = dr["dosageform"] == DBNull.Value ? string.Empty : dr["dosageform"].ToString().Trim();
+                                    tombstone.route_admin = dr["route_admin"] == DBNull.Value ? string.Empty : dr["route_admin"].ToString().Trim();
+                                    tombstone.thera_class = dr["thera_class"] == DBNull.Value ? string.Empty : dr["thera_class"].ToString().Trim();
+                                    tombstone.nonmed_ingredient = dr["nonmed_ingredient"] == DBNull.Value ? string.Empty : dr["nonmed_ingredient"].ToString().Trim();
+
+                                    items.Add(tombstone);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string errorMessages = string.Format("DbConnection.cs - GetTombstoneListById()");
                         ExceptionHelper.LogException(ex, errorMessages);
                         Console.WriteLine(errorMessages);
                     }
@@ -710,12 +777,12 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var milestone = new ApplicationMilestones();
-                                    milestone.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    milestone.NumOrder = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
-                                    milestone.ApplicationMilestone = dr["application_milestone"] == DBNull.Value ? string.Empty : dr["application_milestone"].ToString().Trim();
-                                    milestone.Separator = dr["date_separator"] == DBNull.Value ? string.Empty : dr["date_separator"].ToString().Trim();
-                                    milestone.MilestoneDate = dr["milestone_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["milestone_date"]);
-                                    milestone.MilestoneDate2 = dr["milstone_date2"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["milstone_date2"]);
+                                    milestone.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    milestone.num_order = dr["num_order"] == DBNull.Value ? 0 : Convert.ToInt32(dr["num_order"].ToString().Trim());
+                                    milestone.application_milestone = dr["application_milestone"] == DBNull.Value ? string.Empty : dr["application_milestone"].ToString().Trim();
+                                    milestone.separator = dr["date_separator"] == DBNull.Value ? string.Empty : dr["date_separator"].ToString().Trim();
+                                    milestone.milestone_date = dr["milestone_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["milestone_date"]);
+                                    milestone.milestone_date2 = dr["milstone_date2"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["milstone_date2"]);
                                     items.Add(milestone);
                                 }
                             }
@@ -767,9 +834,9 @@ namespace regContentWebApi
                                 while (dr.Read())
                                 {
                                     var bullet = new BullePoint();
-                                    bullet.FieldId = 0;
-                                    bullet.OrderNo = dr["orderNo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["orderNo"].ToString().Trim());
-                                    bullet.Bullet = dr["bullet"] == DBNull.Value ? string.Empty : dr["bullet"].ToString().Trim();
+                                    bullet.field_id = 0;
+                                    bullet.order_no = dr["orderNo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["orderNo"].ToString().Trim());
+                                    bullet.bullet = dr["bullet"] == DBNull.Value ? string.Empty : dr["bullet"].ToString().Trim();
                                     items.Add(bullet);
                                 }
                             }
@@ -829,26 +896,26 @@ namespace regContentWebApi
                             {
                                 while (dr.Read())
                                 {
-                                    item.Template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.ReviewDate = dr["review_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["review_date"]);
-                                    item.DrugName = dr["drug_name"] == DBNull.Value ? string.Empty : dr["drug_name"].ToString().Trim();
-                                    item.Safetyissue = dr["safteyissue"] == DBNull.Value ? string.Empty : dr["safteyissue"].ToString().Trim();
-                                    item.Issue = dr["issue"] == DBNull.Value ? string.Empty : dr["issue"].ToString().Trim();
-                                    item.Background = dr["background"] == DBNull.Value ? string.Empty : dr["background"].ToString().Trim();
-                                    item.Objective = dr["objective"] == DBNull.Value ? string.Empty : dr["objective"].ToString().Trim();
-                                    item.KeyFindings = dr["key_findings"] == DBNull.Value ? string.Empty : dr["key_findings"].ToString().Trim();
-                                    item.KeyMessages = dr["key_messages"] == DBNull.Value ? 0 : Convert.ToInt32(dr["key_messages"]);
-                                    item.Overview = dr["overview"] == DBNull.Value ? string.Empty : dr["overview"].ToString().Trim();
-                                    item.UseCanada = dr["use_canada"] == DBNull.Value ? 0 : Convert.ToInt32(dr["use_canada"]);
-                                    item.Findings = dr["findings"] == DBNull.Value ? 0 : Convert.ToInt32(dr["findings"]);
-                                    item.Conclusion = dr["conclusion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["conclusion"]);
-                                    item.Additional = dr["additional"] == DBNull.Value ? string.Empty : dr["additional"].ToString().Trim();
-                                    item.FullReview = dr["full_review"] == DBNull.Value ? string.Empty : dr["full_review"].ToString().Trim();
-                                    item.References = dr["sr_references"] == DBNull.Value ? 0 : Convert.ToInt32(dr["sr_references"]);
-                                    item.Footnotes = dr["footnotes"] == DBNull.Value ? 0 : Convert.ToInt32(dr["footnotes"]);
-                                    item.CreatedDate = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
-                                    item.ModifiedDate = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
+                                    item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.review_date = dr["review_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["review_date"]);
+                                    item.drug_name = dr["drug_name"] == DBNull.Value ? string.Empty : dr["drug_name"].ToString().Trim();
+                                    item.safety_issue = dr["safteyissue"] == DBNull.Value ? string.Empty : dr["safteyissue"].ToString().Trim();
+                                    item.issue = dr["issue"] == DBNull.Value ? string.Empty : dr["issue"].ToString().Trim();
+                                    item.background = dr["background"] == DBNull.Value ? string.Empty : dr["background"].ToString().Trim();
+                                    item.objective = dr["objective"] == DBNull.Value ? string.Empty : dr["objective"].ToString().Trim();
+                                    item.key_findings = dr["key_findings"] == DBNull.Value ? string.Empty : dr["key_findings"].ToString().Trim();
+                                    item.key_messages = dr["key_messages"] == DBNull.Value ? 0 : Convert.ToInt32(dr["key_messages"]);
+                                    item.overview = dr["overview"] == DBNull.Value ? string.Empty : dr["overview"].ToString().Trim();
+                                    item.use_canada = dr["use_canada"] == DBNull.Value ? 0 : Convert.ToInt32(dr["use_canada"]);
+                                    item.findings = dr["findings"] == DBNull.Value ? 0 : Convert.ToInt32(dr["findings"]);
+                                    item.conclusion = dr["conclusion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["conclusion"]);
+                                    item.additional = dr["additional"] == DBNull.Value ? string.Empty : dr["additional"].ToString().Trim();
+                                    item.full_review = dr["full_review"] == DBNull.Value ? string.Empty : dr["full_review"].ToString().Trim();
+                                    item.references = dr["sr_references"] == DBNull.Value ? 0 : Convert.ToInt32(dr["sr_references"]);
+                                    item.footnotes = dr["footnotes"] == DBNull.Value ? 0 : Convert.ToInt32(dr["footnotes"]);
+                                    item.created_date = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
+                                    item.modified_date = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
                                 }
                             }
                         }
@@ -901,15 +968,15 @@ namespace regContentWebApi
                                     while (dr.Read())
                                     {
                                         var item = new RegulatoryDecision();
-                                        item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                        item.Drugname = dr["drugname"] == DBNull.Value ? string.Empty : dr["drugname"].ToString().Trim();
-                                        item.DateDecision = dr["date_decision"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_decision"]);
-                                        item.Decision = dr["decision"] == DBNull.Value ? string.Empty : dr["decision"].ToString().Trim();
-                                        item.Manufacture = dr["manufacture"] == DBNull.Value ? string.Empty : dr["manufacture"].ToString().Trim();
-                                        item.TypeSubmission = dr["type_submission"] == DBNull.Value ? string.Empty : dr["type_submission"].ToString().Trim();
-                                        item.ControlNumber = dr["control_number"] == DBNull.Value ? 0 : Convert.ToInt32(dr["control_number"]);
-                                        item.ModifiedDate = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
-                                        item.MedicalIngredient = dr["medical_ingredient"] == DBNull.Value ? string.Empty : dr["medical_ingredient"].ToString().Trim();
+                                        item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                        item.drug_name = dr["drugname"] == DBNull.Value ? string.Empty : dr["drugname"].ToString().Trim();
+                                        item.date_decision = dr["date_decision"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_decision"]);
+                                        item.decision = dr["decision"] == DBNull.Value ? string.Empty : dr["decision"].ToString().Trim();
+                                        item.manufacturer = dr["manufacture"] == DBNull.Value ? string.Empty : dr["manufacture"].ToString().Trim();
+                                        item.type_submission = dr["type_submission"] == DBNull.Value ? string.Empty : dr["type_submission"].ToString().Trim();
+                                        item.control_number = dr["control_number"] == DBNull.Value ? 0 : Convert.ToInt32(dr["control_number"]);
+                                        item.modified_date = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
+                                        item.medical_ingredient = dr["medical_ingredient"] == DBNull.Value ? string.Empty : dr["medical_ingredient"].ToString().Trim();
 
                                         items.Add(item);
                                     }
@@ -977,37 +1044,37 @@ namespace regContentWebApi
                                 {
                                     var item = new RegulatoryDecision();
 
-                                    item.LinkId = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
-                                    item.Drugname = dr["drugname"] == DBNull.Value ? string.Empty : dr["drugname"].ToString().Trim();
-                                    item.ContactName = dr["contact_name"] == DBNull.Value ? string.Empty : dr["contact_name"].ToString().Trim();
-                                    item.ContactUrl = dr["contact_url"] == DBNull.Value ? string.Empty : dr["contact_url"].ToString().Trim();
-                                    item.MedicalIngredient = dr["medical_ingredient"] == DBNull.Value ? string.Empty : dr["medical_ingredient"].ToString().Trim();
-                                    item.TherapeuticArea = dr["therapeutic_area"] == DBNull.Value ? string.Empty : dr["therapeutic_area"].ToString().Trim();
-                                    item.Purpose = dr["purpose"] == DBNull.Value ? string.Empty : dr["purpose"].ToString().Trim();
-                                    item.ReasonDecision = dr["reason_decision"] == DBNull.Value ? string.Empty : dr["reason_decision"].ToString().Trim();
-                                    item.Decision = dr["decision"] == DBNull.Value ? string.Empty : dr["decision"].ToString().Trim();
-                                    item.DecisionDescr = dr["decision_descr"] == DBNull.Value ? string.Empty : dr["decision_descr"].ToString().Trim();
-                                    item.DateDecision = dr["date_decision"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_decision"]);
-                                    item.Manufacture = dr["manufacture"] == DBNull.Value ? string.Empty : dr["manufacture"].ToString().Trim();
-                                    item.PrescriptionStatus = dr["prescription_status"] == DBNull.Value ? string.Empty : dr["prescription_status"].ToString().Trim();
-                                    item.TypeSubmission = dr["type_submission"] == DBNull.Value ? string.Empty : dr["type_submission"].ToString().Trim();
-                                    item.DateFiled = dr["date_filed"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_filed"]);
-                                    item.ControlNumber = dr["control_number"] == DBNull.Value ? 0 : Convert.ToInt32(dr["control_number"]);
-                                    item.CreatedDate = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
-                                    item.ModifiedDate = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
-                                    item.Footnotes = dr["footnotes"] == DBNull.Value ? 0 : Convert.ToInt32(dr["footnotes"]);
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.drug_name = dr["drugname"] == DBNull.Value ? string.Empty : dr["drugname"].ToString().Trim();
+                                    item.contact_name = dr["contact_name"] == DBNull.Value ? string.Empty : dr["contact_name"].ToString().Trim();
+                                    item.contact_url = dr["contact_url"] == DBNull.Value ? string.Empty : dr["contact_url"].ToString().Trim();
+                                    item.medical_ingredient = dr["medical_ingredient"] == DBNull.Value ? string.Empty : dr["medical_ingredient"].ToString().Trim();
+                                    item.therapeutic_area = dr["therapeutic_area"] == DBNull.Value ? string.Empty : dr["therapeutic_area"].ToString().Trim();
+                                    item.purpose = dr["purpose"] == DBNull.Value ? string.Empty : dr["purpose"].ToString().Trim();
+                                    item.reason_decision = dr["reason_decision"] == DBNull.Value ? string.Empty : dr["reason_decision"].ToString().Trim();
+                                    item.decision = dr["decision"] == DBNull.Value ? string.Empty : dr["decision"].ToString().Trim();
+                                    item.decision_descr = dr["decision_descr"] == DBNull.Value ? string.Empty : dr["decision_descr"].ToString().Trim();
+                                    item.date_decision = dr["date_decision"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_decision"]);
+                                    item.manufacturer = dr["manufacture"] == DBNull.Value ? string.Empty : dr["manufacture"].ToString().Trim();
+                                    item.prescription_status = dr["prescription_status"] == DBNull.Value ? string.Empty : dr["prescription_status"].ToString().Trim();
+                                    item.type_submission = dr["type_submission"] == DBNull.Value ? string.Empty : dr["type_submission"].ToString().Trim();
+                                    item.date_filed = dr["date_filed"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_filed"]);
+                                    item.control_number = dr["control_number"] == DBNull.Value ? 0 : Convert.ToInt32(dr["control_number"]);
+                                    item.created_date = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
+                                    item.modified_date = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
+                                    item.footnotes = dr["footnotes"] == DBNull.Value ? 0 : Convert.ToInt32(dr["footnotes"]);
                                     items.Add(item);
                                 }
 
                                 if (items != null && items.Count > 0)
                                 {
                                     returnItem = items.FirstOrDefault();
-                                    returnItem.DinList = new List<string>();
+                                    returnItem.din_list = new List<string>();
 
                                     foreach (var tempDin in items)
                                     {
-                                        if (!string.IsNullOrWhiteSpace(tempDin.Din))
-                                            returnItem.DinList.Add(tempDin.Din);
+                                        if (!string.IsNullOrWhiteSpace(tempDin.din))
+                                            returnItem.din_list.Add(tempDin.din);
                                     }
                                 }
                             }

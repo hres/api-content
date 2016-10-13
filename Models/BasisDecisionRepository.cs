@@ -1,6 +1,7 @@
 ﻿using regContentWebApi;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace regContentWebApi.Models
 {
@@ -19,11 +20,26 @@ namespace regContentWebApi.Models
             {
                 foreach (var item in _basisDecisions)
                 {
-
-                    if (!item.IsMd)
+                    if (!item.is_md)
                     {
+                        item.din_list = new List<string>();
+                        item.med_ingredient = string.Empty;
                         //To get din list
-                        item.DinList = dbConnection.GetBasicDecisionDinListById(item.LinkId);
+                        item.din_list = dbConnection.GetBasicDecisionDinListById(item.link_id);
+                        //To get tombstone
+                        item.tombstone_list = dbConnection.GetBasicDecisionTombstoneListById(item.link_id);
+                        if(item.tombstone_list != null && item.tombstone_list.Count > 0)
+                        {
+                            var sb = new StringBuilder();
+                            foreach ( var list in item.tombstone_list)
+                            {
+                                if(!string.IsNullOrWhiteSpace(list.med_ingredient))
+                                {
+                                    sb.AppendFormat("{0},", list.med_ingredient.Trim());
+                                }
+                            }
+                            item.med_ingredient = sb.ToString().TrimEnd(',');
+                        }
                     }
                 }
             }
@@ -42,21 +58,28 @@ namespace regContentWebApi.Models
         {
             DBConnection dbConnection = new DBConnection(lang);
             _basisDecision = dbConnection.GetBasisDecisionById(id);
-            _basisDecision.PostActivityList = new List<PostAuthActivity>();
-            _basisDecision.MilestoneList = new List<DecisionMilestone>();
-            if (_basisDecision != null && !string.IsNullOrEmpty(_basisDecision.LinkId))
+            _basisDecision.post_activity_list = new List<PostAuthActivity>();
+            _basisDecision.milestone_list = new List<DecisionMilestone>();
+            _basisDecision.tombstone_list = new List<Tombstone>();
+            if (_basisDecision != null && !string.IsNullOrEmpty(_basisDecision.link_id))
             {
                 var paatList = dbConnection.GetPostAuthActivityListById(id);
-                _basisDecision.DinList = dbConnection.GetBasicDecisionDinListById(id);
+                _basisDecision.din_list = dbConnection.GetBasicDecisionDinListById(id);
                 if (paatList != null && paatList.Count > 0)
                 {
-                    _basisDecision.PostActivityList = paatList;                   
+                    _basisDecision.post_activity_list = paatList;                   
                 }
                 //Milestones.
                 var mileList = dbConnection.GetDecisionMilestoneListById(id);
                 if (mileList != null && mileList.Count > 0)
                 {
-                    _basisDecision.MilestoneList = mileList;
+                    _basisDecision.milestone_list = mileList;
+                }
+                //Tombstone
+                var tombstoneList = dbConnection.GetBasicDecisionTombstoneListById(id);
+                if (tombstoneList != null && tombstoneList.Count > 0)
+                {
+                    _basisDecision.tombstone_list = tombstoneList;
                 }
             }
             return _basisDecision;
@@ -66,20 +89,20 @@ namespace regContentWebApi.Models
         {
             DBConnection dbConnection = new DBConnection(lang);
             _basisDecisionMd = dbConnection.GetBasisDecisionMedicalDeviceById(id);
-            _basisDecisionMd.PlatList = new List<PostLicensingActivity>();
-            _basisDecisionMd.AppMilestoneList = new List<ApplicationMilestones>();
-            if (_basisDecisionMd != null && !string.IsNullOrEmpty(_basisDecisionMd.LinkId))
+            _basisDecisionMd.plat_list = new List<PostLicensingActivity>();
+            _basisDecisionMd.app_milestone_list = new List<ApplicationMilestones>();
+            if (_basisDecisionMd != null && !string.IsNullOrEmpty(_basisDecisionMd.link_id))
             {
                 var platList = dbConnection.GetPostLicensingActivityListById(id);
                 if (platList != null && platList.Count > 0)
                 {
-                    _basisDecisionMd.PlatList = platList;
+                    _basisDecisionMd.plat_list = platList;
                 }
                 //Milestones.
                 var mileList = dbConnection.GetApplicationMilestoneListById(id);
                 if (mileList != null && mileList.Count > 0)
                 {
-                    _basisDecisionMd.AppMilestoneList = mileList;
+                    _basisDecisionMd.app_milestone_list = mileList;
                 }
             }
             return _basisDecisionMd;

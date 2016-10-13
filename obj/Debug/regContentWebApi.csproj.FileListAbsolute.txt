@@ -28,3 +28,9 @@ C:\Users\jangyoung\Documents\Visual Studio 2015\Projects\regcontent\bin\Microsof
 C:\Users\jangyoung\Documents\Visual Studio 2015\Projects\regcontent\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
 C:\Users\jangyoung\Documents\Visual Studio 2015\Projects\regcontent\obj\Debug\regCongtentWebApi.dll
 C:\Users\jangyoung\Documents\Visual Studio 2015\Projects\regcontent\obj\Debug\regCongtentWebApi.pdb
+C:\WebSite\api-publish\regcontent\bin\regCongtentWebApi.dll.config
+C:\WebSite\api-publish\regcontent\bin\regCongtentWebApi.dll
+C:\WebSite\api-publish\regcontent\bin\regCongtentWebApi.pdb
+C:\WebSite\api-publish\regcontent\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\WebSite\api-publish\regcontent\obj\Debug\regCongtentWebApi.dll
+C:\WebSite\api-publish\regcontent\obj\Debug\regCongtentWebApi.pdb

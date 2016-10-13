@@ -22,8 +22,8 @@ namespace regContentWebApi.Models
                 
                 foreach ( var item in _regDecisions)
                 {
-                    item.DinList = new List<string>(); //To get din list
-                    item.DinList = dbConnection.GetRegulatoryDinListById(item.LinkId);    
+                    item.din_list = new List<string>(); //To get din list
+                    item.din_list = dbConnection.GetRegulatoryDinListById(item.link_id);    
                }                
             }
             
@@ -34,16 +34,16 @@ namespace regContentWebApi.Models
         {
             DBConnection dbConnection = new DBConnection(lang);
             _regDecision = dbConnection.GetRegulatoryDecisionById(id);
-            if (_regDecision != null && !string.IsNullOrEmpty(_regDecision.LinkId))
+            if (_regDecision != null && !string.IsNullOrEmpty(_regDecision.link_id))
             {
                     
-                _regDecision.DinList = dbConnection.GetRegulatoryDinListById(id);
-                _regDecision.BulletList = new List<BullePoint>();
+                _regDecision.din_list = dbConnection.GetRegulatoryDinListById(id);
+                _regDecision.bullet_list = new List<BullePoint>();
                 var bulletList = dbConnection.GetRegulatoryDecisioBulletListById(id);
                 if (bulletList != null && bulletList.Count > 0)
                 {
                     //footnotes ( will be uncommented once field_id added in the db)
-                    _regDecision.BulletList = bulletList.OrderBy(c => c.OrderNo).ToList();
+                    _regDecision.bullet_list = bulletList.OrderBy(c => c.order_no).ToList();
                 }
             }
             return _regDecision;

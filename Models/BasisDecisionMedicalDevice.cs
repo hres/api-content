@@ -8,70 +8,69 @@ namespace regContentWebApi.Models
     public class BasisDecisionMedicalDevice
     {
         // From BasisDecision       
-        public int Template { get; set; }
-        public string LinkId { get; set; }        
-        public string DeviceName { get; set; }
-        public string ApplicationNum { get; set; }        
-        public string RecentActivity { get; set; }
-        public DateTime? UpdatedDate { get; set; }
-        public string SummaryBasisIntro { get; set; }
-        public string WhatApproved { get; set; }
-        public string WhyDeviceApproved { get; set; }
-        public string StepsApprovalIntro { get; set; }
-        public string FollowupMeasures { get; set; }
-        public string PostLicenceActivity { get; set; }
-        public string OtherInfo { get; set; }
-        public string ScientificRationale { get; set; }
-        public string ScientificRationale2 { get; set; }
-        public string ScientificRationale3 { get; set; }
-        public DateTime? DateSbdIssued { get; set; }
+        public int template { get; set; }
+        public string link_id { get; set; }        
+        public string device_name { get; set; }
+        public string application_num { get; set; }        
+        public string recent_activity { get; set; }
+        public DateTime? updated_date { get; set; }
+        public string summary_basis_intro { get; set; }
+        public string what_approved { get; set; }
+        public string why_device_approved { get; set; }
+        public string steps_approval_intro { get; set; }
+        public string followup_measures { get; set; }
+        public string post_licence_activity { get; set; }
+        public string other_info { get; set; }
+        public string scientific_rationale { get; set; }
+        public string scientific_rationale2 { get; set; }
+        public string scientific_rationale3 { get; set; }
+        public DateTime? date_sbd_issued { get; set; }
         
-        public string Egalement { get; set; }
-        public string Manufacturer { get; set; }
-        public string MedicalDeviceGroup { get; set; }
-        public string BiologicalMaterial { get; set; }
+        public string egalement { get; set; }
+        public string manufacturer { get; set; }
+        public string medical_device_group { get; set; }
+        public string biological_material { get; set; }
         
-        public string CombinationProduct { get; set; }
-        public string DrugMaterial { get; set; }
-        public string ApplicationTypeAndNum { get; set; }
-        public DateTime? DateLicenceIssued { get; set; }
-        public string IntendedUse { get; set; }
-        public string NoticeOfDecision { get; set; }
-        public string SciRegBasisDecision1 { get; set; }
-        public string SciRegBasisDecision2 { get; set; }
-        public string SciRegBasisDecision3 { get; set; }
-        public string ResponseToCondition { get; set; }
+        public string combination_product { get; set; }
+        public string drug_material { get; set; }
+        public string application_type_and_num { get; set; }
+        public DateTime? date_licence_issued { get; set; }
+        public string intended_use { get; set; }
+        public string notice_of_decision { get; set; }
+        public string sci_reg_basis_decision1 { get; set; }
+        public string sci_reg_basis_decision2 { get; set; }
+        public string sci_reg_basis_decision3 { get; set; }
+        public string response_to_condition { get; set; }
         
-        public string Conclusion { get; set; }
-        public string Recommendation { get; set; }
-        public string LicenseNo { get; set; }
+        public string conclusion { get; set; }
+        public string recommendation { get; set; }
+        public string licence_number { get; set; }
+        public bool is_md { get; set; }
 
-        public bool IsMd { get; set; }       
-
-        public List<PostLicensingActivity> PlatList { get; set; }
-        public List<ApplicationMilestones> AppMilestoneList { get; set; }
+        public List<PostLicensingActivity> plat_list { get; set; }
+        public List<ApplicationMilestones> app_milestone_list { get; set; }
 
     }
 public class PostLicensingActivity
 {
-    public string LinkId { get; set; }
-    public DateTime? DateSubmit { get; set; }  
+    public string link_id { get; set; }
+    public DateTime? date_submit { get; set; }  
     
-    public int NumOrder { get; set; }
-    public string AppTypeNum { get; set; }     
+    public int num_order { get; set; }
+    public string app_type_num { get; set; }     
 
-    public string DecisionAndDate { get; set; }
-    public string SummActivity { get; set; }
+    public string decision_and_date { get; set; }
+    public string summ_activity { get; set; }
 }
 
 public class ApplicationMilestones
     {
 
-    public string LinkId { get; set; }
-    public int NumOrder { get; set; }
-    public string ApplicationMilestone { get; set; }
-    public DateTime? MilestoneDate { get; set; }
-    public DateTime? MilestoneDate2 { get; set; }
-    public string Separator { get; set; }
+    public string link_id { get; set; }
+    public int num_order { get; set; }
+    public string application_milestone { get; set; }
+    public DateTime? milestone_date { get; set; }
+    public DateTime? milestone_date2 { get; set; }
+    public string separator { get; set; }
 }
 }
