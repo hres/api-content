@@ -17,15 +17,16 @@ namespace regContentWebApi.Controllers
 
             return databasePlaceholder.GetAll(lang);
         }
-
+       
         public RegulatoryDecision GetRegulatoryDecisionByID(string lang, string id)
         {
-            RegulatoryDecision regulatoryDecision = databasePlaceholder.Get(lang, id);
+            var regulatoryDecision = databasePlaceholder.Get(lang, id);
+         
             if (regulatoryDecision == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             return regulatoryDecision;
-        }
+        }        
     }
 }

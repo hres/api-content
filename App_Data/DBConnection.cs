@@ -34,29 +34,16 @@ namespace regContentWebApi
         public List<BasisDecision> GetAllBasisDecision()
         {
             var items = new List<BasisDecision>();
-
-
             string commandText = string.Empty;
-            commandText = "SELECT a.link_id, a.brandname, a.manufacturer, a.date_issued, a.control_num, a.template ";
-            commandText += "FROM SBD as a, bd_tombstone as b WHERE a.link_id = b.link_id AND ";
-            
-
-            if (this.Lang.Equals("fr"))
-            {
-                commandText += " upper(b.language)='FRENCH';";
-            }
-            else
-            {
-                commandText += " upper(b.language)='ENGLISH';";
-            }
-           
+            commandText = "SELECT link_id, brandname, manufacturer, date_issued, control_num, template FROM SBD";
 
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
                 con.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
-                try
-                   {
+                {
+                    try
+                    {
                         using (NpgsqlDataReader dr = cmd.ExecuteReader())
                         {
                             if (dr.HasRows)
@@ -68,7 +55,7 @@ namespace regContentWebApi
                                     item.date_issued = dr["date_issued"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_issued"]);
                                     item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
                                     item.brand_name = dr["brandname"] == DBNull.Value ? string.Empty : dr["brandname"].ToString().Trim();
-                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();                                    
+                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
                                     item.med_ingredient = "";
                                     item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
                                     item.is_md = false;
@@ -89,6 +76,7 @@ namespace regContentWebApi
                         if (con.State == ConnectionState.Open)
                             con.Close();
                     }
+                }
             }
             return items;
         }
@@ -99,25 +87,25 @@ namespace regContentWebApi
             var items = new List<BasisDecision>();
 
             string commandText = string.Empty;
-            commandText = "SELECT a.link_id as link_id, a.device_name as device_name, a.manufacturer as manufacturer, a.updated_date as updated_date, ";
-            commandText += "a.application_num as application_num, a.template as template ,b.licence_num as licence_num FROM sbd_devices as a ";
-            commandText += " Left Join sbd_med_licence as b ON a.link_id = b.link_id WHERE ";            
+            commandText = "SELECT link_id as link_id, device_name as device_name, manufacturer as manufacturer, updated_date as updated_date, ";
+            commandText += "application_num as application_num, template as template FROM sbd_devices WHERE";
             if (this.Lang.Equals("fr"))
             {
                 
-                commandText += " Upper(a.language)='FRENCH' AND Upper(b.language)='FRENCH'";
+                commandText += " Upper(language)='FRENCH'";
             }
             else
             {
-                commandText += " Upper(a.language)='ENGLISH' AND Upper(b.language)='ENGLISH'";
+                commandText += " Upper(language)='ENGLISH'";
             }
             
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
+                con.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
+                {
                     try
                     {
-                        con.Open();
                         using (NpgsqlDataReader dr = cmd.ExecuteReader())
                         {
                             if (dr.HasRows)
@@ -133,7 +121,7 @@ namespace regContentWebApi
                                     item.med_ingredient = "N/A";
                                     item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
                                     item.is_md = true;
-                                    item.licence_number = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
+                                    item.licence_number = string.Empty;
                                     items.Add(item);
                                 }
                             }
@@ -150,6 +138,7 @@ namespace regContentWebApi
                         if (con.State == ConnectionState.Open)
                             con.Close();
                     }
+                }
             }
             return items;
         }
@@ -162,9 +151,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT a.link_id, a.template, a.date_submission, a.date_authorization, a.brandname, a.manufacturer, a.date_issued, a.control_num, a.bd_din_list, ";
-                       // + " b.nonprop_name as nonprop_name, b.strength as strength,  b.dosageform as dosageform, b.route_admin as route_admin, "
-                       // + " b.thera_class as thera_class, b.med_ingredient as med_ingredient, b.nonmed_ingredient as nonmed_ingredient,";
-
+   
             if (this.Lang.Equals("fr"))
             {
                 commandText +=" a.sub_type_num_fr as sub_type_num, a.notice_decision_fr as notice_decision,"
@@ -177,8 +164,6 @@ namespace regContentWebApi
                             + " a.science_rationale_fr as science_rationale, a.a_clin_basis_fr as a_clin_basis, a.a_clin_basis2_fr as a_clin_basis2,"
                             + " a.a_non_clin_basis_fr as a_non_clin_basis, a.a_non_clin_basis2_fr as a_non_clin_basis2, a.b_quality_basis_fr as b_quality_basis, a.contact_fr as contact"                            
                             + " FROM SBD as a WHERE a.link_ID = @link_id;";
-
-
             }
             else
             {
@@ -194,8 +179,6 @@ namespace regContentWebApi
                             + " FROM SBD as a WHERE a.link_ID = @link_id;";
             }
                 
-                 
-
 
             using ( NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
@@ -218,14 +201,7 @@ namespace regContentWebApi
                                     item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
                                     item.brand_name = dr["brandname"] == DBNull.Value ? string.Empty : dr["brandname"].ToString().Trim();
                                     item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
-                                    //item.med_ingredient = dr["med_ingredient"] == DBNull.Value ? string.Empty : dr["med_ingredient"].ToString().Trim();
-                                    //item.non_prop_name = dr["nonprop_name"] == DBNull.Value ? string.Empty : dr["nonprop_name"].ToString().Trim();
-                                    //item.strength = dr["strength"] == DBNull.Value ? string.Empty : dr["strength"].ToString().Trim();
-                                    //item.dosage_form = dr["dosageform"] == DBNull.Value ? string.Empty : dr["dosageform"].ToString().Trim();
-                                    //item.route_admin = dr["route_admin"] == DBNull.Value ? string.Empty : dr["route_admin"].ToString().Trim();
                                     item.bd_din_list = dr["bd_din_list"] == DBNull.Value ? 0 : Convert.ToInt32(dr["bd_din_list"]);
-                                    //item.thera_class = dr["thera_class"] == DBNull.Value ? string.Empty : dr["thera_class"].ToString().Trim();
-                                    //item.non_med_ingredient = dr["nonmed_ingredient"] == DBNull.Value ? string.Empty : dr["nonmed_ingredient"].ToString().Trim();
                                     item.sub_type_number = dr["sub_type_num"] == DBNull.Value ? string.Empty : dr["sub_type_num"].ToString().Trim();
                                     item.date_submission = dr["date_submission"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_submission"]);
                                     item.date_authorization = dr["date_authorization"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_authorization"]);
@@ -303,7 +279,7 @@ namespace regContentWebApi
                         + "a.scientific_rationale, a.scientific_rationale2, a.scientific_rationale3, a.date_sbd_issued, a.egalement, a.manufacturer, "
                         + "a.medical_device_group, a.biological_material, a.combination_product, a. drug_material, a.application_type_and_num, a.date_licence_issued,"
                         + "a.intended_use, a.notice_of_decision, a.sci_reg_basis_decision1, a.sci_reg_basis_decision2, a.sci_reg_basis_decision3, a.response_to_condition,"
-                        + "a.conclusion, a.recommendation, b.licence_num FROM sbd_devices as a "
+                        + "a.response_to_condition2, a.response_to_condition3, a.response_to_condition4, a.conclusion, a.recommendation, b.licence_num FROM sbd_devices as a "
                         + "LEFT OUTER JOIN sbd_med_licence as b ON a.link_id = b.link_id WHERE a.link_ID = @link_id AND";
             
 
@@ -363,6 +339,9 @@ namespace regContentWebApi
                                     item.sci_reg_basis_decision2 = dr["sci_reg_basis_decision2"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision2"].ToString().Trim();
                                     item.sci_reg_basis_decision3 = dr["sci_reg_basis_decision3"] == DBNull.Value ? string.Empty : dr["sci_reg_basis_decision3"].ToString().Trim();
                                     item.response_to_condition = dr["response_to_condition"] == DBNull.Value ? string.Empty : dr["response_to_condition"].ToString().Trim();
+                                    item.response_to_condition2 = dr["response_to_condition2"] == DBNull.Value ? string.Empty : dr["response_to_condition2"].ToString().Trim();
+                                    item.response_to_condition3 = dr["response_to_condition3"] == DBNull.Value ? string.Empty : dr["response_to_condition3"].ToString().Trim();
+                                    item.response_to_condition4 = dr["response_to_condition4"] == DBNull.Value ? string.Empty : dr["response_to_condition4"].ToString().Trim();
                                     item.conclusion = dr["conclusion"] == DBNull.Value ? string.Empty : dr["conclusion"].ToString().Trim();
                                     item.recommendation = dr["recommendation"] == DBNull.Value ? string.Empty : dr["recommendation"].ToString().Trim();
                                     item.licence_number = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
@@ -977,7 +956,7 @@ namespace regContentWebApi
                                         item.control_number = dr["control_number"] == DBNull.Value ? 0 : Convert.ToInt32(dr["control_number"]);
                                         item.modified_date = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
                                         item.medical_ingredient = dr["medical_ingredient"] == DBNull.Value ? string.Empty : dr["medical_ingredient"].ToString().Trim();
-
+                                        item.is_md = false;
                                         items.Add(item);
                                     }
                                 }
@@ -1007,10 +986,161 @@ namespace regContentWebApi
             return items;
         }
 
+        public List<RegulatoryDecisionMedicalDevice> GetAllRegulatoryDecisionMedicalDevices()
+        {
+            var items = new List<RegulatoryDecisionMedicalDevice>();
+
+            string commandText = string.Empty;
+            commandText = "SELECT link_id, template, language, device_name, manufacturer, date_decision, type_of_app, app_num  from rds_devices";
+            if (this.Lang.Equals("fr"))
+            {
+                commandText += " where language='french';";
+            }
+            else
+            {
+                commandText += " where language='english';";
+            }
+
+            try
+            {
+                using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
+                {
+                    con.Open();
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
+                    {
+                        try
+                        {
+                            using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                            {
+                                if (dr.HasRows)
+                                {
+                                    while (dr.Read())
+                                    {
+                                        var item = new RegulatoryDecisionMedicalDevice();
+                                        item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                        item.drug_name = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();
+                                        item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();                                        
+                                        item.date_decision = dr["date_decision"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_decision"]);
+                                        item.application_number = dr["app_num"] == DBNull.Value ? 0 : Convert.ToInt32(dr["app_num"]);
+                                        item.type_application = dr["type_of_app"] == DBNull.Value ? string.Empty : dr["type_of_app"].ToString().Trim();
+                                        item.is_md = true;
+                                        if (this.Lang.Equals("fr"))
+                                        {
+                                            item.decision = "Approuvée";
+                                            item.medical_ingredient =  "S/O" ;
+                                        }
+                                        else
+                                        {
+                                            item.decision = "Approved";
+                                            item.medical_ingredient =  "N/A";
+                                        }
+                                        items.Add(item);
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            string errorMessages = string.Format("DbConnection.cs - GetAllRegulatoryDecisionMedicalDevices()");
+                            ExceptionHelper.LogException(ex, errorMessages);
+                            Console.WriteLine(errorMessages);
+                        }
+                        finally
+                        {
+                            if (con.State == ConnectionState.Open)
+                                con.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string errorMessages = string.Format("DbConnection.cs - GetAllRegulatoryDecision()");
+                ExceptionHelper.LogException(ex, errorMessages);
+                Console.WriteLine(errorMessages);
+            }
+
+            return items;
+        }
+
+        public RegulatoryDecisionMedicalDevice GetRegulatoryDecisionMedicalDevicesById(string LinkID)
+        {
+            var item = new RegulatoryDecisionMedicalDevice();
+            string commandText = string.Empty;
+            commandText = "SELECT link_id, template, language, device_name, device_class, what_app_for, info_reviewed, date_decision, manufacturer,licence_num_issued, type_of_app, date_filed, app_num from rds_devices";
+            if (this.Lang.Equals("fr"))
+            {
+                commandText += " where link_ID = @link_id and language = 'french';";
+            }
+            else
+            {
+                commandText += " where link_ID = @link_id and language = 'english';";
+            }
+            using ( NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
+            {
+                con.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
+                {
+                    cmd.Parameters.AddWithValue("@link_id", LinkID.ToUpper().Trim());
+                    try
+                    {
+                        using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
+                                    item.drug_name = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();                             
+                                    item.device_class = dr["device_class"] == DBNull.Value ? string.Empty : dr["device_class"].ToString().Trim();
+                                    item.what_app_for = dr["what_app_for"] == DBNull.Value ? string.Empty : dr["what_app_for"].ToString().Trim();
+                                    item.info_reviewed = dr["info_reviewed"] == DBNull.Value ? string.Empty : dr["info_reviewed"].ToString().Trim();                                                                  
+                                    item.date_decision = dr["date_decision"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_decision"]);
+                                    item.manufacturer = dr["manufacturer"] == DBNull.Value ? string.Empty : dr["manufacturer"].ToString().Trim();
+                                    item.type_application = dr["type_of_app"] == DBNull.Value ? string.Empty : dr["type_of_app"].ToString().Trim();
+                                    item.date_filed = dr["date_filed"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["date_filed"]);
+                                    item.application_number = dr["app_num"] == DBNull.Value ? 0 : Convert.ToInt32(dr["app_num"]);
+                                    item.licence_num_issued = dr["licence_num_issued"] == DBNull.Value ? string.Empty : dr["licence_num_issued"].ToString().Trim();
+                                    item.is_md = true;
+                                    if (this.Lang.Equals("fr"))
+                                    {
+                                        item.contact_name = "Bureau des matériels médicaux";
+                                        item.contact_url = "http://www.hc-sc.gc.ca/contact/dhp-mps/hpfb-dgpsa/mdb-bmm-fra.php";
+                                        item.decision = "Approuvée; ";
+                                        item.decision_descr = "homologation délivrée conformément à l'article 36(1)(1) du <a href='http://laws-lois.justice.gc.ca/fra/reglements/DORS-98-282/?showtoc=&instrumentnumber=DORS-98-282'>Règlement sur les instruments médicaux.</a>";
+                                    }
+                                    else
+                                    {
+                                        item.contact_name = "Medical Devices Bureau";
+                                        item.contact_url = "http://www.hc-sc.gc.ca/contact/dhp-mps/hpfb-dgpsa/mdb-bmm-eng.php";
+                                        item.decision = "Approved; ";
+                                        item.decision_descr = "issued licence in accordance with Section 36(1)(1) of the <a href='http://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/?showtoc=&instrumentnumber=SOR-98-282'>Medical Devices Regulations.</a>";
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string errorMessages = string.Format("DbConnection.cs - GetRegulatoryDecisionMedicalDevicesById()");
+                        ExceptionHelper.LogException(ex, errorMessages);
+                        Console.WriteLine(errorMessages);
+                    }
+                    finally
+                    {
+                        if (con.State == ConnectionState.Open)
+                            con.Close();
+                    }
+                }
+
+            }
+            return item;
+        }
+
         public RegulatoryDecision GetRegulatoryDecisionById(string LinkID)
         {
-            var returnItem = new RegulatoryDecision();
-            var items = new List<RegulatoryDecision>();
+            var item = new RegulatoryDecision();
             string commandText = string.Empty;
             commandText = "SELECT a.link_id, a.drugname, a.manufacture, a.date_decision, a.modified_date, a.date_filed, a.created_date, a.control_number, ";
             if (this.Lang.Equals("fr"))
@@ -1026,9 +1156,9 @@ namespace regContentWebApi
                         + " a.therapeutic_area_en as therapeutic_area, a.purpose_en as purpose, a.reason_decision_en as reason_decision, a.decision_en as decision,"
                         + " a.decision_descr_en as decision_descr, a.prescription_status_en as prescription_status, a.footnotes_en as footnotes";
             }
-                commandText += " FROM RDS as a"
-                            + " WHERE a.link_ID = @link_id";
-            using ( NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
+            commandText += " FROM RDS as a WHERE a.link_ID = @link_id;";
+
+            using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
                 con.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
@@ -1042,8 +1172,6 @@ namespace regContentWebApi
                             {
                                 while (dr.Read())
                                 {
-                                    var item = new RegulatoryDecision();
-
                                     item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
                                     item.drug_name = dr["drugname"] == DBNull.Value ? string.Empty : dr["drugname"].ToString().Trim();
                                     item.contact_name = dr["contact_name"] == DBNull.Value ? string.Empty : dr["contact_name"].ToString().Trim();
@@ -1063,19 +1191,7 @@ namespace regContentWebApi
                                     item.created_date = dr["created_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["created_date"]); ;
                                     item.modified_date = dr["modified_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["modified_date"]);
                                     item.footnotes = dr["footnotes"] == DBNull.Value ? 0 : Convert.ToInt32(dr["footnotes"]);
-                                    items.Add(item);
-                                }
-
-                                if (items != null && items.Count > 0)
-                                {
-                                    returnItem = items.FirstOrDefault();
-                                    returnItem.din_list = new List<string>();
-
-                                    foreach (var tempDin in items)
-                                    {
-                                        if (!string.IsNullOrWhiteSpace(tempDin.din))
-                                            returnItem.din_list.Add(tempDin.din);
-                                    }
+                                    item.is_md = false;
                                 }
                             }
                         }
@@ -1094,7 +1210,7 @@ namespace regContentWebApi
                 }
 
             }
-            return returnItem;
+            return item;
         }
 
         public List<string> GetRegulatoryDinListById(string id)

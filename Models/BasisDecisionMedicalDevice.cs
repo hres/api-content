@@ -41,7 +41,10 @@ namespace regContentWebApi.Models
         public string sci_reg_basis_decision2 { get; set; }
         public string sci_reg_basis_decision3 { get; set; }
         public string response_to_condition { get; set; }
-        
+        public string response_to_condition2 { get; set; }
+        public string response_to_condition3 { get; set; }
+        public string response_to_condition4 { get; set; }
+
         public string conclusion { get; set; }
         public string recommendation { get; set; }
         public string licence_number { get; set; }

@@ -9,6 +9,9 @@ namespace regContentWebApi.Models
     interface IRegulatoryDecisionRepository
     {
         IEnumerable<RegulatoryDecision> GetAll(string lang);
-       RegulatoryDecision Get(string lang, string id);
+        RegulatoryDecision Get(string lang, string id);
+
+        IEnumerable<RegulatoryDecisionMedicalDevice> GetAllMedicalDevice(string lang);
+        RegulatoryDecisionMedicalDevice GetMedicalDevice(string lang, string id);
     }
 }

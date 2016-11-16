@@ -51,6 +51,7 @@ namespace regContentWebApi.Models
             {
                 _basisDecisions.AddRange(_basisDecisionsMedicalDevices);
             }
+           // _basisDecisions.OrderByDescending(x => x.brand_name);
             return _basisDecisions;
         }
 
