@@ -213,6 +213,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BasisDecisionController.cs" />
     <Compile Include="Controllers\BasisDecisionControllerMD.cs" />
+    <Compile Include="Controllers\RegulatoryDecisionMedicalDeviceController.cs" />
     <Compile Include="Controllers\BasisDecisionMedicalDeviceController.cs" />
     <Compile Include="Controllers\RegulatoryDecisionController.cs" />
     <Compile Include="Controllers\SafetyReviewController.cs" />
@@ -287,13 +288,6 @@
     <Content Include="Libraries\Mono.Security.dll" />
     <Content Include="Libraries\Npgsql.dll" />
     <Content Include="Libraries\WebTemplateCore.dll" />
-    <Content Include="logs\20160827.txt" />
-    <Content Include="logs\20160907.txt" />
-    <Content Include="logs\20160908.txt" />
-    <Content Include="logs\20160916.txt" />
-    <Content Include="logs\20160917.txt" />
-    <Content Include="logs\20160922.txt" />
-    <Content Include="logs\20160923.txt" />
     <Content Include="obj\Release\AspnetCompileMerge\Source\bin\Antlr3.Runtime.dll" />
     <Content Include="obj\Release\AspnetCompileMerge\Source\bin\EntityFramework.dll" />
     <Content Include="obj\Release\AspnetCompileMerge\Source\bin\EntityFramework.SqlServer.dll" />
@@ -987,6 +981,7 @@
     <Folder Include="bin\ru\" />
     <Folder Include="bin\zh-Hans\" />
     <Folder Include="bin\zh-Hant\" />
+    <Folder Include="logs\" />
     <Folder Include="obj\Release\ProfileTransformWebConfig\transformed\Views\" />
     <Folder Include="obj\Release\TempPE\" />
     <Folder Include="obj\Release\TransformWebConfig\transformed\Views\" />

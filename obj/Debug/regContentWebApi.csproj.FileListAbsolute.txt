@@ -34,3 +34,4 @@ C:\WebSite\api-publish\regcontent\bin\regCongtentWebApi.pdb
 C:\WebSite\api-publish\regcontent\bin\Microsoft.QualityTools.Testing.Fakes.dll
 C:\WebSite\api-publish\regcontent\obj\Debug\regCongtentWebApi.dll
 C:\WebSite\api-publish\regcontent\obj\Debug\regCongtentWebApi.pdb
+C:\WebSite\api-publish\regcontent\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache

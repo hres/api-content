@@ -269,28 +269,25 @@ namespace regContentWebApi
 
         public BasisDecisionMedicalDevice GetBasisDecisionMedicalDeviceById(string id)
         {
-            var returnItem = new BasisDecisionMedicalDevice();
-            var items = new List<BasisDecisionMedicalDevice>();
-
-            string commandText = string.Empty;
-            
+            var item = new BasisDecisionMedicalDevice();
+            string commandText = string.Empty;            
             commandText = "SELECT a.link_id, a.template, a.device_name, a.application_num, a.recent_activity, a.updated_date, a.summary_basis_intro,"
                         + "a.what_approved, a.why_device_approved, a.steps_approval_intro, a.followup_measures, a.post_licence_activity, a.other_info,"
                         + "a.scientific_rationale, a.scientific_rationale2, a.scientific_rationale3, a.date_sbd_issued, a.egalement, a.manufacturer, "
                         + "a.medical_device_group, a.biological_material, a.combination_product, a. drug_material, a.application_type_and_num, a.date_licence_issued,"
                         + "a.intended_use, a.notice_of_decision, a.sci_reg_basis_decision1, a.sci_reg_basis_decision2, a.sci_reg_basis_decision3, a.response_to_condition,"
-                        + "a.response_to_condition2, a.response_to_condition3, a.response_to_condition4, a.conclusion, a.recommendation, b.licence_num FROM sbd_devices as a "
-                        + "LEFT OUTER JOIN sbd_med_licence as b ON a.link_id = b.link_id WHERE a.link_ID = @link_id AND";
+                        + "a.response_to_condition2, a.response_to_condition3, a.response_to_condition4, a.conclusion, a.recommendation FROM sbd_devices as a "
+                        + "WHERE a.link_ID = @link_id AND";
             
 
             if (this.Lang.Equals("fr"))
             {
-                commandText += " upper(a.language)='FRENCH' AND upper(b.language)='FRENCH';";
+                commandText += " upper(a.language)='FRENCH';";
 
             }
             else
             {
-                commandText += " upper(a.language)='ENGLISH' AND upper(b.language)='ENGLISH';";
+                commandText += " upper(a.language)='ENGLISH';";
             }            
             
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
@@ -307,7 +304,6 @@ namespace regContentWebApi
                             {
                                 while (dr.Read())
                                 {
-                                    var item = new BasisDecisionMedicalDevice();
                                     item.template = dr["template"] == DBNull.Value ? 0 : Convert.ToInt32(dr["template"]);
                                     item.link_id = dr["link_id"] == DBNull.Value ? string.Empty : dr["link_id"].ToString().Trim();
                                     item.device_name = dr["device_name"] == DBNull.Value ? string.Empty : dr["device_name"].ToString().Trim();
@@ -344,17 +340,9 @@ namespace regContentWebApi
                                     item.response_to_condition4 = dr["response_to_condition4"] == DBNull.Value ? string.Empty : dr["response_to_condition4"].ToString().Trim();
                                     item.conclusion = dr["conclusion"] == DBNull.Value ? string.Empty : dr["conclusion"].ToString().Trim();
                                     item.recommendation = dr["recommendation"] == DBNull.Value ? string.Empty : dr["recommendation"].ToString().Trim();
-                                    item.licence_number = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
+                                    item.licence_number = GetSBDMedicalDeviceLicenceNumbersById(item.link_id);
                                     item.is_md = true;
-                                    items.Add(item);
-                                }
-
-
-                                if (items != null && items.Count > 0)
-                                {
-                                    returnItem = items.FirstOrDefault();
-
-                                }
+                                 }                             
                             }
 
                         }
@@ -372,8 +360,67 @@ namespace regContentWebApi
                     }
                 }
             }
-            return returnItem;
+            return item;
         }
+
+
+        public string GetSBDMedicalDeviceLicenceNumbersById(string id)
+        {
+            var item = string.Empty;           
+            string commandText = "SELECT link_id, num_order, licence_num, language FROM sbd_med_licence WHERE link_id = @link_id AND";
+
+            if (this.Lang.Equals("fr"))
+            {
+                commandText += " upper(language)='FRENCH' ORDER BY num_order;";
+            }
+            else
+            {
+                commandText += " upper(language)='ENGLISH' ORDER BY num_order;";
+            }
+
+            using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
+            {
+                con.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
+                {
+                    cmd.Parameters.AddWithValue("@link_id", id.ToUpper().Trim());
+                    try
+                    {
+                        using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                // var totalCount = dr.Cast<object>().Count();
+                                var sb = new StringBuilder();
+                                while (dr.Read())
+                                {
+                                    
+                                    var temp = dr["licence_num"] == DBNull.Value ? string.Empty : dr["licence_num"].ToString().Trim();
+                                    if( !string.IsNullOrWhiteSpace(temp))
+                                    {
+                                        sb.Append(temp).Append(",");
+                                    }                                   
+                                }
+                                item = sb.ToString().TrimEnd(',');
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string errorMessages = string.Format("DbConnection.cs - GetSBDMedicalDeviceLicenceNumbersById()");
+                        ExceptionHelper.LogException(ex, errorMessages);
+                        Console.WriteLine(errorMessages);
+                    }
+                    finally
+                    {
+                        if (con.State == ConnectionState.Open)
+                            con.Close();
+                    }
+                }
+            }
+            return item;
+        }
+
 
         public List<SafetyReview> GetAllSafetyReview()
         {
@@ -919,14 +966,14 @@ namespace regContentWebApi
             var items = new List<RegulatoryDecision>();
            
             string commandText = string.Empty;
-            commandText = "SELECT link_id, drugname, manufacture, date_decision, modified_date, control_number, ";
+            commandText = "SELECT link_id, manufacture, date_decision, modified_date, control_number, ";
             if ( this.Lang.Equals("fr"))
             {
-                commandText += " type_submission_fr as type_submission, active_ingredient_fr as medical_ingredient, decision_fr as decision";
+                commandText += "drugname_french as drugname, type_submission_fr as type_submission, active_ingredient_fr as medical_ingredient, decision_fr as decision";
             }
             else
             {
-                commandText += " type_submission_en as type_submission, active_ingredient_en as medical_ingredient, decision_en as decision";
+                commandText += "drugname_english as drugname, type_submission_en as type_submission, active_ingredient_en as medical_ingredient, decision_en as decision";
             }
             commandText += " FROM RDS";
 
@@ -1142,17 +1189,17 @@ namespace regContentWebApi
         {
             var item = new RegulatoryDecision();
             string commandText = string.Empty;
-            commandText = "SELECT a.link_id, a.drugname, a.manufacture, a.date_decision, a.modified_date, a.date_filed, a.created_date, a.control_number, ";
+            commandText = "SELECT a.link_id, a.manufacture, a.date_decision, a.modified_date, a.date_filed, a.created_date, a.control_number, ";
             if (this.Lang.Equals("fr"))
             {
-                commandText += " a.type_submission_fr as type_submission, a.active_ingredient_fr as medical_ingredient, a.contact_name_fr as contact_name, a.contact_url_fr as contact_url,"
+                commandText += "a.drugname_french as drugname, a.type_submission_fr as type_submission, a.active_ingredient_fr as medical_ingredient, a.contact_name_fr as contact_name, a.contact_url_fr as contact_url,"
                             + " a.therapeutic_area_fr as therapeutic_area, a.purpose_fr as purpose, a.reason_decision_fr as reason_decision, a.decision_fr as decision,"
                             + " a.decision_descr_fr as decision_descr, a.prescription_status_fr as prescription_status, a.footnotes_fr as footnotes";
 
             }
             else
             {
-                commandText += "a.type_submission_en as type_submission, a.active_ingredient_en as medical_ingredient, a.contact_name_en as contact_name, a.contact_url_en as contact_url,"
+                commandText += "a.drugname_english as drugname, a.type_submission_en as type_submission, a.active_ingredient_en as medical_ingredient, a.contact_name_en as contact_name, a.contact_url_en as contact_url,"
                         + " a.therapeutic_area_en as therapeutic_area, a.purpose_en as purpose, a.reason_decision_en as reason_decision, a.decision_en as decision,"
                         + " a.decision_descr_en as decision_descr, a.prescription_status_en as prescription_status, a.footnotes_en as footnotes";
             }
