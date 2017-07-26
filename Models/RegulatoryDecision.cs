@@ -22,10 +22,19 @@ namespace regContentWebApi.Models
         public string prescription_status { get; set; }       
         public string type_submission { get; set; }        
         public DateTime? date_filed { get; set; }
-        public int control_number { get; set; }
+        public string control_number { get; set; }
+        public string application_number { get; set; }
+        public string application_type { get; set; }
+        public string licence_num { get; set; }
+        public string device_class { get; set; }
         public DateTime? created_date { get; set; }
         public DateTime? modified_date { get; set; }
         public int footnotes { get; set; }
+        public string summary_title { get; set; }
+        public string summary_subtitle { get; set; }
+        public string summary_text1 { get; set; }
+        public string summary_text2 { get; set; }
+        public string summary_text3 { get; set; }
         public string din { get; set; }
         public bool is_md { get; set; }
         public List<string> din_list { get; set; }

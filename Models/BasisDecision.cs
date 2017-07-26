@@ -45,6 +45,10 @@ namespace regContentWebApi.Models
         public string a_non_clin_basis2 { get; set; }
         public string b_quality_basis { get; set; }
         public string contact { get; set; }
+        public string paat_info { get; set; }
+        public string summary_drug { get; set; }
+        public string branch_info { get; set; }
+        public string trademark { get; set; }        
         public string din { get; set; }
         public string licence_number{ get; set; }
         public bool is_md { get; set; }
@@ -64,7 +68,7 @@ namespace regContentWebApi.Models
         public string submit_text { get; set; }
         public string paat_decision { get; set; }
         public string date_text { get; set; }
-        public string summ_activity { get; set; }
+        public string summ_activity { get; set; }       
     }
 
     public class DecisionMilestone

@@ -23,7 +23,7 @@ namespace regContentWebApi.Models
                     item.din_list = dbConnection.GetRegulatoryDinListById(item.link_id);    
                }                
             }
-            //RDS_Devices
+            //RDS_MedicalDevice
             var rdsDedicalDevices = new List<RegulatoryDecisionMedicalDevice>();
             rdsDedicalDevices = dbConnection.GetAllRegulatoryDecisionMedicalDevices();
 
@@ -39,7 +39,7 @@ namespace regContentWebApi.Models
                     newItem.manufacturer = item.manufacturer;
                     newItem.decision = item.decision;
                     newItem.date_decision = item.date_decision;
-                    newItem.control_number = item.application_number;
+                    newItem.control_number = item.application_number.ToString();
                     newItem.type_submission = item.type_application;
                     _regDecisions.Add(newItem);
                 }

@@ -18,12 +18,21 @@ namespace regContentWebApi.Models
         public string what_approved { get; set; }
         public string why_device_approved { get; set; }
         public string steps_approval_intro { get; set; }
+        public string steps_approval_outro { get; set; }
         public string followup_measures { get; set; }
         public string post_licence_activity { get; set; }
         public string other_info { get; set; }
         public string scientific_rationale { get; set; }
         public string scientific_rationale2 { get; set; }
         public string scientific_rationale3 { get; set; }
+
+        public string recent_activity_title { get; set; }
+        public string plat_title { get; set; }
+        public string summary_basis_intro_title { get; set; }
+        public string why_device_approved_title { get; set; }
+        public string steps_approval_intro_title { get; set; }
+        public string post_licence_activity_title { get; set; }
+
         public DateTime? date_sbd_issued { get; set; }
         
         public string egalement { get; set; }

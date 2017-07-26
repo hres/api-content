@@ -13,33 +13,22 @@ namespace regContentWebApi.Models
         public DateTime? review_date { get; set; }
         public string drug_name { get; set; }
         public string safety_issue { get; set; }
-        
-        public string issue { get; set; }
-       
-        public string background { get; set; }
-        
-        public string objective { get; set; }
-        
-        public string key_findings { get; set; }
-       
-        public int key_messages { get; set; }       
-
-        public string overview { get; set; }
-        
-        public int use_canada { get; set; }
-        
-        public int findings { get; set; }
-       
-        public int conclusion { get; set; }
-        
-        public string additional { get; set; }
-       
-        public string full_review { get; set; }
-       
-        public int references { get; set; }
-        
+        public string safetyissue_title { get; set; }
+        public string findings_title { get; set; }
+        public string issue { get; set; }       
+        public string background { get; set; }        
+        public string objective { get; set; }        
+        public string key_findings { get; set; }       
+        public int key_messages { get; set; }      
+        public string overview { get; set; }        
+        public int use_canada { get; set; }        
+        public int findings { get; set; }      
+        public int conclusion { get; set; }        
+        public string additional { get; set; }       
+        public string full_review { get; set; }       
+        public int references { get; set; }        
         public int footnotes { get; set; }
-       
+        public string title { get; set; }
         public DateTime? created_date { get; set; }
         public DateTime? modified_date { get; set; }
         public List<BullePoint> key_message_list { get; set; }
