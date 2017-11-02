@@ -17,25 +17,25 @@ namespace regContentWebApi
             
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension ID DIN and DrugName",
-                routeTemplate: "api-v1/{controller}/{id}/{lang}/{din}/{drugname}/{ingredient}.{ext}",
+                routeTemplate: "api/{controller}/{id}/{lang}/{din}/{drugname}/{ingredient}.{ext}",
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension DIN",
-               routeTemplate: "api-v1/{controller}/{din}.{ext}",
+               routeTemplate: "api/{controller}/{din}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "Api ID and DIN",
-                routeTemplate: "api-v1/{controller}/{id}/{din}",
+                routeTemplate: "api/{controller}/{id}/{din}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                 name: "Api",
-                routeTemplate: "api-v1/{controller}/{lang}.{ext}",
+                routeTemplate: "api/{controller}/{lang}.{ext}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api-v1/{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "json", new MediaTypeHeaderValue("application/json")));
