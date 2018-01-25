@@ -167,7 +167,7 @@ namespace regContentWebApi
             var items = new List<BasisDecision>();
 
             string commandText = string.Empty;
-            commandText = "SELECT a.link_id, a.template, a.date_submission, a.date_authorization, a.date_issued, a.control_num, ";
+            commandText = "SELECT a.link_id, a.template, a.date_submission, a.date_authorization, a.date_issued, a.control_num, a.ai_str_route_summary, ";
    
             if (this.Lang.Equals("fr"))
             {
@@ -254,6 +254,7 @@ namespace regContentWebApi
                                     item.branch_info = dr["branch_info"] == DBNull.Value ? string.Empty : dr["branch_info"].ToString().Trim();
                                     item.trademark = dr["trademark"] == DBNull.Value ? string.Empty : dr["trademark"].ToString().Trim();
                                     item.paat_info = dr["paat_info"] == DBNull.Value ? string.Empty : dr["paat_info"].ToString().Trim();
+                                    item.ai_str_route_summary = dr["ai_str_route_summary"] == DBNull.Value ? string.Empty : dr["ai_str_route_summary"].ToString().Trim();
                                     items.Add(item);
                                 }
 
