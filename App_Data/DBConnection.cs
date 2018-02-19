@@ -196,6 +196,7 @@ namespace regContentWebApi
                             + " a.a_non_clin_basis_en as a_non_clin_basis, a.a_non_clin_basis2_en as a_non_clin_basis2, a.b_quality_basis_en as b_quality_basis, a.contact_en as contact,"
                             + " a.summary_drug_en as summary_drug, a.branch_info_en as branch_info, a.trademark_en as trademark,  a.paat_info_en as paat_info "
                             + " FROM SBD as a WHERE a.link_ID = @link_id;";
+                          
             }
                 
 
