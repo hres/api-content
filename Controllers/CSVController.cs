@@ -17,9 +17,9 @@ namespace regContentWebApi.Controllers
     {
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage DownloadCSV(string dataType)
+        public HttpResponseMessage DownloadCSV(string dataType, string lang="en")
         {
-            DBConnection dbConnection = new DBConnection("en");
+            DBConnection dbConnection = new DBConnection(lang);
             var jsonResult = string.Empty;
             var fileNameDate = string.Format("{0}{1}{2}",
                            DateTime.Now.Year.ToString(),

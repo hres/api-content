@@ -12,13 +12,13 @@ namespace regContentWebApi.Controllers
     {
         static readonly IRegulatoryDecisionRepository databasePlaceholder = new RegulatoryDecisionRepository();
 
-        public IEnumerable<RegulatoryDecisionMedicalDevice> GetAllRegulatoryDecisionMedicalDevice(string lang)
+        public IEnumerable<RegulatoryDecisionMedicalDevice> GetAllRegulatoryDecisionMedicalDevice(string lang="en")
         {
 
             return databasePlaceholder.GetAllMedicalDevice(lang);
         }
 
-        public RegulatoryDecisionMedicalDevice GetRegulatoryDecisionMedicalDeviceByID(string lang, string id)
+        public RegulatoryDecisionMedicalDevice GetRegulatoryDecisionMedicalDeviceByID(string id, string lang="en")
         {
             var regulatoryDecisionMD = databasePlaceholder.GetMedicalDevice(lang, id);
 
