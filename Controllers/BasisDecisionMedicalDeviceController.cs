@@ -12,14 +12,14 @@ namespace regContentWebApi.Controllers
     {
         static readonly IBasisDecisionRepository databasePlaceholder = new BasisDecisionRepository();
 
-        public IEnumerable<BasisDecision> GetAllBasisDecision(string lang)
+        public IEnumerable<BasisDecision> GetAllBasisDecision(string lang="en")
         {
 
             return databasePlaceholder.GetAll(lang);
         }
 
 
-        public BasisDecisionMedicalDevice GetMDById(string lang, string id)
+        public BasisDecisionMedicalDevice GetMDById(string id, string lang="en")
         {
             BasisDecisionMedicalDevice basisDecisionMd = databasePlaceholder.GetMedicalDevice(lang,id);
             if (basisDecisionMd == null)

@@ -12,14 +12,14 @@ namespace regContentWebApi.Controllers
     {
         static readonly ISafetyReviewRepository databasePlaceholder = new SafetyReviewRepository();
 
-        public IEnumerable<SafetyReview> GetAllSafetyReview(string lang)
+        public IEnumerable<SafetyReview> GetAllSafetyReview(string lang="en")
         {
 
             return databasePlaceholder.GetAll(lang);
         }
 
 
-        public SafetyReview GetSafetyReviewByID(string lang,string id)
+        public SafetyReview GetSafetyReviewByID(string id, string lang="en")
         {
             SafetyReview safetyReview = databasePlaceholder.Get(lang, id);
             if (safetyReview == null)

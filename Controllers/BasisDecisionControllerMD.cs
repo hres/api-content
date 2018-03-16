@@ -19,7 +19,7 @@ namespace regContentWebApi.Controllers
         //}
 
 
-        public BasisDecisionMedicalDevice GetMDById(string lang, string id)
+        public BasisDecisionMedicalDevice GetMDById(string id, string lang = "en")
         {
             BasisDecisionMedicalDevice basisDecisionMd = databasePlaceholder.GetMedicalDevice(lang,id);
             if (basisDecisionMd == null)
