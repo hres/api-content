@@ -51,6 +51,7 @@ namespace regContentWebApi.Models
         public string trademark { get; set; }        
         public string din { get; set; }
         public string licence_number{ get; set; }
+        public string ai_str_route_summary { get; set; }
         public bool is_md { get; set; }
         public List<string> din_list { get; set; }
         public List<PostAuthActivity> post_activity_list { get; set; }
