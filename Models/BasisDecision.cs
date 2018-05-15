@@ -28,7 +28,7 @@ namespace regContentWebApi.Models
         public string clin_basis2 { get; set; }
         public string clin_basis3 { get; set; }
         public string benefit_risk { get; set; }
-        public string radioisotope { get; set; }
+        //public string radioisotope { get; set; }
         public string summary { get; set; }
         public string what_approved { get; set; }
         public string why_approved { get; set; }
