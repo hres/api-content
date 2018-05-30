@@ -120,6 +120,8 @@ namespace regContentWebApi
                                     item.trademark = dr["trademark"] == DBNull.Value ? string.Empty : dr["trademark"].ToString().Trim();
                                     item.paat_info = dr["paat_info"] == DBNull.Value ? string.Empty : dr["paat_info"].ToString().Trim();
                                     item.ai_str_route_summary = dr["ai_str_route_summary"] == DBNull.Value ? string.Empty : dr["ai_str_route_summary"].ToString().Trim();
+                                    item.is_md = false;
+                                    item.licence_number = "";
                                     items.Add(item);
                                 }
                             }
