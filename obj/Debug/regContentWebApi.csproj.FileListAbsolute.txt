@@ -68,6 +68,6 @@ C:\Users\hcuser\Documents\api-content\bin\normnfc.nlp
 C:\Users\hcuser\Documents\api-content\bin\normnfd.nlp
 C:\Users\hcuser\Documents\api-content\bin\normnfkc.nlp
 C:\Users\hcuser\Documents\api-content\bin\normnfkd.nlp
+C:\Users\hcuser\Documents\api-content\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
 C:\Users\hcuser\Documents\api-content\obj\Debug\regCongtentWebApi.dll
 C:\Users\hcuser\Documents\api-content\obj\Debug\regCongtentWebApi.pdb
-C:\Users\hcuser\Documents\api-content\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
