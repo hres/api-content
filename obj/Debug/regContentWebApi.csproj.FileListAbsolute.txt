@@ -50,6 +50,7 @@ C:\Users\hcuser\Documents\regcontent\bin\normnfkc.nlp
 C:\Users\hcuser\Documents\regcontent\bin\normnfkd.nlp
 C:\Users\hcuser\Documents\regcontent\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
 C:\WebSite\api-publish\regcontent\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
+C:\Users\hcuser\Documents\api-content\bin\System.Threading.Tasks.dll
 C:\Users\hcuser\Documents\api-content\bin\regCongtentWebApi.dll.config
 C:\Users\hcuser\Documents\api-content\bin\regCongtentWebApi.dll
 C:\Users\hcuser\Documents\api-content\bin\regCongtentWebApi.pdb
@@ -57,7 +58,6 @@ C:\Users\hcuser\Documents\api-content\bin\Microsoft.QualityTools.Testing.Fakes.d
 C:\Users\hcuser\Documents\api-content\bin\mscorlib.dll
 C:\Users\hcuser\Documents\api-content\bin\System.Net.Http.dll
 C:\Users\hcuser\Documents\api-content\bin\System.Net.Http.WebRequest.dll
-C:\Users\hcuser\Documents\api-content\bin\System.Threading.Tasks.dll
 C:\Users\hcuser\Documents\api-content\bin\System.IO.dll
 C:\Users\hcuser\Documents\api-content\bin\System.Net.Http.xml
 C:\Users\hcuser\Documents\api-content\bin\System.Net.Http.WebRequest.xml
@@ -68,6 +68,6 @@ C:\Users\hcuser\Documents\api-content\bin\normnfc.nlp
 C:\Users\hcuser\Documents\api-content\bin\normnfd.nlp
 C:\Users\hcuser\Documents\api-content\bin\normnfkc.nlp
 C:\Users\hcuser\Documents\api-content\bin\normnfkd.nlp
-C:\Users\hcuser\Documents\api-content\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
 C:\Users\hcuser\Documents\api-content\obj\Debug\regCongtentWebApi.dll
 C:\Users\hcuser\Documents\api-content\obj\Debug\regCongtentWebApi.pdb
+C:\Users\hcuser\Documents\api-content\obj\Debug\regContentWebApi.csprojResolveAssemblyReference.cache
