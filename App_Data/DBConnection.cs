@@ -763,13 +763,14 @@ namespace regContentWebApi
             commandText = "SELECT link_id, num_order, milestone, completed_date, separator, completed_date2 FROM bd_milestones WHERE link_ID = @link_id";
             if (this.Lang.Equals("fr"))
             {
-                commandText += " AND language='french';";
+                commandText += " AND language='french'";
             }
             else
             {
-                commandText += " AND language='english';";
+                commandText += " AND language='english'";
             }
 
+                commandText += " ORDER BY num_order";
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, con))
