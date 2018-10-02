@@ -644,12 +644,14 @@ namespace regContentWebApi
 
             if (this.Lang.Equals("fr"))
             {
-                commandText += " AND language='french';";
+                commandText += " AND language='french'";
             }
             else
             {
-                commandText += " AND language='english';";
+                commandText += " AND language='english'";
             }
+
+            commandText += " ORDER BY row_num";
 
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
@@ -707,12 +709,14 @@ namespace regContentWebApi
             commandText = "SELECT link_id, num_order, app_type_num, date_submitted, decision_and_date,summ_activities FROM plat WHERE link_ID = @link_id AND ";
             if (this.Lang.Equals("fr"))
             {
-                commandText += " upper(language)='FRENCH';";
+                commandText += " upper(language)='FRENCH'";
             }
             else
             {
-                commandText += " upper(language)='ENGLISH';";
+                commandText += " upper(language)='ENGLISH'";
             }
+
+                commandText += " ORDER BY num_order";
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
                 con.Open();
@@ -822,12 +826,14 @@ namespace regContentWebApi
             commandText = "SELECT link_id, num_order, med_ingredient, nonprop_name, strength, dosageform, route_admin, thera_class, nonmed_ingredient FROM bd_tombstone WHERE link_id = @link_id";
             if (this.Lang.Equals("fr"))
             {
-                commandText += " AND upper(language)='FRENCH';";
+                commandText += " AND upper(language)='FRENCH'";
             }
             else
             {
-                commandText += " AND upper(language)='ENGLISH';";
+                commandText += " AND upper(language)='ENGLISH'";
             }
+
+                commandText += " ORDER BY num_order";
 
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
@@ -882,13 +888,14 @@ namespace regContentWebApi
             commandText = "SELECT link_id, num_order, application_milestone, milestone_date, milstone_date2, date_separator FROM sbd_med_milestone WHERE link_ID = @link_id AND ";
             if (this.Lang.Equals("fr"))
             {
-                commandText += " upper(language)='FRENCH';";
+                commandText += " upper(language)='FRENCH'";
             }
             else
             {
-                commandText += " upper(language)='ENGLISH';";
+                commandText += " upper(language)='ENGLISH'";
             }
 
+                commandText += " ORDER BY num_order";
 
             using (NpgsqlConnection con = new NpgsqlConnection(RCDBConnection))
             {
