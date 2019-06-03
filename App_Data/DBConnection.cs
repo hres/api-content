@@ -36,7 +36,7 @@ namespace regContentWebApi
             var items = new List<BasisDecision>();
             string commandText = string.Empty;
             commandText = "SELECT a.link_id, a.template, a.date_submission, a.date_authorization, a.date_issued, a.control_num, a.ai_str_route_summary, ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "a.brandname_fr as brandname, a.sub_type_num_fr as sub_type_num, a.notice_decision_fr as notice_decision, a.manufacturer_fr as manufacturer,"
                             + " a.sci_reg_decision_fr as sci_reg_decision, a.quality_basis_fr as quality_basis, a.nonclin_basis_fr as nonclin_basis,"
@@ -151,7 +151,7 @@ namespace regContentWebApi
             string commandText = string.Empty;
             commandText = "SELECT link_id as link_id, device_name as device_name, manufacturer as manufacturer, updated_date as updated_date, ";
             commandText += "application_num as application_num, template as template FROM sbd_devices WHERE";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
 
                 commandText += " Upper(language)='FRENCH'";
@@ -214,7 +214,7 @@ namespace regContentWebApi
             string commandText = string.Empty;
             commandText = "SELECT a.link_id, a.template, a.date_submission, a.date_authorization, a.date_issued, a.control_num, a.ai_str_route_summary, ";
 
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "a.brandname_fr as brandname, a.sub_type_num_fr as sub_type_num, a.notice_decision_fr as notice_decision, a.manufacturer_fr as manufacturer,"
                             + " a.sci_reg_decision_fr as sci_reg_decision, a.quality_basis_fr as quality_basis, a.nonclin_basis_fr as nonclin_basis,"
@@ -349,7 +349,7 @@ namespace regContentWebApi
                         + "WHERE a.link_ID = @link_id AND";
 
 
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " upper(a.language)='FRENCH';";
 
@@ -445,7 +445,7 @@ namespace regContentWebApi
             var item = string.Empty;
             string commandText = "SELECT link_id, num_order, licence_num, language FROM sbd_med_licence WHERE link_id = @link_id AND";
 
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " upper(language)='FRENCH' ORDER BY num_order;";
             }
@@ -504,7 +504,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, created_date, review_date, modified_date, template,";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "drugname_fr as drugname, safetyissue_fr as safetyissue, issue_fr as issue, background_fr as background,"
                             + " objective_fr as objective, key_findings_fr as key_findings, findings_title_fr as findings_title, safetyissue_title_fr as safetyissue_title,"
@@ -586,7 +586,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT num_order as orderNo, ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "field_id_fr as fieldID, bullet_value_fr as bullet";
             }
@@ -642,7 +642,7 @@ namespace regContentWebApi
             string commandText = string.Empty;
             commandText = "SELECT link_id, row_num, act_contr_num, date_submit, date_submit_text, paat_decision, paat_decision_start_date, paat_date_text, paat_decision_end_date, summ_activ  FROM paat WHERE link_ID = @link_id";
 
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " AND language='french'";
             }
@@ -707,7 +707,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, num_order, app_type_num, date_submitted, decision_and_date,summ_activities FROM plat WHERE link_ID = @link_id AND ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " upper(language)='FRENCH'";
             }
@@ -765,7 +765,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, num_order, milestone, completed_date, separator, completed_date2 FROM bd_milestones WHERE link_ID = @link_id";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " AND language='french'";
             }
@@ -824,7 +824,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, num_order, med_ingredient, nonprop_name, strength, dosageform, route_admin, thera_class, nonmed_ingredient FROM bd_tombstone WHERE link_id = @link_id";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " AND upper(language)='FRENCH'";
             }
@@ -886,7 +886,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, num_order, application_milestone, milestone_date, milstone_date2, date_separator FROM sbd_med_milestone WHERE link_ID = @link_id AND ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " upper(language)='FRENCH'";
             }
@@ -944,7 +944,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT num_order as orderNo,";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "bullet_value_fr as bullet";
             }
@@ -999,7 +999,7 @@ namespace regContentWebApi
             var item = new SafetyReview();
             string commandText = string.Empty;
             commandText = "SELECT link_id, created_date, review_date, modified_date, template,";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "drugname_fr as drugname, safetyissue_fr as safetyissue, issue_fr as issue, background_fr as background,"
                             + " objective_fr as objective, key_findings_fr as key_findings, findings_title_fr as findings_title, safetyissue_title_fr as safetyissue_title,"
@@ -1080,7 +1080,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT a.link_id, a.date_decision, a.modified_date, a.date_filed, a.created_date, a.control_number, a.application_num, ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "a.drugname_french as drugname, a.type_submission_fr as type_submission, a.active_ingredient_fr as medical_ingredient, a.contact_name_fr as contact_name, a.contact_url_fr as contact_url,"
                                             + " a.therapeutic_area_fr as therapeutic_area, a.purpose_fr as purpose, a.reason_decision_fr as reason_decision, a.decision_fr as decision, a.manufacture_fr as manufacture,"
@@ -1179,7 +1179,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, template, language, device_name, manufacturer, date_decision, type_of_app, app_num  from rds_devices";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " where language='french';";
             }
@@ -1211,7 +1211,7 @@ namespace regContentWebApi
                                         item.application_number = dr["app_num"] == DBNull.Value ? 0 : Convert.ToInt32(dr["app_num"]);
                                         item.type_application = dr["type_of_app"] == DBNull.Value ? string.Empty : dr["type_of_app"].ToString().Trim();
                                         item.is_md = true;
-                                        if (this.Lang.Equals("fr"))
+                                        if (this.Lang != null && this.Lang.Equals("fr"))
                                         {
                                             item.decision = "Approuvée";
                                             item.medical_ingredient = "S/O";
@@ -1255,7 +1255,7 @@ namespace regContentWebApi
             var item = new RegulatoryDecisionMedicalDevice();
             string commandText = string.Empty;
             commandText = "SELECT link_id, template, language, device_name, device_class, what_app_for, info_reviewed, date_decision, manufacturer,licence_num_issued, type_of_app, date_filed, app_num from rds_devices";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " where link_ID = @link_id and language = 'french';";
             }
@@ -1289,7 +1289,7 @@ namespace regContentWebApi
                                     item.application_number = dr["app_num"] == DBNull.Value ? 0 : Convert.ToInt32(dr["app_num"]);
                                     item.licence_num_issued = dr["licence_num_issued"] == DBNull.Value ? string.Empty : dr["licence_num_issued"].ToString().Trim();
                                     item.is_md = true;
-                                    if (this.Lang.Equals("fr"))
+                                    if (this.Lang != null && this.Lang.Equals("fr"))
                                     {
                                         item.contact_name = "Bureau des matériels médicaux";
                                         item.contact_url = "http://www.hc-sc.gc.ca/contact/dhp-mps/hpfb-dgpsa/mdb-bmm-fra.php";
@@ -1330,7 +1330,7 @@ namespace regContentWebApi
             var item = new RegulatoryDecision();
             string commandText = string.Empty;
             commandText = "SELECT a.link_id, a.date_decision, a.modified_date, a.date_filed, a.created_date, a.control_number, a.application_num, ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "a.drugname_french as drugname, a.type_submission_fr as type_submission, a.active_ingredient_fr as medical_ingredient, a.contact_name_fr as contact_name, a.contact_url_fr as contact_url,"
                             + " a.therapeutic_area_fr as therapeutic_area, a.purpose_fr as purpose, a.reason_decision_fr as reason_decision, a.decision_fr as decision, a.manufacture_fr as manufacture,"
@@ -1419,7 +1419,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, din FROM rd_din";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += " WHERE link_id = @link_id and language='french'";
             }
@@ -1472,7 +1472,7 @@ namespace regContentWebApi
 
             string commandText = string.Empty;
             commandText = "SELECT link_id, din, num_order FROM bd_din ";
-            if (this.Lang.Equals("fr"))
+            if (this.Lang != null && this.Lang.Equals("fr"))
             {
                 commandText += "WHERE link_id = @link_id and language='french' ORDER BY num_order";
             }
