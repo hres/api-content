@@ -6,7 +6,8 @@ logs/
 *.user
 *.userosscache
 *.sln.docstates
-Web.config
+Web*.config
+regCongtentWebApi.dll.config
 
 # Windows image file caches
 Thumbs.db
