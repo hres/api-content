@@ -559,7 +559,8 @@
     <Content Include="obj\Release\Package\PackageTmp\Web.config" />
     <Content Include="obj\Release\regContentWebApi.csprojResolveAssemblyReference.cache" />
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
