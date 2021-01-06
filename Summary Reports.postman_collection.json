@@ -1,0 +1,3860 @@
+{
+	"info": {
+		"_postman_id": "5bcc9450-3d06-442a-9055-28e1c31f4853",
+		"name": "Summary Reports",
+		"description": "The Drug and Health Product Register brings together information on product licences, drug and health product inspections, buying and using products safely, and side effects, recalls and complaints.\n\nContact Support:\n Email: open-ouvert@tbs-sct.gc.ca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/basisdecision",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4691f7df-62f5-4a6f-8754-46b6176f7104",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							" \"items\": {\r",
+							"        \"required\": [\r",
+							"            \"template\",\r",
+							"            \"control_number\",\r",
+							"            \"date_issued\",\r",
+							"            \"link_id\",\r",
+							"            \"brand_name\",\r",
+							"            \"manufacturer\",\r",
+							"            \"med_ingredient\",\r",
+							"            \"bd_din_list\",\r",
+							"            \"sub_type_number\",\r",
+							"            \"date_submission\",\r",
+							"            \"date_authorization\",\r",
+							"            \"notice_decision\",\r",
+							"            \"sci_reg_decision\",\r",
+							"            \"quality_basis\",\r",
+							"            \"non_clin_basis\",\r",
+							"            \"non_clin_basis2\",\r",
+							"            \"clin_basis\",\r",
+							"            \"clin_basis2\",\r",
+							"            \"clin_basis3\",\r",
+							"            \"benefit_risk\",\r",
+							"            \"summary\",\r",
+							"            \"what_approved\",\r",
+							"            \"why_approved\",\r",
+							"            \"steps_approval\",\r",
+							"            \"assess_basis\",\r",
+							"            \"followup_measures\",\r",
+							"            \"post_auth\",\r",
+							"            \"other_info\",\r",
+							"            \"a_sci_reg_dcision\",\r",
+							"            \"science_rationale\",\r",
+							"            \"a_clin_basis\",\r",
+							"            \"a_clin_basis2\",\r",
+							"            \"a_non_clin_basis\",\r",
+							"            \"a_non_clin_basis2\",\r",
+							"            \"b_quality_basis\",\r",
+							"            \"contact\",\r",
+							"            \"paat_info\",\r",
+							"            \"summary_drug\",\r",
+							"            \"branch_info\",\r",
+							"            \"trademark\",\r",
+							"            \"din\",\r",
+							"            \"licence_number\",\r",
+							"            \"ai_str_route_summary\",\r",
+							"            \"is_md\",\r",
+							"            \"din_list\",\r",
+							"            \"post_activity_list\",\r",
+							"            \"milestone_list\",\r",
+							"            \"tombstone_list\"\r",
+							"        ],\r",
+							"        \"properties\": {\r",
+							"            \"template\": {\r",
+							"                \"$id\": \"#/items/properties/template\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"control_number\": {\r",
+							"                \"$id\": \"#/items/properties/control_number\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"date_issued\": {\r",
+							"                \"$id\": \"#/items/properties/date_issued\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"link_id\": {\r",
+							"                \"$id\": \"#/items/properties/link_id\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"brand_name\": {\r",
+							"                \"$id\": \"#/items/properties/brand_name\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"manufacturer\": {\r",
+							"                \"$id\": \"#/items/properties/manufacturer\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"med_ingredient\": {\r",
+							"                \"$id\": \"#/items/properties/med_ingredient\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"bd_din_list\": {\r",
+							"                \"$id\": \"#/items/properties/bd_din_list\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"sub_type_number\": {\r",
+							"                \"$id\": \"#/items/properties/sub_type_number\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"date_submission\": {\r",
+							"                \"$id\": \"#/items/properties/date_submission\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"date_authorization\": {\r",
+							"                \"$id\": \"#/items/properties/date_authorization\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"notice_decision\": {\r",
+							"                \"$id\": \"#/items/properties/notice_decision\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"sci_reg_decision\": {\r",
+							"                \"$id\": \"#/items/properties/sci_reg_decision\",\r",
+							"               \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"quality_basis\": {\r",
+							"                \"$id\": \"#/items/properties/quality_basis\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"non_clin_basis\": {\r",
+							"                \"$id\": \"#/items/properties/non_clin_basis\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"non_clin_basis2\": {\r",
+							"                \"$id\": \"#/items/properties/non_clin_basis2\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"clin_basis\": {\r",
+							"                \"$id\": \"#/items/properties/clin_basis\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"clin_basis2\": {\r",
+							"                \"$id\": \"#/items/properties/clin_basis2\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"clin_basis3\": {\r",
+							"                \"$id\": \"#/items/properties/clin_basis3\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"benefit_risk\": {\r",
+							"                \"$id\": \"#/items/properties/benefit_risk\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary\": {\r",
+							"                \"$id\": \"#/items/properties/summary\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"what_approved\": {\r",
+							"                \"$id\": \"#/items/properties/what_approved\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"why_approved\": {\r",
+							"                \"$id\": \"#/items/properties/why_approved\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"steps_approval\": {\r",
+							"                \"$id\": \"#/items/properties/steps_approval\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"assess_basis\": {\r",
+							"                \"$id\": \"#/items/properties/assess_basis\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"followup_measures\": {\r",
+							"                \"$id\": \"#/items/properties/followup_measures\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"post_auth\": {\r",
+							"                \"$id\": \"#/items/properties/post_auth\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"other_info\": {\r",
+							"                \"$id\": \"#/items/properties/other_info\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"a_sci_reg_dcision\": {\r",
+							"                \"$id\": \"#/items/properties/a_sci_reg_dcision\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"science_rationale\": {\r",
+							"                \"$id\": \"#/items/properties/science_rationale\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"a_clin_basis\": {\r",
+							"                \"$id\": \"#/items/properties/a_clin_basis\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"a_clin_basis2\": {\r",
+							"                \"$id\": \"#/items/properties/a_clin_basis2\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"a_non_clin_basis\": {\r",
+							"                \"$id\": \"#/items/properties/a_non_clin_basis\",\r",
+							"               \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"a_non_clin_basis2\": {\r",
+							"                \"$id\": \"#/items/properties/a_non_clin_basis2\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"b_quality_basis\": {\r",
+							"                \"$id\": \"#/items/properties/b_quality_basis\",\r",
+							"               \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"contact\": {\r",
+							"                \"$id\": \"#/items/properties/contact\",\r",
+							"               \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"paat_info\": {\r",
+							"                \"$id\": \"#/items/properties/paat_info\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_drug\": {\r",
+							"                \"$id\": \"#/items/properties/summary_drug\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"branch_info\": {\r",
+							"                \"$id\": \"#/items/properties/branch_info\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"trademark\": {\r",
+							"                \"$id\": \"#/items/properties/trademark\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"din\": {\r",
+							"                \"$id\": \"#/items/properties/din\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"licence_number\": {\r",
+							"                \"$id\": \"#/items/properties/licence_number\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"ai_str_route_summary\": {\r",
+							"                \"$id\": \"#/items/properties/ai_str_route_summary\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"is_md\": {\r",
+							"                \"$id\": \"#/items/properties/is_md\",\r",
+							"                \"type\": \"boolean\"\r",
+							"            },\r",
+							"            \"din_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"$id\": \"#/items/properties/din_list/items\",\r",
+							"                    \"type\": \"string\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/din_list\",\r",
+							"                \"type\": [ \"array\", \"null\" ]\r",
+							"            },           \r",
+							"\r",
+							"            \"post_activity_list\": {\r",
+							"                \"$id\": \"#/items/properties/post_activity_list\",\r",
+							"                \"type\": \"null\"\r",
+							"            },\r",
+							"            \"milestone_list\": {\r",
+							"                \"$id\": \"#/items/properties/milestone_list\",\r",
+							"                \"type\": \"null\"              \r",
+							"            },\r",
+							"            \"tombstone_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"required\": [\r",
+							"                        \"link_id\",\r",
+							"                        \"num_order\",\r",
+							"                        \"med_ingredient\",\r",
+							"                        \"nonprop_name\",\r",
+							"                        \"strength\",\r",
+							"                        \"dosageform\",\r",
+							"                        \"route_admin\",\r",
+							"                        \"thera_class\",\r",
+							"                        \"nonmed_ingredient\"\r",
+							"                    ],\r",
+							"                    \"properties\": {\r",
+							"                        \"link_id\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/link_id\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"num_order\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/num_order\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"med_ingredient\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/med_ingredient\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"nonprop_name\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/nonprop_name\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"strength\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/strength\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"dosageform\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/dosageform\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"route_admin\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/route_admin\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"thera_class\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/thera_class\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        \"nonmed_ingredient\": {\r",
+							"                            \"$id\": \"#/items/properties/tombstone_list/items/properties/nonmed_ingredient\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        }\r",
+							"                    },\r",
+							"                    \"$id\": \"#/items/properties/tombstone_list/items\",\r",
+							"                    \"type\": \"object\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/tombstone_list\",\r",
+							"                \"type\": [ \"array\", \"null\" ]\r",
+							"            }\r",
+							"        },\r",
+							"        \"$id\": \"#/items\",\r",
+							"        \"type\": \"object\"\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"array\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c2845ee4-4dee-4224-a245-8a294d877bed",
+						"exec": [
+							"pm.variables.set(\"path\", \"basisdecision\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}"
+						}
+					]
+				},
+				"description": "Returns all summaries of basis of decisions."
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Returns a list of all summaries of basis of decisions, or if an ID is provided, the list of all summaries that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"template\": \"id nostrud Ut\",\n  \"control_number\": \"voluptate deserunt laboris\",\n  \"date_issued\": \"officia proident dolore\",\n  \"link_id\": \"sit esse exercitation\",\n  \"brand_name\": \"irure deserunt\",\n  \"manufacturer\": \"dolor incididunt\",\n  \"med_ingredient\": \"esse culpa non qui commodo\",\n  \"bd_din_list\": \"do exercitation\",\n  \"sub_type_number\": \"magna\",\n  \"date_submission\": \"in nulla reprehenderit\",\n  \"date_authorization\": \"anim enim nostrud esse\",\n  \"notice_decision\": \"Excepteur laborum\",\n  \"sci_reg_decision\": \"officia pariatur\",\n  \"quality_basis\": \"fugiat ullamco\",\n  \"non_clin_basis\": \"do incididunt\",\n  \"non_clin_basis2\": \"nulla\",\n  \"clin_basis\": \"eiusmod consequat\",\n  \"clin_basis2\": \"eu\",\n  \"clin_basis3\": \"occaecat\",\n  \"benefit_risk\": \"eiusmod Lorem enim\",\n  \"radioisotope\": \"nisi laborum reprehenderit voluptate Lorem\",\n  \"summary\": \"consectetur deserunt laborum est\",\n  \"what_approved\": \"ut tempor voluptate\",\n  \"why_approved\": \"fugiat\",\n  \"steps_approval\": \"fugiat\",\n  \"assess_basis\": \"eiusmod nulla sunt\",\n  \"followup_measures\": \"adipisicing ea Ut\",\n  \"post_auth\": \"velit esse\",\n  \"other_info\": \"ut pariatur commodo\",\n  \"a_sci_reg_decision\": \"commodo anim ut\",\n  \"science_rationale\": \"fugiat nulla\",\n  \"a_clin_basis\": \"tempor id mollit fugiat\",\n  \"a_clin_basis2\": \"nostrud\",\n  \"a_non_clin_basis\": \"qui eu\",\n  \"a_non_clin_basis2\": \"Duis\",\n  \"b_quality_basis\": \"ex adipisicing ad laboris\",\n  \"contact\": \"ut aliquip aute\",\n  \"paat_info\": \"et aliquip\",\n  \"summary_drug\": \"tempor culpa consectetur nulla Ut\",\n  \"branch_info\": \"eiusmod ea\",\n  \"trademark\": \"culpa\",\n  \"din\": \"aute sit id\",\n  \"licence_number\": \"nisi culpa\",\n  \"ai_str_route_summary\": \"sit occaecat commodo\",\n  \"is_md\": \"quis voluptate nulla do\",\n  \"din_list\": \"labore veniam dolore deserunt exercit\",\n  \"post_activity_list\": \"proident labore\",\n  \"milestone_list\": [\n   {\n    \"link_id\": \"dolor eiusmod non voluptate\",\n    \"num_order\": \"laboris in\",\n    \"milestone\": \"sint\",\n    \"completed_date\": \"sunt labor\",\n    \"completed_date2\": \"dolore\",\n    \"separator\": \"irure Ut enim sint\"\n   },\n   {\n    \"link_id\": \"Duis aliquip sed\",\n    \"num_order\": \"non a\",\n    \"milestone\": \"sunt magna Ut officia\",\n    \"completed_date\": \"in magna ad\",\n    \"completed_date2\": \"dolor aliquip id eiusmod tempor\",\n    \"separator\": \"veniam dolore aliquip\"\n   }\n  ],\n  \"tombstone_list\": [\n   {\n    \"link_id\": \"sed ipsum dolor\",\n    \"num_order\": \"ex consectetur\",\n    \"med_ingredient\": \"cillum eu aute ipsum sunt\",\n    \"nonprop_name\": \"in ipsum fugiat\",\n    \"strength\": \"dolor\",\n    \"dosageform\": \"pariatur\",\n    \"route_admin\": \"est Duis do\",\n    \"thera_class\": \"sint aliqua\",\n    \"nonmed_ingredient\": \"est\"\n   },\n   {\n    \"link_id\": \"fugiat do\",\n    \"num_order\": \"minim in ut cupidatat\",\n    \"med_ingredient\": \"nulla incididunt ipsum aute\",\n    \"nonprop_name\": \"non nulla\",\n    \"strength\": \"cupidatat exercitation\",\n    \"dosageform\": \"laborum Excepte\",\n    \"route_admin\": \"aliquip aliqua\",\n    \"thera_class\": \"cul\",\n    \"nonmed_ingredient\": \"tempor Excepteur\"\n   }\n  ]\n },\n {\n  \"template\": \"sunt\",\n  \"control_number\": \"reprehenderit ad\",\n  \"date_issued\": \"laboris et esse labore sint\",\n  \"link_id\": \"id dolore ut sed\",\n  \"brand_name\": \"velit qu\",\n  \"manufacturer\": \"ad Duis fugiat in\",\n  \"med_ingredient\": \"nostrud sed\",\n  \"bd_din_list\": \"reprehende\",\n  \"sub_type_number\": \"consequat dolor in\",\n  \"date_submission\": \"anim ullamco irure\",\n  \"date_authorization\": \"magna elit\",\n  \"notice_decision\": \"aute voluptate non irure ipsum\",\n  \"sci_reg_decision\": \"in elit\",\n  \"quality_basis\": \"enim culpa\",\n  \"non_clin_basis\": \"cupidatat Excepteur\",\n  \"non_clin_basis2\": \"pariatur voluptate non\",\n  \"clin_basis\": \"in Duis minim occaecat\",\n  \"clin_basis2\": \"exercitation qui minim no\",\n  \"clin_basis3\": \"incididunt aliqua elit\",\n  \"benefit_risk\": \"enim adipisicing ut\",\n  \"radioisotope\": \"aute\",\n  \"summary\": \"aliqua consequat non incididunt\",\n  \"what_approved\": \"est minim\",\n  \"why_approved\": \"dolor do\",\n  \"steps_approval\": \"in\",\n  \"assess_basis\": \"id i\",\n  \"followup_measures\": \"non\",\n  \"post_auth\": \"occaecat ut esse\",\n  \"other_info\": \"nostrud\",\n  \"a_sci_reg_decision\": \"reprehenderit labore culpa sed\",\n  \"science_rationale\": \"ad irure exercitation sint Lorem\",\n  \"a_clin_basis\": \"velit esse des\",\n  \"a_clin_basis2\": \"esse in dolor magna\",\n  \"a_non_clin_basis\": \"ut labore\",\n  \"a_non_clin_basis2\": \"cupidatat irure officia consectetur amet\",\n  \"b_quality_basis\": \"anim aliquip\",\n  \"contact\": \"ipsum dolore ad Ut\",\n  \"paat_info\": \"et mollit non commodo\",\n  \"summary_drug\": \"magna in veniam dolor\",\n  \"branch_info\": \"sint nulla non culpa\",\n  \"trademark\": \"anim minim cillum ea exercitation\",\n  \"din\": \"ipsum laboris\",\n  \"licence_number\": \"minim laboru\",\n  \"ai_str_route_summary\": \"eiusmod minim occaecat\",\n  \"is_md\": \"reprehenderit ex dolore\",\n  \"din_list\": \"aliqua aliquip qui in\",\n  \"post_activity_list\": \"velit\",\n  \"milestone_list\": [\n   {\n    \"link_id\": \"ex ullamco\",\n    \"num_order\": \"nulla minim fugiat\",\n    \"milestone\": \"proident Excepteur anim\",\n    \"completed_date\": \"incididunt magna aute id\",\n    \"completed_date2\": \"tempor pariatur qui\",\n    \"separator\": \"dolore irure\"\n   },\n   {\n    \"link_id\": \"quis sit id\",\n    \"num_order\": \"qui\",\n    \"milestone\": \"ullamco aliqua aute\",\n    \"completed_date\": \"ullamco et esse\",\n    \"completed_date2\": \"aute occaecat\",\n    \"separator\": \"labore\"\n   }\n  ],\n  \"tombstone_list\": [\n   {\n    \"link_id\": \"commodo in enim\",\n    \"num_order\": \"dolore deserunt in dolore\",\n    \"med_ingredient\": \"velit laboris nostrud exercitation\",\n    \"nonprop_name\": \"aliquip consectetur\",\n    \"strength\": \"nisi pariatur\",\n    \"dosageform\": \"fugiat Duis sunt\",\n    \"route_admin\": \"in eu\",\n    \"thera_class\": \"deserunt consequat cul\",\n    \"nonmed_ingredient\": \"eu occaecat ex qui\"\n   },\n   {\n    \"link_id\": \"in voluptate aute Excepteur\",\n    \"num_order\": \"sed ad\",\n    \"med_ingredient\": \"deserunt mo\",\n    \"nonprop_name\": \"labore est\",\n    \"strength\": \"ut mollit\",\n    \"dosageform\": \"sed consequat officia irure\",\n    \"route_admin\": \"aliquip fugiat \",\n    \"thera_class\": \"nulla elit Lorem aliqua sit\",\n    \"nonmed_ingredient\": \"incididunt id nostrud tempor\"\n   }\n  ]\n }\n]"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "/basisdecision by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ebafaedd-efdb-484b-8d37-56b8229b0376",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							"     \"required\": [\r",
+							"        \"template\",\r",
+							"        \"control_number\",\r",
+							"        \"date_issued\",\r",
+							"        \"link_id\",\r",
+							"        \"brand_name\",\r",
+							"        \"manufacturer\",\r",
+							"        \"med_ingredient\",\r",
+							"        \"bd_din_list\",\r",
+							"        \"sub_type_number\",\r",
+							"        \"date_submission\",\r",
+							"        \"date_authorization\",\r",
+							"        \"notice_decision\",\r",
+							"        \"sci_reg_decision\",\r",
+							"        \"quality_basis\",\r",
+							"        \"non_clin_basis\",\r",
+							"        \"non_clin_basis2\",\r",
+							"        \"clin_basis\",\r",
+							"        \"clin_basis2\",\r",
+							"        \"clin_basis3\",\r",
+							"        \"benefit_risk\",\r",
+							"        \"summary\",\r",
+							"        \"what_approved\",\r",
+							"        \"why_approved\",\r",
+							"        \"steps_approval\",\r",
+							"        \"assess_basis\",\r",
+							"        \"followup_measures\",\r",
+							"        \"post_auth\",\r",
+							"        \"other_info\",\r",
+							"        \"a_sci_reg_dcision\",\r",
+							"        \"science_rationale\",\r",
+							"        \"a_clin_basis\",\r",
+							"        \"a_clin_basis2\",\r",
+							"        \"a_non_clin_basis\",\r",
+							"        \"a_non_clin_basis2\",\r",
+							"        \"b_quality_basis\",\r",
+							"        \"contact\",\r",
+							"        \"paat_info\",\r",
+							"        \"summary_drug\",\r",
+							"        \"branch_info\",\r",
+							"        \"trademark\",\r",
+							"        \"din\",\r",
+							"        \"licence_number\",\r",
+							"        \"ai_str_route_summary\",\r",
+							"        \"is_md\",\r",
+							"        \"din_list\",\r",
+							"        \"post_activity_list\",\r",
+							"        \"milestone_list\",\r",
+							"        \"tombstone_list\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"template\": {\r",
+							"            \"$id\": \"#/properties/template\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"control_number\": {\r",
+							"            \"$id\": \"#/properties/control_number\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_issued\": {\r",
+							"            \"$id\": \"#/properties/date_issued\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"link_id\": {\r",
+							"            \"$id\": \"#/properties/link_id\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"brand_name\": {\r",
+							"            \"$id\": \"#/properties/brand_name\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"manufacturer\": {\r",
+							"            \"$id\": \"#/properties/manufacturer\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"med_ingredient\": {\r",
+							"            \"$id\": \"#/properties/med_ingredient\",\r",
+							"            \"type\": \"null\"\r",
+							"        },\r",
+							"        \"bd_din_list\": {\r",
+							"            \"$id\": \"#/properties/bd_din_list\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"sub_type_number\": {\r",
+							"            \"$id\": \"#/properties/sub_type_number\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_submission\": {\r",
+							"            \"$id\": \"#/properties/date_submission\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_authorization\": {\r",
+							"            \"$id\": \"#/properties/date_authorization\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"notice_decision\": {\r",
+							"            \"$id\": \"#/properties/notice_decision\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"sci_reg_decision\": {\r",
+							"            \"$id\": \"#/properties/sci_reg_decision\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"quality_basis\": {\r",
+							"            \"$id\": \"#/properties/quality_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"non_clin_basis\": {\r",
+							"            \"$id\": \"#/properties/non_clin_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"non_clin_basis2\": {\r",
+							"            \"$id\": \"#/properties/non_clin_basis2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"clin_basis\": {\r",
+							"            \"$id\": \"#/properties/clin_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"clin_basis2\": {\r",
+							"            \"$id\": \"#/properties/clin_basis2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"clin_basis3\": {\r",
+							"            \"$id\": \"#/properties/clin_basis3\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"benefit_risk\": {\r",
+							"            \"$id\": \"#/properties/benefit_risk\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"summary\": {\r",
+							"            \"$id\": \"#/properties/summary\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"what_approved\": {\r",
+							"            \"$id\": \"#/properties/what_approved\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"why_approved\": {\r",
+							"            \"$id\": \"#/properties/why_approved\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"steps_approval\": {\r",
+							"            \"$id\": \"#/properties/steps_approval\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"assess_basis\": {\r",
+							"            \"$id\": \"#/properties/assess_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"followup_measures\": {\r",
+							"            \"$id\": \"#/properties/followup_measures\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"post_auth\": {\r",
+							"            \"$id\": \"#/properties/post_auth\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"other_info\": {\r",
+							"            \"$id\": \"#/properties/other_info\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"a_sci_reg_dcision\": {\r",
+							"            \"$id\": \"#/properties/a_sci_reg_dcision\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"science_rationale\": {\r",
+							"            \"$id\": \"#/properties/science_rationale\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"a_clin_basis\": {\r",
+							"            \"$id\": \"#/properties/a_clin_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"a_clin_basis2\": {\r",
+							"            \"$id\": \"#/properties/a_clin_basis2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"a_non_clin_basis\": {\r",
+							"            \"$id\": \"#/properties/a_non_clin_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"a_non_clin_basis2\": {\r",
+							"            \"$id\": \"#/properties/a_non_clin_basis2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"b_quality_basis\": {\r",
+							"            \"$id\": \"#/properties/b_quality_basis\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"contact\": {\r",
+							"            \"$id\": \"#/properties/contact\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"paat_info\": {\r",
+							"            \"$id\": \"#/properties/paat_info\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"summary_drug\": {\r",
+							"            \"$id\": \"#/properties/summary_drug\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"branch_info\": {\r",
+							"            \"$id\": \"#/properties/branch_info\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"trademark\": {\r",
+							"            \"$id\": \"#/properties/trademark\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"din\": {\r",
+							"            \"$id\": \"#/properties/din\",\r",
+							"            \"type\": \"null\"\r",
+							"        },\r",
+							"        \"licence_number\": {\r",
+							"            \"$id\": \"#/properties/licence_number\",\r",
+							"            \"type\": \"null\"\r",
+							"        },\r",
+							"        \"ai_str_route_summary\": {\r",
+							"            \"$id\": \"#/properties/ai_str_route_summary\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"is_md\": {\r",
+							"            \"$id\": \"#/properties/is_md\",\r",
+							"            \"type\": \"boolean\"\r",
+							"        },\r",
+							"        \"din_list\": {\r",
+							"            \"items\": {\r",
+							"                \"$id\": \"#/properties/din_list/items\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/din_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"post_activity_list\": {\r",
+							"            \"$id\": \"#/properties/post_activity_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"milestone_list\": {\r",
+							"            \"items\": {\r",
+							"                \"required\": [\r",
+							"                    \"link_id\",\r",
+							"                    \"num_order\",\r",
+							"                    \"milestone\",\r",
+							"                    \"completed_date\",\r",
+							"                    \"completed_date2\",\r",
+							"                    \"separator\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"link_id\": {\r",
+							"                        \"$id\": \"#/properties/milestone_list/items/properties/link_id\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"num_order\": {\r",
+							"                        \"$id\": \"#/properties/milestone_list/items/properties/num_order\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"milestone\": {\r",
+							"                        \"$id\": \"#/properties/milestone_list/items/properties/milestone\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"completed_date\": {\r",
+							"                        \"$id\": \"#/properties/milestone_list/items/properties/completed_date\",\r",
+							"                        \"type\": [\"string\",\"null\"]\r",
+							"                    },\r",
+							"                    \"completed_date2\": {\r",
+							"                        \"$id\": \"#/properties/milestone_list/items/properties/completed_date2\",\r",
+							"                        \"type\": [\"string\",\"null\"]\r",
+							"                    },\r",
+							"                    \"separator\": {\r",
+							"                        \"$id\": \"#/properties/milestone_list/items/properties/separator\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    }\r",
+							"                },\r",
+							"                \"$id\": \"#/properties/milestone_list/items\",\r",
+							"                \"type\": \"object\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/milestone_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"tombstone_list\": {\r",
+							"            \"items\": {\r",
+							"                \"required\": [\r",
+							"                    \"link_id\",\r",
+							"                    \"num_order\",\r",
+							"                    \"med_ingredient\",\r",
+							"                    \"nonprop_name\",\r",
+							"                    \"strength\",\r",
+							"                    \"dosageform\",\r",
+							"                    \"route_admin\",\r",
+							"                    \"thera_class\",\r",
+							"                    \"nonmed_ingredient\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"link_id\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/link_id\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"num_order\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/num_order\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"med_ingredient\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/med_ingredient\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"nonprop_name\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/nonprop_name\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"strength\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/strength\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"dosageform\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/dosageform\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"route_admin\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/route_admin\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"thera_class\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/thera_class\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    },\r",
+							"                    \"nonmed_ingredient\": {\r",
+							"                        \"$id\": \"#/properties/tombstone_list/items/properties/nonmed_ingredient\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    }\r",
+							"                },\r",
+							"                \"$id\": \"#/properties/tombstone_list/items\",\r",
+							"                \"type\": \"object\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/tombstone_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"verify json values\", function () {\r",
+							"   var jsonData = pm.response.json();    \r",
+							"   pm.expect(jsonData.link_id).to.eql(pm.variables.get(\"id\")); \r",
+							"   pm.expect(jsonData.brand_name).to.eql(\"Abilify\");   \r",
+							"   pm.expect(jsonData.manufacturer).to.eql(\"Bristol-Myers Squibb Canada\");   \r",
+							"   \r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "522e6d45-ad9f-4e07-9d54-dab9d06dd210",
+						"exec": [
+							"pm.variables.set(\"path\", \"basisdecision\");\r",
+							"pm.variables.set(\"id\", \"SBD00001\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}&id={{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}",
+							"description": "Define which language you would like the response to be in"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}",
+							"description": "Define which media type you would like the content to be in"
+						},
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				},
+				"description": "Returns all summaries of basis of decisions."
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Returns a list of all summaries of basis of decisions, or if an ID is provided, the list of all summaries that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"template\": \"id nostrud Ut\",\n  \"control_number\": \"voluptate deserunt laboris\",\n  \"date_issued\": \"officia proident dolore\",\n  \"link_id\": \"sit esse exercitation\",\n  \"brand_name\": \"irure deserunt\",\n  \"manufacturer\": \"dolor incididunt\",\n  \"med_ingredient\": \"esse culpa non qui commodo\",\n  \"bd_din_list\": \"do exercitation\",\n  \"sub_type_number\": \"magna\",\n  \"date_submission\": \"in nulla reprehenderit\",\n  \"date_authorization\": \"anim enim nostrud esse\",\n  \"notice_decision\": \"Excepteur laborum\",\n  \"sci_reg_decision\": \"officia pariatur\",\n  \"quality_basis\": \"fugiat ullamco\",\n  \"non_clin_basis\": \"do incididunt\",\n  \"non_clin_basis2\": \"nulla\",\n  \"clin_basis\": \"eiusmod consequat\",\n  \"clin_basis2\": \"eu\",\n  \"clin_basis3\": \"occaecat\",\n  \"benefit_risk\": \"eiusmod Lorem enim\",\n  \"radioisotope\": \"nisi laborum reprehenderit voluptate Lorem\",\n  \"summary\": \"consectetur deserunt laborum est\",\n  \"what_approved\": \"ut tempor voluptate\",\n  \"why_approved\": \"fugiat\",\n  \"steps_approval\": \"fugiat\",\n  \"assess_basis\": \"eiusmod nulla sunt\",\n  \"followup_measures\": \"adipisicing ea Ut\",\n  \"post_auth\": \"velit esse\",\n  \"other_info\": \"ut pariatur commodo\",\n  \"a_sci_reg_decision\": \"commodo anim ut\",\n  \"science_rationale\": \"fugiat nulla\",\n  \"a_clin_basis\": \"tempor id mollit fugiat\",\n  \"a_clin_basis2\": \"nostrud\",\n  \"a_non_clin_basis\": \"qui eu\",\n  \"a_non_clin_basis2\": \"Duis\",\n  \"b_quality_basis\": \"ex adipisicing ad laboris\",\n  \"contact\": \"ut aliquip aute\",\n  \"paat_info\": \"et aliquip\",\n  \"summary_drug\": \"tempor culpa consectetur nulla Ut\",\n  \"branch_info\": \"eiusmod ea\",\n  \"trademark\": \"culpa\",\n  \"din\": \"aute sit id\",\n  \"licence_number\": \"nisi culpa\",\n  \"ai_str_route_summary\": \"sit occaecat commodo\",\n  \"is_md\": \"quis voluptate nulla do\",\n  \"din_list\": \"labore veniam dolore deserunt exercit\",\n  \"post_activity_list\": \"proident labore\",\n  \"milestone_list\": [\n   {\n    \"link_id\": \"dolor eiusmod non voluptate\",\n    \"num_order\": \"laboris in\",\n    \"milestone\": \"sint\",\n    \"completed_date\": \"sunt labor\",\n    \"completed_date2\": \"dolore\",\n    \"separator\": \"irure Ut enim sint\"\n   },\n   {\n    \"link_id\": \"Duis aliquip sed\",\n    \"num_order\": \"non a\",\n    \"milestone\": \"sunt magna Ut officia\",\n    \"completed_date\": \"in magna ad\",\n    \"completed_date2\": \"dolor aliquip id eiusmod tempor\",\n    \"separator\": \"veniam dolore aliquip\"\n   }\n  ],\n  \"tombstone_list\": [\n   {\n    \"link_id\": \"sed ipsum dolor\",\n    \"num_order\": \"ex consectetur\",\n    \"med_ingredient\": \"cillum eu aute ipsum sunt\",\n    \"nonprop_name\": \"in ipsum fugiat\",\n    \"strength\": \"dolor\",\n    \"dosageform\": \"pariatur\",\n    \"route_admin\": \"est Duis do\",\n    \"thera_class\": \"sint aliqua\",\n    \"nonmed_ingredient\": \"est\"\n   },\n   {\n    \"link_id\": \"fugiat do\",\n    \"num_order\": \"minim in ut cupidatat\",\n    \"med_ingredient\": \"nulla incididunt ipsum aute\",\n    \"nonprop_name\": \"non nulla\",\n    \"strength\": \"cupidatat exercitation\",\n    \"dosageform\": \"laborum Excepte\",\n    \"route_admin\": \"aliquip aliqua\",\n    \"thera_class\": \"cul\",\n    \"nonmed_ingredient\": \"tempor Excepteur\"\n   }\n  ]\n },\n {\n  \"template\": \"sunt\",\n  \"control_number\": \"reprehenderit ad\",\n  \"date_issued\": \"laboris et esse labore sint\",\n  \"link_id\": \"id dolore ut sed\",\n  \"brand_name\": \"velit qu\",\n  \"manufacturer\": \"ad Duis fugiat in\",\n  \"med_ingredient\": \"nostrud sed\",\n  \"bd_din_list\": \"reprehende\",\n  \"sub_type_number\": \"consequat dolor in\",\n  \"date_submission\": \"anim ullamco irure\",\n  \"date_authorization\": \"magna elit\",\n  \"notice_decision\": \"aute voluptate non irure ipsum\",\n  \"sci_reg_decision\": \"in elit\",\n  \"quality_basis\": \"enim culpa\",\n  \"non_clin_basis\": \"cupidatat Excepteur\",\n  \"non_clin_basis2\": \"pariatur voluptate non\",\n  \"clin_basis\": \"in Duis minim occaecat\",\n  \"clin_basis2\": \"exercitation qui minim no\",\n  \"clin_basis3\": \"incididunt aliqua elit\",\n  \"benefit_risk\": \"enim adipisicing ut\",\n  \"radioisotope\": \"aute\",\n  \"summary\": \"aliqua consequat non incididunt\",\n  \"what_approved\": \"est minim\",\n  \"why_approved\": \"dolor do\",\n  \"steps_approval\": \"in\",\n  \"assess_basis\": \"id i\",\n  \"followup_measures\": \"non\",\n  \"post_auth\": \"occaecat ut esse\",\n  \"other_info\": \"nostrud\",\n  \"a_sci_reg_decision\": \"reprehenderit labore culpa sed\",\n  \"science_rationale\": \"ad irure exercitation sint Lorem\",\n  \"a_clin_basis\": \"velit esse des\",\n  \"a_clin_basis2\": \"esse in dolor magna\",\n  \"a_non_clin_basis\": \"ut labore\",\n  \"a_non_clin_basis2\": \"cupidatat irure officia consectetur amet\",\n  \"b_quality_basis\": \"anim aliquip\",\n  \"contact\": \"ipsum dolore ad Ut\",\n  \"paat_info\": \"et mollit non commodo\",\n  \"summary_drug\": \"magna in veniam dolor\",\n  \"branch_info\": \"sint nulla non culpa\",\n  \"trademark\": \"anim minim cillum ea exercitation\",\n  \"din\": \"ipsum laboris\",\n  \"licence_number\": \"minim laboru\",\n  \"ai_str_route_summary\": \"eiusmod minim occaecat\",\n  \"is_md\": \"reprehenderit ex dolore\",\n  \"din_list\": \"aliqua aliquip qui in\",\n  \"post_activity_list\": \"velit\",\n  \"milestone_list\": [\n   {\n    \"link_id\": \"ex ullamco\",\n    \"num_order\": \"nulla minim fugiat\",\n    \"milestone\": \"proident Excepteur anim\",\n    \"completed_date\": \"incididunt magna aute id\",\n    \"completed_date2\": \"tempor pariatur qui\",\n    \"separator\": \"dolore irure\"\n   },\n   {\n    \"link_id\": \"quis sit id\",\n    \"num_order\": \"qui\",\n    \"milestone\": \"ullamco aliqua aute\",\n    \"completed_date\": \"ullamco et esse\",\n    \"completed_date2\": \"aute occaecat\",\n    \"separator\": \"labore\"\n   }\n  ],\n  \"tombstone_list\": [\n   {\n    \"link_id\": \"commodo in enim\",\n    \"num_order\": \"dolore deserunt in dolore\",\n    \"med_ingredient\": \"velit laboris nostrud exercitation\",\n    \"nonprop_name\": \"aliquip consectetur\",\n    \"strength\": \"nisi pariatur\",\n    \"dosageform\": \"fugiat Duis sunt\",\n    \"route_admin\": \"in eu\",\n    \"thera_class\": \"deserunt consequat cul\",\n    \"nonmed_ingredient\": \"eu occaecat ex qui\"\n   },\n   {\n    \"link_id\": \"in voluptate aute Excepteur\",\n    \"num_order\": \"sed ad\",\n    \"med_ingredient\": \"deserunt mo\",\n    \"nonprop_name\": \"labore est\",\n    \"strength\": \"ut mollit\",\n    \"dosageform\": \"sed consequat officia irure\",\n    \"route_admin\": \"aliquip fugiat \",\n    \"thera_class\": \"nulla elit Lorem aliqua sit\",\n    \"nonmed_ingredient\": \"incididunt id nostrud tempor\"\n   }\n  ]\n }\n]"
+				}
+			]
+		},
+		{
+			"name": "/basisdecision medicail device by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6084b6d9-3820-475c-adee-e91077251093",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							" \"required\": [\r",
+							"        \"template\",\r",
+							"        \"link_id\",\r",
+							"        \"device_name\",\r",
+							"        \"application_num\",\r",
+							"        \"recent_activity\",\r",
+							"        \"updated_date\",\r",
+							"        \"summary_basis_intro\",\r",
+							"        \"what_approved\",\r",
+							"        \"why_device_approved\",\r",
+							"        \"steps_approval_intro\",\r",
+							"        \"steps_approval_outro\",\r",
+							"        \"followup_measures\",\r",
+							"        \"post_licence_activity\",\r",
+							"        \"other_info\",\r",
+							"        \"scientific_rationale\",\r",
+							"        \"scientific_rationale2\",\r",
+							"        \"scientific_rationale3\",\r",
+							"        \"recent_activity_title\",\r",
+							"        \"plat_title\",\r",
+							"        \"summary_basis_intro_title\",\r",
+							"        \"why_device_approved_title\",\r",
+							"        \"steps_approval_intro_title\",\r",
+							"        \"post_licence_activity_title\",\r",
+							"        \"date_sbd_issued\",\r",
+							"        \"egalement\",\r",
+							"        \"manufacturer\",\r",
+							"        \"medical_device_group\",\r",
+							"        \"biological_material\",\r",
+							"        \"combination_product\",\r",
+							"        \"drug_material\",\r",
+							"        \"application_type_and_num\",\r",
+							"        \"date_licence_issued\",\r",
+							"        \"intended_use\",\r",
+							"        \"notice_of_decision\",\r",
+							"        \"sci_reg_basis_decision1\",\r",
+							"        \"sci_reg_basis_decision2\",\r",
+							"        \"sci_reg_basis_decision3\",\r",
+							"        \"response_to_condition\",\r",
+							"        \"response_to_condition2\",\r",
+							"        \"response_to_condition3\",\r",
+							"        \"response_to_condition4\",\r",
+							"        \"conclusion\",\r",
+							"        \"recommendation\",\r",
+							"        \"licence_number\",\r",
+							"        \"is_md\",\r",
+							"        \"plat_list\",\r",
+							"        \"app_milestone_list\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"template\": {\r",
+							"            \"$id\": \"#/properties/template\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"link_id\": {\r",
+							"            \"$id\": \"#/properties/link_id\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"device_name\": {\r",
+							"            \"$id\": \"#/properties/device_name\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"application_num\": {\r",
+							"            \"$id\": \"#/properties/application_num\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"recent_activity\": {\r",
+							"            \"$id\": \"#/properties/recent_activity\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"updated_date\": {\r",
+							"            \"$id\": \"#/properties/updated_date\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"summary_basis_intro\": {\r",
+							"            \"$id\": \"#/properties/summary_basis_intro\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"what_approved\": {\r",
+							"            \"$id\": \"#/properties/what_approved\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"why_device_approved\": {\r",
+							"            \"$id\": \"#/properties/why_device_approved\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"steps_approval_intro\": {\r",
+							"            \"$id\": \"#/properties/steps_approval_intro\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"steps_approval_outro\": {\r",
+							"            \"$id\": \"#/properties/steps_approval_outro\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"followup_measures\": {\r",
+							"            \"$id\": \"#/properties/followup_measures\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"post_licence_activity\": {\r",
+							"            \"$id\": \"#/properties/post_licence_activity\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"other_info\": {\r",
+							"            \"$id\": \"#/properties/other_info\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"scientific_rationale\": {\r",
+							"            \"$id\": \"#/properties/scientific_rationale\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"scientific_rationale2\": {\r",
+							"            \"$id\": \"#/properties/scientific_rationale2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"scientific_rationale3\": {\r",
+							"            \"$id\": \"#/properties/scientific_rationale3\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"recent_activity_title\": {\r",
+							"            \"$id\": \"#/properties/recent_activity_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"plat_title\": {\r",
+							"            \"$id\": \"#/properties/plat_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"summary_basis_intro_title\": {\r",
+							"            \"$id\": \"#/properties/summary_basis_intro_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"why_device_approved_title\": {\r",
+							"            \"$id\": \"#/properties/why_device_approved_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"steps_approval_intro_title\": {\r",
+							"            \"$id\": \"#/properties/steps_approval_intro_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"post_licence_activity_title\": {\r",
+							"            \"$id\": \"#/properties/post_licence_activity_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_sbd_issued\": {\r",
+							"            \"$id\": \"#/properties/date_sbd_issued\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"egalement\": {\r",
+							"            \"$id\": \"#/properties/egalement\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"manufacturer\": {\r",
+							"            \"$id\": \"#/properties/manufacturer\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"medical_device_group\": {\r",
+							"            \"$id\": \"#/properties/medical_device_group\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"biological_material\": {\r",
+							"            \"$id\": \"#/properties/biological_material\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"combination_product\": {\r",
+							"            \"$id\": \"#/properties/combination_product\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"drug_material\": {\r",
+							"            \"$id\": \"#/properties/drug_material\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"application_type_and_num\": {\r",
+							"            \"$id\": \"#/properties/application_type_and_num\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_licence_issued\": {\r",
+							"            \"$id\": \"#/properties/date_licence_issued\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"intended_use\": {\r",
+							"            \"$id\": \"#/properties/intended_use\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"notice_of_decision\": {\r",
+							"            \"$id\": \"#/properties/notice_of_decision\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"sci_reg_basis_decision1\": {\r",
+							"            \"$id\": \"#/properties/sci_reg_basis_decision1\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"sci_reg_basis_decision2\": {\r",
+							"            \"$id\": \"#/properties/sci_reg_basis_decision2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"sci_reg_basis_decision3\": {\r",
+							"            \"$id\": \"#/properties/sci_reg_basis_decision3\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"response_to_condition\": {\r",
+							"            \"$id\": \"#/properties/response_to_condition\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"response_to_condition2\": {\r",
+							"            \"$id\": \"#/properties/response_to_condition2\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"response_to_condition3\": {\r",
+							"            \"$id\": \"#/properties/response_to_condition3\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"response_to_condition4\": {\r",
+							"            \"$id\": \"#/properties/response_to_condition4\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"conclusion\": {\r",
+							"            \"$id\": \"#/properties/conclusion\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"recommendation\": {\r",
+							"            \"$id\": \"#/properties/recommendation\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"licence_number\": {\r",
+							"            \"$id\": \"#/properties/licence_number\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"is_md\": {\r",
+							"            \"$id\": \"#/properties/is_md\",\r",
+							"            \"type\": \"boolean\"\r",
+							"        },\r",
+							"        \"plat_list\": {\r",
+							"            \"$id\": \"#/properties/plat_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"app_milestone_list\": {\r",
+							"            \"$id\": \"#/properties/app_milestone_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"verify json values\", function () {\r",
+							"   var jsonData = pm.response.json();    \r",
+							"   pm.expect(jsonData.link_id).to.eql(pm.variables.get(\"id\")); \r",
+							"   pm.expect(jsonData.is_md).to.eql(true);\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e89e32c8-6747-4fed-90be-04974cbf3f70",
+						"exec": [
+							"pm.variables.set(\"path\", \"basisdecisionmedicaldevice\");\r",
+							"pm.variables.set(\"id\", \"SBD00338\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}&id={{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}",
+							"description": "Define which language you would like the response to be in"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}",
+							"description": "Define which media type you would like the content to be in"
+						},
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				},
+				"description": "Returns all summaries of basis of decisions."
+			},
+			"response": [
+				{
+					"name": "Returns a list of all summaries of basis of decisions, or if an ID is provided, the list of all summaries that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"template\": \"id nostrud Ut\",\n  \"control_number\": \"voluptate deserunt laboris\",\n  \"date_issued\": \"officia proident dolore\",\n  \"link_id\": \"sit esse exercitation\",\n  \"brand_name\": \"irure deserunt\",\n  \"manufacturer\": \"dolor incididunt\",\n  \"med_ingredient\": \"esse culpa non qui commodo\",\n  \"bd_din_list\": \"do exercitation\",\n  \"sub_type_number\": \"magna\",\n  \"date_submission\": \"in nulla reprehenderit\",\n  \"date_authorization\": \"anim enim nostrud esse\",\n  \"notice_decision\": \"Excepteur laborum\",\n  \"sci_reg_decision\": \"officia pariatur\",\n  \"quality_basis\": \"fugiat ullamco\",\n  \"non_clin_basis\": \"do incididunt\",\n  \"non_clin_basis2\": \"nulla\",\n  \"clin_basis\": \"eiusmod consequat\",\n  \"clin_basis2\": \"eu\",\n  \"clin_basis3\": \"occaecat\",\n  \"benefit_risk\": \"eiusmod Lorem enim\",\n  \"radioisotope\": \"nisi laborum reprehenderit voluptate Lorem\",\n  \"summary\": \"consectetur deserunt laborum est\",\n  \"what_approved\": \"ut tempor voluptate\",\n  \"why_approved\": \"fugiat\",\n  \"steps_approval\": \"fugiat\",\n  \"assess_basis\": \"eiusmod nulla sunt\",\n  \"followup_measures\": \"adipisicing ea Ut\",\n  \"post_auth\": \"velit esse\",\n  \"other_info\": \"ut pariatur commodo\",\n  \"a_sci_reg_decision\": \"commodo anim ut\",\n  \"science_rationale\": \"fugiat nulla\",\n  \"a_clin_basis\": \"tempor id mollit fugiat\",\n  \"a_clin_basis2\": \"nostrud\",\n  \"a_non_clin_basis\": \"qui eu\",\n  \"a_non_clin_basis2\": \"Duis\",\n  \"b_quality_basis\": \"ex adipisicing ad laboris\",\n  \"contact\": \"ut aliquip aute\",\n  \"paat_info\": \"et aliquip\",\n  \"summary_drug\": \"tempor culpa consectetur nulla Ut\",\n  \"branch_info\": \"eiusmod ea\",\n  \"trademark\": \"culpa\",\n  \"din\": \"aute sit id\",\n  \"licence_number\": \"nisi culpa\",\n  \"ai_str_route_summary\": \"sit occaecat commodo\",\n  \"is_md\": \"quis voluptate nulla do\",\n  \"din_list\": \"labore veniam dolore deserunt exercit\",\n  \"post_activity_list\": \"proident labore\",\n  \"milestone_list\": [\n   {\n    \"link_id\": \"dolor eiusmod non voluptate\",\n    \"num_order\": \"laboris in\",\n    \"milestone\": \"sint\",\n    \"completed_date\": \"sunt labor\",\n    \"completed_date2\": \"dolore\",\n    \"separator\": \"irure Ut enim sint\"\n   },\n   {\n    \"link_id\": \"Duis aliquip sed\",\n    \"num_order\": \"non a\",\n    \"milestone\": \"sunt magna Ut officia\",\n    \"completed_date\": \"in magna ad\",\n    \"completed_date2\": \"dolor aliquip id eiusmod tempor\",\n    \"separator\": \"veniam dolore aliquip\"\n   }\n  ],\n  \"tombstone_list\": [\n   {\n    \"link_id\": \"sed ipsum dolor\",\n    \"num_order\": \"ex consectetur\",\n    \"med_ingredient\": \"cillum eu aute ipsum sunt\",\n    \"nonprop_name\": \"in ipsum fugiat\",\n    \"strength\": \"dolor\",\n    \"dosageform\": \"pariatur\",\n    \"route_admin\": \"est Duis do\",\n    \"thera_class\": \"sint aliqua\",\n    \"nonmed_ingredient\": \"est\"\n   },\n   {\n    \"link_id\": \"fugiat do\",\n    \"num_order\": \"minim in ut cupidatat\",\n    \"med_ingredient\": \"nulla incididunt ipsum aute\",\n    \"nonprop_name\": \"non nulla\",\n    \"strength\": \"cupidatat exercitation\",\n    \"dosageform\": \"laborum Excepte\",\n    \"route_admin\": \"aliquip aliqua\",\n    \"thera_class\": \"cul\",\n    \"nonmed_ingredient\": \"tempor Excepteur\"\n   }\n  ]\n },\n {\n  \"template\": \"sunt\",\n  \"control_number\": \"reprehenderit ad\",\n  \"date_issued\": \"laboris et esse labore sint\",\n  \"link_id\": \"id dolore ut sed\",\n  \"brand_name\": \"velit qu\",\n  \"manufacturer\": \"ad Duis fugiat in\",\n  \"med_ingredient\": \"nostrud sed\",\n  \"bd_din_list\": \"reprehende\",\n  \"sub_type_number\": \"consequat dolor in\",\n  \"date_submission\": \"anim ullamco irure\",\n  \"date_authorization\": \"magna elit\",\n  \"notice_decision\": \"aute voluptate non irure ipsum\",\n  \"sci_reg_decision\": \"in elit\",\n  \"quality_basis\": \"enim culpa\",\n  \"non_clin_basis\": \"cupidatat Excepteur\",\n  \"non_clin_basis2\": \"pariatur voluptate non\",\n  \"clin_basis\": \"in Duis minim occaecat\",\n  \"clin_basis2\": \"exercitation qui minim no\",\n  \"clin_basis3\": \"incididunt aliqua elit\",\n  \"benefit_risk\": \"enim adipisicing ut\",\n  \"radioisotope\": \"aute\",\n  \"summary\": \"aliqua consequat non incididunt\",\n  \"what_approved\": \"est minim\",\n  \"why_approved\": \"dolor do\",\n  \"steps_approval\": \"in\",\n  \"assess_basis\": \"id i\",\n  \"followup_measures\": \"non\",\n  \"post_auth\": \"occaecat ut esse\",\n  \"other_info\": \"nostrud\",\n  \"a_sci_reg_decision\": \"reprehenderit labore culpa sed\",\n  \"science_rationale\": \"ad irure exercitation sint Lorem\",\n  \"a_clin_basis\": \"velit esse des\",\n  \"a_clin_basis2\": \"esse in dolor magna\",\n  \"a_non_clin_basis\": \"ut labore\",\n  \"a_non_clin_basis2\": \"cupidatat irure officia consectetur amet\",\n  \"b_quality_basis\": \"anim aliquip\",\n  \"contact\": \"ipsum dolore ad Ut\",\n  \"paat_info\": \"et mollit non commodo\",\n  \"summary_drug\": \"magna in veniam dolor\",\n  \"branch_info\": \"sint nulla non culpa\",\n  \"trademark\": \"anim minim cillum ea exercitation\",\n  \"din\": \"ipsum laboris\",\n  \"licence_number\": \"minim laboru\",\n  \"ai_str_route_summary\": \"eiusmod minim occaecat\",\n  \"is_md\": \"reprehenderit ex dolore\",\n  \"din_list\": \"aliqua aliquip qui in\",\n  \"post_activity_list\": \"velit\",\n  \"milestone_list\": [\n   {\n    \"link_id\": \"ex ullamco\",\n    \"num_order\": \"nulla minim fugiat\",\n    \"milestone\": \"proident Excepteur anim\",\n    \"completed_date\": \"incididunt magna aute id\",\n    \"completed_date2\": \"tempor pariatur qui\",\n    \"separator\": \"dolore irure\"\n   },\n   {\n    \"link_id\": \"quis sit id\",\n    \"num_order\": \"qui\",\n    \"milestone\": \"ullamco aliqua aute\",\n    \"completed_date\": \"ullamco et esse\",\n    \"completed_date2\": \"aute occaecat\",\n    \"separator\": \"labore\"\n   }\n  ],\n  \"tombstone_list\": [\n   {\n    \"link_id\": \"commodo in enim\",\n    \"num_order\": \"dolore deserunt in dolore\",\n    \"med_ingredient\": \"velit laboris nostrud exercitation\",\n    \"nonprop_name\": \"aliquip consectetur\",\n    \"strength\": \"nisi pariatur\",\n    \"dosageform\": \"fugiat Duis sunt\",\n    \"route_admin\": \"in eu\",\n    \"thera_class\": \"deserunt consequat cul\",\n    \"nonmed_ingredient\": \"eu occaecat ex qui\"\n   },\n   {\n    \"link_id\": \"in voluptate aute Excepteur\",\n    \"num_order\": \"sed ad\",\n    \"med_ingredient\": \"deserunt mo\",\n    \"nonprop_name\": \"labore est\",\n    \"strength\": \"ut mollit\",\n    \"dosageform\": \"sed consequat officia irure\",\n    \"route_admin\": \"aliquip fugiat \",\n    \"thera_class\": \"nulla elit Lorem aliqua sit\",\n    \"nonmed_ingredient\": \"incididunt id nostrud tempor\"\n   }\n  ]\n }\n]"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/basisdecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"basisdecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "/regulatorydecision",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "484fc7a8-453f-4169-90e5-4142bfc40b22",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							"\"items\": {\r",
+							"        \"required\": [\r",
+							"            \"link_id\",\r",
+							"            \"drug_name\",\r",
+							"            \"contact_name\",\r",
+							"            \"contact_url\",\r",
+							"            \"medical_ingredient\",\r",
+							"            \"therapeutic_area\",\r",
+							"            \"purpose\",\r",
+							"            \"reason_decision\",\r",
+							"            \"decision\",\r",
+							"            \"decision_descr\",\r",
+							"            \"date_decision\",\r",
+							"            \"manufacturer\",\r",
+							"            \"prescription_status\",\r",
+							"            \"type_submission\",\r",
+							"            \"date_filed\",\r",
+							"            \"control_number\",\r",
+							"            \"application_number\",\r",
+							"            \"application_type\",\r",
+							"            \"licence_num\",\r",
+							"            \"device_class\",\r",
+							"            \"created_date\",\r",
+							"            \"modified_date\",\r",
+							"            \"footnotes\",\r",
+							"            \"summary_title\",\r",
+							"            \"summary_subtitle\",\r",
+							"            \"summary_text1\",\r",
+							"            \"summary_text2\",\r",
+							"            \"summary_text3\",\r",
+							"            \"din\",\r",
+							"            \"is_md\",\r",
+							"            \"din_list\",\r",
+							"            \"bullet_list\"\r",
+							"        ],\r",
+							"        \"properties\": {\r",
+							"            \"link_id\": {\r",
+							"                \"$id\": \"#/items/properties/link_id\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"drug_name\": {\r",
+							"                \"$id\": \"#/items/properties/drug_name\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"contact_name\": {\r",
+							"                \"$id\": \"#/items/properties/contact_name\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"contact_url\": {\r",
+							"                \"$id\": \"#/items/properties/contact_url\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"medical_ingredient\": {\r",
+							"                \"$id\": \"#/items/properties/medical_ingredient\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"therapeutic_area\": {\r",
+							"                \"$id\": \"#/items/properties/therapeutic_area\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"purpose\": {\r",
+							"                \"$id\": \"#/items/properties/purpose\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"reason_decision\": {\r",
+							"                \"$id\": \"#/items/properties/reason_decision\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"decision\": {\r",
+							"                \"$id\": \"#/items/properties/decision\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"decision_descr\": {\r",
+							"                \"$id\": \"#/items/properties/decision_descr\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"date_decision\": {\r",
+							"                \"$id\": \"#/items/properties/date_decision\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"manufacturer\": {\r",
+							"                \"$id\": \"#/items/properties/manufacturer\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"prescription_status\": {\r",
+							"                \"$id\": \"#/items/properties/prescription_status\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"type_submission\": {\r",
+							"                \"$id\": \"#/items/properties/type_submission\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"date_filed\": {\r",
+							"                \"$id\": \"#/items/properties/date_filed\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"control_number\": {\r",
+							"                \"$id\": \"#/items/properties/control_number\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"application_number\": {\r",
+							"                \"$id\": \"#/items/properties/application_number\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"application_type\": {\r",
+							"                \"$id\": \"#/items/properties/application_type\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"licence_num\": {\r",
+							"                \"$id\": \"#/items/properties/licence_num\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"device_class\": {\r",
+							"                \"$id\": \"#/items/properties/device_class\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"created_date\": {\r",
+							"                \"$id\": \"#/items/properties/created_date\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"modified_date\": {\r",
+							"                \"$id\": \"#/items/properties/modified_date\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"footnotes\": {\r",
+							"                \"$id\": \"#/items/properties/footnotes\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"summary_title\": {\r",
+							"                \"$id\": \"#/items/properties/summary_title\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"summary_subtitle\": {\r",
+							"                \"$id\": \"#/items/properties/summary_subtitle\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_text1\": {\r",
+							"                \"$id\": \"#/items/properties/summary_text1\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_text2\": {\r",
+							"                \"$id\": \"#/items/properties/summary_text2\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_text3\": {\r",
+							"                \"$id\": \"#/items/properties/summary_text3\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"din\": {\r",
+							"                \"$id\": \"#/items/properties/din\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"is_md\": {\r",
+							"                \"$id\": \"#/items/properties/is_md\",\r",
+							"                \"type\": \"boolean\"\r",
+							"            },\r",
+							"            \"din_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"$id\": \"#/items/properties/din_list/items\",\r",
+							"                    \"type\": \"string\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/din_list\",\r",
+							"                \"type\": [\"array\",\"null\"]\r",
+							"            },\r",
+							"            \"bullet_list\": {\r",
+							"                \"$id\": \"#/items/properties/bullet_list\",\r",
+							"                \"type\": \"null\"\r",
+							"            }\r",
+							"        },\r",
+							"        \"$id\": \"#/items\",\r",
+							"        \"type\": \"object\"\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"array\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "50b1a3b2-a9e5-4d70-ad8c-59e28dcbea01",
+						"exec": [
+							"pm.variables.set(\"path\", \"regulatorydecision\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}",
+							"description": "Define which language you would like the response to be in"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}",
+							"description": "Define which media type you would like the content to be in"
+						}
+					]
+				},
+				"description": "Returns all regulatory decisions."
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Returns a list of all regulatory decisions, or if an ID is provided, the list of all decisions that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"link_id\": \"tempor Excepteur Ut\",\n  \"drug_name\": \"labore ipsum Excepteur\",\n  \"contact_name\": \"Excepteur ea fugiat nostrud\",\n  \"contact_url\": \"ea est Lorem sed esse\",\n  \"medical_ingredient\": \"irure consequat mollit\",\n  \"therapeutic_area\": \"exercitation minim incididunt\",\n  \"purpose\": \"esse eu\",\n  \"reason_decision\": \"aliquip aute eu quis amet\",\n  \"decision\": \"dolore eiusmod\",\n  \"decision_descr\": \"tempor occaecat sint in\",\n  \"date_decision\": \"in pariatur quis\",\n  \"manufacturer\": \"in enim\",\n  \"prescription_status\": \"dolor deserunt ea\",\n  \"type_submission\": \"id aute et consectetur culpa\",\n  \"date_filed\": \"in dolor ad incididunt velit\",\n  \"control_number\": \"occaecat al\",\n  \"application_number\": \"sed Excepteur \",\n  \"application_type\": \"reprehenderit cupidatat nostru\",\n  \"licence_num\": \"sit de\",\n  \"device_class\": \"ex fugiat amet cillum\",\n  \"created_date\": \"enim incididunt\",\n  \"modified_date\": \"pariatur\",\n  \"footnotes\": \"dolore sunt incididunt tempor\",\n  \"summary_title\": \"dolor dolore\",\n  \"summary_subtitle\": \"eu id\",\n  \"summary_text1\": \"dolore in fugiat\",\n  \"summary_text2\": \"mollit occaecat\",\n  \"summary_text3\": \"dolore sed\",\n  \"din\": \"adipisicing\",\n  \"is_md\": \"culpa nulla aliquip\",\n  \"din_list\": \"deserunt est dolor\",\n  \"bullet_list\": \"in ullamco commodo\"\n },\n {\n  \"link_id\": \"anim aliquip\",\n  \"drug_name\": \"nisi\",\n  \"contact_name\": \"culpa cillum ut\",\n  \"contact_url\": \"qui esse exercitation\",\n  \"medical_ingredient\": \"consequat nulla dolor amet\",\n  \"therapeutic_area\": \"cupidatat cillum in elit\",\n  \"purpose\": \"elit ad\",\n  \"reason_decision\": \"ex consequat culpa laborum\",\n  \"decision\": \"do laborum adipisicing\",\n  \"decision_descr\": \"dolore nisi mollit\",\n  \"date_decision\": \"fugiat consequat enim veniam\",\n  \"manufacturer\": \"ea sed\",\n  \"prescription_status\": \"dolor amet veniam\",\n  \"type_submission\": \"qui adipisicing irure\",\n  \"date_filed\": \"non exercitation consequat irure consectetur\",\n  \"control_number\": \"commodo\",\n  \"application_number\": \"veniam irure\",\n  \"application_type\": \"dolor labore\",\n  \"licence_num\": \"in elit magna\",\n  \"device_class\": \"ut non dolor exercitation\",\n  \"created_date\": \"fugiat\",\n  \"modified_date\": \"ipsum proident est cillum\",\n  \"footnotes\": \"fu\",\n  \"summary_title\": \"adipisicing nostrud\",\n  \"summary_subtitle\": \"ut sed\",\n  \"summary_text1\": \"esse\",\n  \"summary_text2\": \"ut exercitation aliquip enim\",\n  \"summary_text3\": \"deserunt\",\n  \"din\": \"laborum non\",\n  \"is_md\": \"amet qui cupidatat\",\n  \"din_list\": \"ut esse sunt\",\n  \"bullet_list\": \"aute elit\"\n }\n]"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "/regulatorydecision by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b58b9571-7893-4bf8-a3de-44eb16a43ed9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							" \"required\": [\r",
+							"        \"link_id\",\r",
+							"        \"drug_name\",\r",
+							"        \"contact_name\",\r",
+							"        \"contact_url\",\r",
+							"        \"medical_ingredient\",\r",
+							"        \"therapeutic_area\",\r",
+							"        \"purpose\",\r",
+							"        \"reason_decision\",\r",
+							"        \"decision\",\r",
+							"        \"decision_descr\",\r",
+							"        \"date_decision\",\r",
+							"        \"manufacturer\",\r",
+							"        \"prescription_status\",\r",
+							"        \"type_submission\",\r",
+							"        \"date_filed\",\r",
+							"        \"control_number\",\r",
+							"        \"application_number\",\r",
+							"        \"application_type\",\r",
+							"        \"licence_num\",\r",
+							"        \"device_class\",\r",
+							"        \"created_date\",\r",
+							"        \"modified_date\",\r",
+							"        \"footnotes\",\r",
+							"        \"summary_title\",\r",
+							"        \"summary_subtitle\",\r",
+							"        \"summary_text1\",\r",
+							"        \"summary_text2\",\r",
+							"        \"summary_text3\",\r",
+							"        \"din\",\r",
+							"        \"is_md\",\r",
+							"        \"din_list\",\r",
+							"        \"bullet_list\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"            \"link_id\": {\r",
+							"                \"$id\": \"#/items/properties/link_id\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"drug_name\": {\r",
+							"                \"$id\": \"#/items/properties/drug_name\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"contact_name\": {\r",
+							"                \"$id\": \"#/items/properties/contact_name\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"contact_url\": {\r",
+							"                \"$id\": \"#/items/properties/contact_url\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"medical_ingredient\": {\r",
+							"                \"$id\": \"#/items/properties/medical_ingredient\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"therapeutic_area\": {\r",
+							"                \"$id\": \"#/items/properties/therapeutic_area\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"purpose\": {\r",
+							"                \"$id\": \"#/items/properties/purpose\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"reason_decision\": {\r",
+							"                \"$id\": \"#/items/properties/reason_decision\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"decision\": {\r",
+							"                \"$id\": \"#/items/properties/decision\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"decision_descr\": {\r",
+							"                \"$id\": \"#/items/properties/decision_descr\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"date_decision\": {\r",
+							"                \"$id\": \"#/items/properties/date_decision\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"manufacturer\": {\r",
+							"                \"$id\": \"#/items/properties/manufacturer\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"prescription_status\": {\r",
+							"                \"$id\": \"#/items/properties/prescription_status\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"type_submission\": {\r",
+							"                \"$id\": \"#/items/properties/type_submission\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"date_filed\": {\r",
+							"                \"$id\": \"#/items/properties/date_filed\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"control_number\": {\r",
+							"                \"$id\": \"#/items/properties/control_number\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"application_number\": {\r",
+							"                \"$id\": \"#/items/properties/application_number\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"application_type\": {\r",
+							"                \"$id\": \"#/items/properties/application_type\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"licence_num\": {\r",
+							"                \"$id\": \"#/items/properties/licence_num\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"device_class\": {\r",
+							"                \"$id\": \"#/items/properties/device_class\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"created_date\": {\r",
+							"                \"$id\": \"#/items/properties/created_date\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"modified_date\": {\r",
+							"                \"$id\": \"#/items/properties/modified_date\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"footnotes\": {\r",
+							"                \"$id\": \"#/items/properties/footnotes\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"summary_title\": {\r",
+							"                \"$id\": \"#/items/properties/summary_title\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"summary_subtitle\": {\r",
+							"                \"$id\": \"#/items/properties/summary_subtitle\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_text1\": {\r",
+							"                \"$id\": \"#/items/properties/summary_text1\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_text2\": {\r",
+							"                \"$id\": \"#/items/properties/summary_text2\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"summary_text3\": {\r",
+							"                \"$id\": \"#/items/properties/summary_text3\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"din\": {\r",
+							"                \"$id\": \"#/items/properties/din\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"is_md\": {\r",
+							"                \"$id\": \"#/items/properties/is_md\",\r",
+							"                \"type\": \"boolean\"\r",
+							"            },\r",
+							"            \"din_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"$id\": \"#/items/properties/din_list/items\",\r",
+							"                    \"type\": \"string\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/din_list\",\r",
+							"                \"type\": [\"array\",\"null\"]\r",
+							"            },\r",
+							"            \"bullet_list\": {\r",
+							"                \"$id\": \"#/items/properties/bullet_list\",\r",
+							"                \"type\": [\"array\",\"null\"]\r",
+							"            }\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"verify json values\", function () {\r",
+							"   var jsonData = pm.response.json();    \r",
+							"   pm.expect(jsonData.link_id).to.eql(pm.variables.get(\"id\")); \r",
+							"   //pm.expect(jsonData.brand_name).to.eql(\"Abilify\");   \r",
+							"   //pm.expect(jsonData.manufacturer).to.eql(\"Bristol-Myers Squibb Canada\");   \r",
+							"   \r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e7d856c9-ac24-45b3-90ed-4fef0dbca891",
+						"exec": [
+							"pm.variables.set(\"path\", \"regulatorydecision\");\r",
+							"pm.variables.set(\"id\", \"RDS00001\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}&id={{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}",
+							"description": "Define which language you would like the response to be in"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}",
+							"description": "Define which media type you would like the content to be in"
+						},
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				},
+				"description": "Returns all regulatory decisions."
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Returns a list of all regulatory decisions, or if an ID is provided, the list of all decisions that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"link_id\": \"tempor Excepteur Ut\",\n  \"drug_name\": \"labore ipsum Excepteur\",\n  \"contact_name\": \"Excepteur ea fugiat nostrud\",\n  \"contact_url\": \"ea est Lorem sed esse\",\n  \"medical_ingredient\": \"irure consequat mollit\",\n  \"therapeutic_area\": \"exercitation minim incididunt\",\n  \"purpose\": \"esse eu\",\n  \"reason_decision\": \"aliquip aute eu quis amet\",\n  \"decision\": \"dolore eiusmod\",\n  \"decision_descr\": \"tempor occaecat sint in\",\n  \"date_decision\": \"in pariatur quis\",\n  \"manufacturer\": \"in enim\",\n  \"prescription_status\": \"dolor deserunt ea\",\n  \"type_submission\": \"id aute et consectetur culpa\",\n  \"date_filed\": \"in dolor ad incididunt velit\",\n  \"control_number\": \"occaecat al\",\n  \"application_number\": \"sed Excepteur \",\n  \"application_type\": \"reprehenderit cupidatat nostru\",\n  \"licence_num\": \"sit de\",\n  \"device_class\": \"ex fugiat amet cillum\",\n  \"created_date\": \"enim incididunt\",\n  \"modified_date\": \"pariatur\",\n  \"footnotes\": \"dolore sunt incididunt tempor\",\n  \"summary_title\": \"dolor dolore\",\n  \"summary_subtitle\": \"eu id\",\n  \"summary_text1\": \"dolore in fugiat\",\n  \"summary_text2\": \"mollit occaecat\",\n  \"summary_text3\": \"dolore sed\",\n  \"din\": \"adipisicing\",\n  \"is_md\": \"culpa nulla aliquip\",\n  \"din_list\": \"deserunt est dolor\",\n  \"bullet_list\": \"in ullamco commodo\"\n },\n {\n  \"link_id\": \"anim aliquip\",\n  \"drug_name\": \"nisi\",\n  \"contact_name\": \"culpa cillum ut\",\n  \"contact_url\": \"qui esse exercitation\",\n  \"medical_ingredient\": \"consequat nulla dolor amet\",\n  \"therapeutic_area\": \"cupidatat cillum in elit\",\n  \"purpose\": \"elit ad\",\n  \"reason_decision\": \"ex consequat culpa laborum\",\n  \"decision\": \"do laborum adipisicing\",\n  \"decision_descr\": \"dolore nisi mollit\",\n  \"date_decision\": \"fugiat consequat enim veniam\",\n  \"manufacturer\": \"ea sed\",\n  \"prescription_status\": \"dolor amet veniam\",\n  \"type_submission\": \"qui adipisicing irure\",\n  \"date_filed\": \"non exercitation consequat irure consectetur\",\n  \"control_number\": \"commodo\",\n  \"application_number\": \"veniam irure\",\n  \"application_type\": \"dolor labore\",\n  \"licence_num\": \"in elit magna\",\n  \"device_class\": \"ut non dolor exercitation\",\n  \"created_date\": \"fugiat\",\n  \"modified_date\": \"ipsum proident est cillum\",\n  \"footnotes\": \"fu\",\n  \"summary_title\": \"adipisicing nostrud\",\n  \"summary_subtitle\": \"ut sed\",\n  \"summary_text1\": \"esse\",\n  \"summary_text2\": \"ut exercitation aliquip enim\",\n  \"summary_text3\": \"deserunt\",\n  \"din\": \"laborum non\",\n  \"is_md\": \"amet qui cupidatat\",\n  \"din_list\": \"ut esse sunt\",\n  \"bullet_list\": \"aute elit\"\n }\n]"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "/regulatorydecisionmedicaldevice by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "545c64af-d400-4404-8234-df39531b0629",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							"\"required\": [\r",
+							"        \"link_id\",\r",
+							"        \"drug_name\",\r",
+							"        \"contact_name\",\r",
+							"        \"contact_url\",\r",
+							"        \"decision\",\r",
+							"        \"decision_descr\",\r",
+							"        \"date_decision\",\r",
+							"        \"type_application\",\r",
+							"        \"date_filed\",\r",
+							"        \"application_number\",\r",
+							"        \"is_md\",\r",
+							"        \"device_class\",\r",
+							"        \"what_app_for\",\r",
+							"        \"info_reviewed\",\r",
+							"        \"licence_num_issued\",\r",
+							"        \"manufacturer\",\r",
+							"        \"medical_ingredient\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"link_id\": {\r",
+							"            \"$id\": \"#/properties/link_id\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"drug_name\": {\r",
+							"            \"$id\": \"#/properties/drug_name\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"contact_name\": {\r",
+							"            \"$id\": \"#/properties/contact_name\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"contact_url\": {\r",
+							"            \"$id\": \"#/properties/contact_url\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"decision\": {\r",
+							"            \"$id\": \"#/properties/decision\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"decision_descr\": {\r",
+							"            \"$id\": \"#/properties/decision_descr\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_decision\": {\r",
+							"            \"$id\": \"#/properties/date_decision\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"type_application\": {\r",
+							"            \"$id\": \"#/properties/type_application\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"date_filed\": {\r",
+							"            \"$id\": \"#/properties/date_filed\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"application_number\": {\r",
+							"            \"$id\": \"#/properties/application_number\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"is_md\": {\r",
+							"            \"$id\": \"#/properties/is_md\",\r",
+							"            \"type\": \"boolean\"\r",
+							"        },\r",
+							"        \"device_class\": {\r",
+							"            \"$id\": \"#/properties/device_class\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"what_app_for\": {\r",
+							"            \"$id\": \"#/properties/what_app_for\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"info_reviewed\": {\r",
+							"            \"$id\": \"#/properties/info_reviewed\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"licence_num_issued\": {\r",
+							"            \"$id\": \"#/properties/licence_num_issued\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"manufacturer\": {\r",
+							"            \"$id\": \"#/properties/manufacturer\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"medical_ingredient\": {\r",
+							"            \"$id\": \"#/properties/medical_ingredient\",\r",
+							"            \"type\": \"null\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"pm.test(\"verify json values\", function () {\r",
+							"   var jsonData = pm.response.json();    \r",
+							"   pm.expect(jsonData.link_id).to.eql(pm.variables.get(\"id\"));  \r",
+							"   \r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3ae1873c-e9fe-4102-bc83-8beba58c0a5d",
+						"exec": [
+							"pm.variables.set(\"path\", \"regulatorydecisionmedicaldevice\");\r",
+							"pm.variables.set(\"id\", \"RDS10753\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}&id={{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}",
+							"description": "Define which language you would like the response to be in"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}",
+							"description": "Define which media type you would like the content to be in"
+						},
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				},
+				"description": "Returns all regulatory decisions."
+			},
+			"response": [
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Returns a list of all regulatory decisions, or if an ID is provided, the list of all decisions that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/regulatorydecision?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regulatorydecision"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"link_id\": \"tempor Excepteur Ut\",\n  \"drug_name\": \"labore ipsum Excepteur\",\n  \"contact_name\": \"Excepteur ea fugiat nostrud\",\n  \"contact_url\": \"ea est Lorem sed esse\",\n  \"medical_ingredient\": \"irure consequat mollit\",\n  \"therapeutic_area\": \"exercitation minim incididunt\",\n  \"purpose\": \"esse eu\",\n  \"reason_decision\": \"aliquip aute eu quis amet\",\n  \"decision\": \"dolore eiusmod\",\n  \"decision_descr\": \"tempor occaecat sint in\",\n  \"date_decision\": \"in pariatur quis\",\n  \"manufacturer\": \"in enim\",\n  \"prescription_status\": \"dolor deserunt ea\",\n  \"type_submission\": \"id aute et consectetur culpa\",\n  \"date_filed\": \"in dolor ad incididunt velit\",\n  \"control_number\": \"occaecat al\",\n  \"application_number\": \"sed Excepteur \",\n  \"application_type\": \"reprehenderit cupidatat nostru\",\n  \"licence_num\": \"sit de\",\n  \"device_class\": \"ex fugiat amet cillum\",\n  \"created_date\": \"enim incididunt\",\n  \"modified_date\": \"pariatur\",\n  \"footnotes\": \"dolore sunt incididunt tempor\",\n  \"summary_title\": \"dolor dolore\",\n  \"summary_subtitle\": \"eu id\",\n  \"summary_text1\": \"dolore in fugiat\",\n  \"summary_text2\": \"mollit occaecat\",\n  \"summary_text3\": \"dolore sed\",\n  \"din\": \"adipisicing\",\n  \"is_md\": \"culpa nulla aliquip\",\n  \"din_list\": \"deserunt est dolor\",\n  \"bullet_list\": \"in ullamco commodo\"\n },\n {\n  \"link_id\": \"anim aliquip\",\n  \"drug_name\": \"nisi\",\n  \"contact_name\": \"culpa cillum ut\",\n  \"contact_url\": \"qui esse exercitation\",\n  \"medical_ingredient\": \"consequat nulla dolor amet\",\n  \"therapeutic_area\": \"cupidatat cillum in elit\",\n  \"purpose\": \"elit ad\",\n  \"reason_decision\": \"ex consequat culpa laborum\",\n  \"decision\": \"do laborum adipisicing\",\n  \"decision_descr\": \"dolore nisi mollit\",\n  \"date_decision\": \"fugiat consequat enim veniam\",\n  \"manufacturer\": \"ea sed\",\n  \"prescription_status\": \"dolor amet veniam\",\n  \"type_submission\": \"qui adipisicing irure\",\n  \"date_filed\": \"non exercitation consequat irure consectetur\",\n  \"control_number\": \"commodo\",\n  \"application_number\": \"veniam irure\",\n  \"application_type\": \"dolor labore\",\n  \"licence_num\": \"in elit magna\",\n  \"device_class\": \"ut non dolor exercitation\",\n  \"created_date\": \"fugiat\",\n  \"modified_date\": \"ipsum proident est cillum\",\n  \"footnotes\": \"fu\",\n  \"summary_title\": \"adipisicing nostrud\",\n  \"summary_subtitle\": \"ut sed\",\n  \"summary_text1\": \"esse\",\n  \"summary_text2\": \"ut exercitation aliquip enim\",\n  \"summary_text3\": \"deserunt\",\n  \"din\": \"laborum non\",\n  \"is_md\": \"amet qui cupidatat\",\n  \"din_list\": \"ut esse sunt\",\n  \"bullet_list\": \"aute elit\"\n }\n]"
+				}
+			]
+		},
+		{
+			"name": "/safetyreview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6244441f-5163-4f42-8607-4ea0584da021",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							" \"items\": {\r",
+							"        \"required\": [\r",
+							"            \"template\",\r",
+							"            \"link_id\",\r",
+							"            \"review_date\",\r",
+							"            \"drug_name\",\r",
+							"            \"safety_issue\",\r",
+							"            \"safetyissue_title\",\r",
+							"            \"findings_title\",\r",
+							"            \"issue\",\r",
+							"            \"background\",\r",
+							"            \"objective\",\r",
+							"            \"key_findings\",\r",
+							"            \"key_messages\",\r",
+							"            \"overview\",\r",
+							"            \"use_canada\",\r",
+							"            \"findings\",\r",
+							"            \"conclusion\",\r",
+							"            \"additional\",\r",
+							"            \"full_review\",\r",
+							"            \"references\",\r",
+							"            \"footnotes\",\r",
+							"            \"title\",\r",
+							"            \"created_date\",\r",
+							"            \"modified_date\",\r",
+							"            \"key_message_list\",\r",
+							"            \"footnotes_list\",\r",
+							"            \"reference_list\",\r",
+							"            \"use_canada_list\",\r",
+							"            \"finding_list\",\r",
+							"            \"conclusion_list\"\r",
+							"        ],\r",
+							"        \"properties\": {\r",
+							"            \"template\": {\r",
+							"                \"$id\": \"#/items/properties/template\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"link_id\": {\r",
+							"                \"$id\": \"#/items/properties/link_id\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"review_date\": {\r",
+							"                \"$id\": \"#/items/properties/review_date\",\r",
+							"                \"type\": [\"string\",\"null\"]\r",
+							"            },\r",
+							"            \"drug_name\": {\r",
+							"                \"$id\": \"#/items/properties/drug_name\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"safety_issue\": {\r",
+							"                \"$id\": \"#/items/properties/safety_issue\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"safetyissue_title\": {\r",
+							"                \"$id\": \"#/items/properties/safetyissue_title\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"findings_title\": {\r",
+							"                \"$id\": \"#/items/properties/findings_title\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"issue\": {\r",
+							"                \"$id\": \"#/items/properties/issue\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"background\": {\r",
+							"                \"$id\": \"#/items/properties/background\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"objective\": {\r",
+							"                \"$id\": \"#/items/properties/objective\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"key_findings\": {\r",
+							"                \"$id\": \"#/items/properties/key_findings\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"key_messages\": {\r",
+							"                \"$id\": \"#/items/properties/key_messages\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"overview\": {\r",
+							"                \"$id\": \"#/items/properties/overview\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"use_canada\": {\r",
+							"                \"$id\": \"#/items/properties/use_canada\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"findings\": {\r",
+							"                \"$id\": \"#/items/properties/findings\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"conclusion\": {\r",
+							"                \"$id\": \"#/items/properties/conclusion\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"additional\": {\r",
+							"                \"$id\": \"#/items/properties/additional\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"full_review\": {\r",
+							"                \"$id\": \"#/items/properties/full_review\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"references\": {\r",
+							"                \"$id\": \"#/items/properties/references\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"footnotes\": {\r",
+							"                \"$id\": \"#/items/properties/footnotes\",\r",
+							"                \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"title\": {\r",
+							"                \"$id\": \"#/items/properties/title\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"created_date\": {\r",
+							"                \"$id\": \"#/items/properties/created_date\",\r",
+							"                \"type\": \"string\"\r",
+							"            },\r",
+							"            \"modified_date\": {\r",
+							"                \"$id\": \"#/items/properties/modified_date\",\r",
+							"                \"type\": [\"string\", \"null\"]\r",
+							"            },\r",
+							"            \"key_message_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"required\": [\r",
+							"                        \"field_id\",\r",
+							"                        \"order_no\",\r",
+							"                        \"bullet\"\r",
+							"                    ],\r",
+							"                    \"properties\": {\r",
+							"                        \"field_id\": {\r",
+							"                            \"$id\": \"#/items/properties/key_message_list/items/properties/field_id\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"order_no\": {\r",
+							"                            \"$id\": \"#/items/properties/key_message_list/items/properties/order_no\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"bullet\": {\r",
+							"                            \"$id\": \"#/items/properties/key_message_list/items/properties/bullet\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        }\r",
+							"                    },\r",
+							"                    \"$id\": \"#/items/properties/key_message_list/items\",\r",
+							"                    \"type\": \"object\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/key_message_list\",\r",
+							"                \"type\": \"array\"\r",
+							"            },\r",
+							"            \"footnotes_list\": {\r",
+							"                \"$id\": \"#/items/properties/footnotes_list\",\r",
+							"                \"type\": \"array\"\r",
+							"            },\r",
+							"            \"reference_list\": {\r",
+							"                \"$id\": \"#/items/properties/reference_list\",\r",
+							"                \"type\": \"array\"\r",
+							"            },\r",
+							"            \"use_canada_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"required\": [\r",
+							"                        \"field_id\",\r",
+							"                        \"order_no\",\r",
+							"                        \"bullet\"\r",
+							"                    ],\r",
+							"                    \"properties\": {\r",
+							"                        \"field_id\": {\r",
+							"                            \"$id\": \"#/items/properties/use_canada_list/items/properties/field_id\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"order_no\": {\r",
+							"                            \"$id\": \"#/items/properties/use_canada_list/items/properties/order_no\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"bullet\": {\r",
+							"                            \"$id\": \"#/items/properties/use_canada_list/items/properties/bullet\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        }\r",
+							"                    },\r",
+							"                    \"$id\": \"#/items/properties/use_canada_list/items\",\r",
+							"                    \"type\": \"object\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/use_canada_list\",\r",
+							"                \"type\": \"array\"\r",
+							"            },\r",
+							"            \"finding_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"required\": [\r",
+							"                        \"field_id\",\r",
+							"                        \"order_no\",\r",
+							"                        \"bullet\"\r",
+							"                    ],\r",
+							"                    \"properties\": {\r",
+							"                        \"field_id\": {\r",
+							"                            \"$id\": \"#/items/properties/finding_list/items/properties/field_id\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"order_no\": {\r",
+							"                            \"$id\": \"#/items/properties/finding_list/items/properties/order_no\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"bullet\": {\r",
+							"                            \"$id\": \"#/items/properties/finding_list/items/properties/bullet\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        }\r",
+							"                    },\r",
+							"                    \"$id\": \"#/items/properties/finding_list/items\",\r",
+							"                    \"type\": \"object\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/finding_list\",\r",
+							"                \"type\": \"array\"\r",
+							"            },\r",
+							"            \"conclusion_list\": {\r",
+							"                \"items\": {\r",
+							"                    \"required\": [\r",
+							"                        \"field_id\",\r",
+							"                        \"order_no\",\r",
+							"                        \"bullet\"\r",
+							"                    ],\r",
+							"                    \"properties\": {\r",
+							"                        \"field_id\": {\r",
+							"                            \"$id\": \"#/items/properties/conclusion_list/items/properties/field_id\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"order_no\": {\r",
+							"                            \"$id\": \"#/items/properties/conclusion_list/items/properties/order_no\",\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        \"bullet\": {\r",
+							"                            \"$id\": \"#/items/properties/conclusion_list/items/properties/bullet\",\r",
+							"                            \"type\": \"string\"\r",
+							"                        }\r",
+							"                    },\r",
+							"                    \"$id\": \"#/items/properties/conclusion_list/items\",\r",
+							"                    \"type\": \"object\"\r",
+							"                },\r",
+							"                \"$id\": \"#/items/properties/conclusion_list\",\r",
+							"                \"type\": \"array\"\r",
+							"            }\r",
+							"        },\r",
+							"        \"$id\": \"#/items\",\r",
+							"        \"type\": \"object\"\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"array\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ff78ba1f-ca1a-487b-8bc9-4b5c9eb86ac6",
+						"exec": [
+							"pm.variables.set(\"path\", \"safetyreview\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}"
+						}
+					]
+				},
+				"description": "Returns all summary safety reviews."
+			},
+			"response": [
+				{
+					"name": "Returns a list of all summary safety reviews, or if an ID is provided, the list of all summaries that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/safetyreview?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"safetyreview"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"template\": \"quis tempor ut pariatur\",\n  \"link_id\": \"officia sit\",\n  \"review_date\": \"est sunt incididunt nulla\",\n  \"drug_name\": \"ex Excepteur \",\n  \"safety_issue\": \"non sed nisi\",\n  \"safetyissue_title\": \"eu voluptate mollit sit\",\n  \"findings_title\": \"nisi ea\",\n  \"issue\": \"Duis eiusmod magna cillum reprehenderit\",\n  \"background\": \"consectetur laborum mollit\",\n  \"objective\": \"est cupidatat voluptate irure\",\n  \"key_findings\": \"ut elit culpa ullamco in\",\n  \"key_messages\": \"incididunt ea laborum sit\",\n  \"overview\": \"in Excepteur exercitation dolor tempor\",\n  \"use_canada\": \"tempor minim nostrud occaecat\",\n  \"findings\": \"nulla ut ipsum\",\n  \"conclusion\": \"magna voluptate ex\",\n  \"additional\": \"cupidatat laborum eiusmod magna fugiat\",\n  \"full_review\": \"labore est ut\",\n  \"references\": \"sint qui quis magna\",\n  \"footnotes\": \"non sunt\",\n  \"title\": \"sed laborum\",\n  \"created_date\": \"irure\",\n  \"modified_date\": \"deserunt\",\n  \"key_message_list\": [\n   {\n    \"field_id\": \"sit ipsum\",\n    \"order_no\": \"eiusmod officia Ut\",\n    \"bullet\": \"est Lorem occaecat\"\n   },\n   {\n    \"field_id\": \"ipsum sit aliquip\",\n    \"order_no\": \"cupidatat\",\n    \"bullet\": \"deserunt dolor sit sint eiusmod\"\n   }\n  ],\n  \"footnotes_list\": [\n   {\n    \"field_id\": \"nostrud incididunt eiusmod proident\",\n    \"order_no\": \"Ut consequat sunt sint\",\n    \"bullet\": \"nostrud nisi tempor velit\"\n   },\n   {\n    \"field_id\": \"aliqua cupidatat ullamco voluptate\",\n    \"order_no\": \"ut cupidatat\",\n    \"bullet\": \"pariatur id\"\n   }\n  ],\n  \"reference_list\": [\n   {\n    \"field_id\": \"mollit in est laboris officia\",\n    \"order_no\": \"voluptate do ipsum elit\",\n    \"bullet\": \"laborum ullamco sunt consequat\"\n   },\n   {\n    \"field_id\": \"do occaecat sunt\",\n    \"order_no\": \"et \",\n    \"bullet\": \"eu a\"\n   }\n  ],\n  \"use_canada_list\": [\n   {\n    \"field_id\": \"deserunt tempor do\",\n    \"order_no\": \"in aliqua\",\n    \"bullet\": \"Lorem qui\"\n   },\n   {\n    \"field_id\": \"minim\",\n    \"order_no\": \"quis ea sint irure\",\n    \"bullet\": \"exercitation irure enim ut\"\n   }\n  ],\n  \"finding_list\": [\n   {\n    \"field_id\": \"nostrud labore in\",\n    \"order_no\": \"eu consectetur occaecat\",\n    \"bullet\": \"quis sed eu aute\"\n   },\n   {\n    \"field_id\": \"sed eu ut\",\n    \"order_no\": \"aliquip\",\n    \"bullet\": \"ex Excepteur \"\n   }\n  ],\n  \"conclusion_list\": [\n   {\n    \"field_id\": \"fugiat qui culpa\",\n    \"order_no\": \"ex pariatur in qui\",\n    \"bullet\": \"incididunt sed\"\n   },\n   {\n    \"field_id\": \"anim tempor aliquip ut\",\n    \"order_no\": \"et eiusmod\",\n    \"bullet\": \"tempor labore\"\n   }\n  ]\n },\n {\n  \"template\": \"commodo\",\n  \"link_id\": \"qui cupidatat consequat minim\",\n  \"review_date\": \"eni\",\n  \"drug_name\": \"consequat ut\",\n  \"safety_issue\": \"co\",\n  \"safetyissue_title\": \"et cillum mollit consectetur\",\n  \"findings_title\": \"proident est magna\",\n  \"issue\": \"officia nisi labore enim\",\n  \"background\": \"nulla consectetur dolore ut\",\n  \"objective\": \"consectetur deserunt et\",\n  \"key_findings\": \"proident id anim\",\n  \"key_messages\": \"ea eiusmod consectetur minim sit\",\n  \"overview\": \"sint dolore ut Duis fugiat\",\n  \"use_canada\": \"eu proident sit\",\n  \"findings\": \"ad\",\n  \"conclusion\": \"ullamco\",\n  \"additional\": \"qui enim\",\n  \"full_review\": \"aute incididunt consequat\",\n  \"references\": \"dolore eiusmod in consectetur\",\n  \"footnotes\": \"D\",\n  \"title\": \"exercitation consectetur\",\n  \"created_date\": \"ex consectetur\",\n  \"modified_date\": \"occaecat aute aliqua elit\",\n  \"key_message_list\": [\n   {\n    \"field_id\": \"Excepteur dolor nisi elit\",\n    \"order_no\": \"eu reprehenderit veniam labore\",\n    \"bullet\": \"tempor reprehenderit incididunt Excepteur magna\"\n   },\n   {\n    \"field_id\": \"id\",\n    \"order_no\": \"nulla ut occaecat elit qui\",\n    \"bullet\": \"sed Lorem\"\n   }\n  ],\n  \"footnotes_list\": [\n   {\n    \"field_id\": \"Lorem\",\n    \"order_no\": \"in dolor aliquip id\",\n    \"bullet\": \"anim Ut nisi\"\n   },\n   {\n    \"field_id\": \"in culpa commodo pariatur\",\n    \"order_no\": \"ei\",\n    \"bullet\": \"elit amet Except\"\n   }\n  ],\n  \"reference_list\": [\n   {\n    \"field_id\": \"sint tempor magna ad\",\n    \"order_no\": \"sit Duis ut Ut cillum\",\n    \"bullet\": \"velit\"\n   },\n   {\n    \"field_id\": \"sed Duis non\",\n    \"order_no\": \"do\",\n    \"bullet\": \"aute amet consectetur\"\n   }\n  ],\n  \"use_canada_list\": [\n   {\n    \"field_id\": \"consequat eiusmod\",\n    \"order_no\": \"deserunt nulla\",\n    \"bullet\": \"proident eiusmod pariatur et\"\n   },\n   {\n    \"field_id\": \"quis in\",\n    \"order_no\": \"ullamco\",\n    \"bullet\": \"magna cillum laboris irure elit\"\n   }\n  ],\n  \"finding_list\": [\n   {\n    \"field_id\": \"dolore minim\",\n    \"order_no\": \"pariatur consectetur aute\",\n    \"bullet\": \"mollit in\"\n   },\n   {\n    \"field_id\": \"cillum\",\n    \"order_no\": \"deserunt\",\n    \"bullet\": \"commodo Lorem aliqua amet\"\n   }\n  ],\n  \"conclusion_list\": [\n   {\n    \"field_id\": \"sed cillum dolor occaecat\",\n    \"order_no\": \"elit est veniam cupidatat\",\n    \"bullet\": \"nulla in incididunt\"\n   },\n   {\n    \"field_id\": \"est commodo do reprehenderit\",\n    \"order_no\": \"nisi\",\n    \"bullet\": \"occaecat in magna\"\n   }\n  ]\n }\n]"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/safetyreview?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"safetyreview"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/safetyreview?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"safetyreview"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "/safetyreview by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0b8291d4-bcde-4979-8879-068e2a33a904",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var Ajv = require('ajv'),\r",
+							"    ajv = new Ajv({logger: console}),\r",
+							"    schema = { \r",
+							"    \"required\": [\r",
+							"        \"template\",\r",
+							"        \"link_id\",\r",
+							"        \"review_date\",\r",
+							"        \"drug_name\",\r",
+							"        \"safety_issue\",\r",
+							"        \"safetyissue_title\",\r",
+							"        \"findings_title\",\r",
+							"        \"issue\",\r",
+							"        \"background\",\r",
+							"        \"objective\",\r",
+							"        \"key_findings\",\r",
+							"        \"key_messages\",\r",
+							"        \"overview\",\r",
+							"        \"use_canada\",\r",
+							"        \"findings\",\r",
+							"        \"conclusion\",\r",
+							"        \"additional\",\r",
+							"        \"full_review\",\r",
+							"        \"references\",\r",
+							"        \"footnotes\",\r",
+							"        \"title\",\r",
+							"        \"created_date\",\r",
+							"        \"modified_date\",\r",
+							"        \"key_message_list\",\r",
+							"        \"footnotes_list\",\r",
+							"        \"reference_list\",\r",
+							"        \"use_canada_list\",\r",
+							"        \"finding_list\",\r",
+							"        \"conclusion_list\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"template\": {\r",
+							"            \"$id\": \"#/properties/template\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"link_id\": {\r",
+							"            \"$id\": \"#/properties/link_id\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"review_date\": {\r",
+							"            \"$id\": \"#/properties/review_date\",\r",
+							"            \"type\":  [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"drug_name\": {\r",
+							"            \"$id\": \"#/properties/drug_name\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"safety_issue\": {\r",
+							"            \"$id\": \"#/properties/safety_issue\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"safetyissue_title\": {\r",
+							"            \"$id\": \"#/properties/safetyissue_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"findings_title\": {\r",
+							"            \"$id\": \"#/properties/findings_title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"issue\": {\r",
+							"            \"$id\": \"#/properties/issue\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"background\": {\r",
+							"            \"$id\": \"#/properties/background\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"objective\": {\r",
+							"            \"$id\": \"#/properties/objective\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"key_findings\": {\r",
+							"            \"$id\": \"#/properties/key_findings\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"key_messages\": {\r",
+							"            \"$id\": \"#/properties/key_messages\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"overview\": {\r",
+							"            \"$id\": \"#/properties/overview\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"use_canada\": {\r",
+							"            \"$id\": \"#/properties/use_canada\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"findings\": {\r",
+							"            \"$id\": \"#/properties/findings\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"conclusion\": {\r",
+							"            \"$id\": \"#/properties/conclusion\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"additional\": {\r",
+							"            \"$id\": \"#/properties/additional\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"full_review\": {\r",
+							"            \"$id\": \"#/properties/full_review\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"references\": {\r",
+							"            \"$id\": \"#/properties/references\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"footnotes\": {\r",
+							"            \"$id\": \"#/properties/footnotes\",\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"title\": {\r",
+							"            \"$id\": \"#/properties/title\",\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"created_date\": {\r",
+							"            \"$id\": \"#/properties/created_date\",\r",
+							"            \"type\":  \"string\"\r",
+							"        },\r",
+							"        \"modified_date\": {\r",
+							"            \"$id\": \"#/properties/modified_date\",\r",
+							"            \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"key_message_list\": {\r",
+							"            \"items\": {\r",
+							"                \"required\": [\r",
+							"                    \"field_id\",\r",
+							"                    \"order_no\",\r",
+							"                    \"bullet\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"field_id\": {\r",
+							"                        \"$id\": \"#/properties/key_message_list/items/properties/field_id\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"order_no\": {\r",
+							"                        \"$id\": \"#/properties/key_message_list/items/properties/order_no\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"bullet\": {\r",
+							"                        \"$id\": \"#/properties/key_message_list/items/properties/bullet\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    }\r",
+							"                },\r",
+							"                \"$id\": \"#/properties/key_message_list/items\",\r",
+							"                \"type\": \"object\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/key_message_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"footnotes_list\": {\r",
+							"            \"$id\": \"#/properties/footnotes_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"reference_list\": {\r",
+							"            \"$id\": \"#/properties/reference_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"use_canada_list\": {\r",
+							"            \"items\": {\r",
+							"                \"required\": [\r",
+							"                    \"field_id\",\r",
+							"                    \"order_no\",\r",
+							"                    \"bullet\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"field_id\": {\r",
+							"                        \"$id\": \"#/properties/use_canada_list/items/properties/field_id\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"order_no\": {\r",
+							"                        \"$id\": \"#/properties/use_canada_list/items/properties/order_no\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"bullet\": {\r",
+							"                        \"$id\": \"#/properties/use_canada_list/items/properties/bullet\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    }\r",
+							"                },\r",
+							"                \"$id\": \"#/properties/use_canada_list/items\",\r",
+							"                \"type\": \"object\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/use_canada_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"finding_list\": {\r",
+							"            \"items\": {\r",
+							"                \"required\": [\r",
+							"                    \"field_id\",\r",
+							"                    \"order_no\",\r",
+							"                    \"bullet\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"field_id\": {\r",
+							"                        \"$id\": \"#/properties/finding_list/items/properties/field_id\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"order_no\": {\r",
+							"                        \"$id\": \"#/properties/finding_list/items/properties/order_no\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"bullet\": {\r",
+							"                        \"$id\": \"#/properties/finding_list/items/properties/bullet\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    }\r",
+							"                },\r",
+							"                \"$id\": \"#/properties/finding_list/items\",\r",
+							"                \"type\": \"object\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/finding_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        },\r",
+							"        \"conclusion_list\": {\r",
+							"            \"items\": {\r",
+							"                \"required\": [\r",
+							"                    \"field_id\",\r",
+							"                    \"order_no\",\r",
+							"                    \"bullet\"\r",
+							"                ],\r",
+							"                \"properties\": {\r",
+							"                    \"field_id\": {\r",
+							"                        \"$id\": \"#/properties/conclusion_list/items/properties/field_id\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"order_no\": {\r",
+							"                        \"$id\": \"#/properties/conclusion_list/items/properties/order_no\",\r",
+							"                        \"type\": \"integer\"\r",
+							"                    },\r",
+							"                    \"bullet\": {\r",
+							"                        \"$id\": \"#/properties/conclusion_list/items/properties/bullet\",\r",
+							"                        \"type\": \"string\"\r",
+							"                    }\r",
+							"                },\r",
+							"                \"$id\": \"#/properties/conclusion_list/items\",\r",
+							"                \"type\": \"object\"\r",
+							"            },\r",
+							"            \"$id\": \"#/properties/conclusion_list\",\r",
+							"            \"type\": \"array\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"$id\": \"http://example.org/root.json#\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"definitions\": {},\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"\r",
+							"    };\r",
+							" \r",
+							"pm.test('Schema is valid', function() {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(ajv.validate(schema, data)).to.be.true;\r",
+							"});\r",
+							"//Testing header\r",
+							"pm.test(\"Content-Type header\", () => {\r",
+							"  if(pm.globals.get(\"type\") === \"json\"){\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"  }\r",
+							"  if(pm.globals.get(\"type\") === \"xml\"){  \r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/xml');\r",
+							"  }  \r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "90a3e38d-44bf-47f1-ab55-d174aad22be9",
+						"exec": [
+							"pm.variables.set(\"path\", \"safetyreview\");\r",
+							"pm.variables.set(\"id\", \"SSR00001\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "af52879748fccd9f7132435613a04f44",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "user-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) The identifier assigned to your account for accessing the API",
+						"key": "user-key",
+						"value": "<string>"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{path}}?lang={{language}}&type={{type}}&id={{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{path}}"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "{{language}}"
+						},
+						{
+							"key": "type",
+							"value": "{{type}}"
+						},
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				},
+				"description": "Returns all summary safety reviews."
+			},
+			"response": [
+				{
+					"name": "Returns a list of all summary safety reviews, or if an ID is provided, the list of all summaries that correspond to the given link ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/safetyreview?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"safetyreview"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"template\": \"quis tempor ut pariatur\",\n  \"link_id\": \"officia sit\",\n  \"review_date\": \"est sunt incididunt nulla\",\n  \"drug_name\": \"ex Excepteur \",\n  \"safety_issue\": \"non sed nisi\",\n  \"safetyissue_title\": \"eu voluptate mollit sit\",\n  \"findings_title\": \"nisi ea\",\n  \"issue\": \"Duis eiusmod magna cillum reprehenderit\",\n  \"background\": \"consectetur laborum mollit\",\n  \"objective\": \"est cupidatat voluptate irure\",\n  \"key_findings\": \"ut elit culpa ullamco in\",\n  \"key_messages\": \"incididunt ea laborum sit\",\n  \"overview\": \"in Excepteur exercitation dolor tempor\",\n  \"use_canada\": \"tempor minim nostrud occaecat\",\n  \"findings\": \"nulla ut ipsum\",\n  \"conclusion\": \"magna voluptate ex\",\n  \"additional\": \"cupidatat laborum eiusmod magna fugiat\",\n  \"full_review\": \"labore est ut\",\n  \"references\": \"sint qui quis magna\",\n  \"footnotes\": \"non sunt\",\n  \"title\": \"sed laborum\",\n  \"created_date\": \"irure\",\n  \"modified_date\": \"deserunt\",\n  \"key_message_list\": [\n   {\n    \"field_id\": \"sit ipsum\",\n    \"order_no\": \"eiusmod officia Ut\",\n    \"bullet\": \"est Lorem occaecat\"\n   },\n   {\n    \"field_id\": \"ipsum sit aliquip\",\n    \"order_no\": \"cupidatat\",\n    \"bullet\": \"deserunt dolor sit sint eiusmod\"\n   }\n  ],\n  \"footnotes_list\": [\n   {\n    \"field_id\": \"nostrud incididunt eiusmod proident\",\n    \"order_no\": \"Ut consequat sunt sint\",\n    \"bullet\": \"nostrud nisi tempor velit\"\n   },\n   {\n    \"field_id\": \"aliqua cupidatat ullamco voluptate\",\n    \"order_no\": \"ut cupidatat\",\n    \"bullet\": \"pariatur id\"\n   }\n  ],\n  \"reference_list\": [\n   {\n    \"field_id\": \"mollit in est laboris officia\",\n    \"order_no\": \"voluptate do ipsum elit\",\n    \"bullet\": \"laborum ullamco sunt consequat\"\n   },\n   {\n    \"field_id\": \"do occaecat sunt\",\n    \"order_no\": \"et \",\n    \"bullet\": \"eu a\"\n   }\n  ],\n  \"use_canada_list\": [\n   {\n    \"field_id\": \"deserunt tempor do\",\n    \"order_no\": \"in aliqua\",\n    \"bullet\": \"Lorem qui\"\n   },\n   {\n    \"field_id\": \"minim\",\n    \"order_no\": \"quis ea sint irure\",\n    \"bullet\": \"exercitation irure enim ut\"\n   }\n  ],\n  \"finding_list\": [\n   {\n    \"field_id\": \"nostrud labore in\",\n    \"order_no\": \"eu consectetur occaecat\",\n    \"bullet\": \"quis sed eu aute\"\n   },\n   {\n    \"field_id\": \"sed eu ut\",\n    \"order_no\": \"aliquip\",\n    \"bullet\": \"ex Excepteur \"\n   }\n  ],\n  \"conclusion_list\": [\n   {\n    \"field_id\": \"fugiat qui culpa\",\n    \"order_no\": \"ex pariatur in qui\",\n    \"bullet\": \"incididunt sed\"\n   },\n   {\n    \"field_id\": \"anim tempor aliquip ut\",\n    \"order_no\": \"et eiusmod\",\n    \"bullet\": \"tempor labore\"\n   }\n  ]\n },\n {\n  \"template\": \"commodo\",\n  \"link_id\": \"qui cupidatat consequat minim\",\n  \"review_date\": \"eni\",\n  \"drug_name\": \"consequat ut\",\n  \"safety_issue\": \"co\",\n  \"safetyissue_title\": \"et cillum mollit consectetur\",\n  \"findings_title\": \"proident est magna\",\n  \"issue\": \"officia nisi labore enim\",\n  \"background\": \"nulla consectetur dolore ut\",\n  \"objective\": \"consectetur deserunt et\",\n  \"key_findings\": \"proident id anim\",\n  \"key_messages\": \"ea eiusmod consectetur minim sit\",\n  \"overview\": \"sint dolore ut Duis fugiat\",\n  \"use_canada\": \"eu proident sit\",\n  \"findings\": \"ad\",\n  \"conclusion\": \"ullamco\",\n  \"additional\": \"qui enim\",\n  \"full_review\": \"aute incididunt consequat\",\n  \"references\": \"dolore eiusmod in consectetur\",\n  \"footnotes\": \"D\",\n  \"title\": \"exercitation consectetur\",\n  \"created_date\": \"ex consectetur\",\n  \"modified_date\": \"occaecat aute aliqua elit\",\n  \"key_message_list\": [\n   {\n    \"field_id\": \"Excepteur dolor nisi elit\",\n    \"order_no\": \"eu reprehenderit veniam labore\",\n    \"bullet\": \"tempor reprehenderit incididunt Excepteur magna\"\n   },\n   {\n    \"field_id\": \"id\",\n    \"order_no\": \"nulla ut occaecat elit qui\",\n    \"bullet\": \"sed Lorem\"\n   }\n  ],\n  \"footnotes_list\": [\n   {\n    \"field_id\": \"Lorem\",\n    \"order_no\": \"in dolor aliquip id\",\n    \"bullet\": \"anim Ut nisi\"\n   },\n   {\n    \"field_id\": \"in culpa commodo pariatur\",\n    \"order_no\": \"ei\",\n    \"bullet\": \"elit amet Except\"\n   }\n  ],\n  \"reference_list\": [\n   {\n    \"field_id\": \"sint tempor magna ad\",\n    \"order_no\": \"sit Duis ut Ut cillum\",\n    \"bullet\": \"velit\"\n   },\n   {\n    \"field_id\": \"sed Duis non\",\n    \"order_no\": \"do\",\n    \"bullet\": \"aute amet consectetur\"\n   }\n  ],\n  \"use_canada_list\": [\n   {\n    \"field_id\": \"consequat eiusmod\",\n    \"order_no\": \"deserunt nulla\",\n    \"bullet\": \"proident eiusmod pariatur et\"\n   },\n   {\n    \"field_id\": \"quis in\",\n    \"order_no\": \"ullamco\",\n    \"bullet\": \"magna cillum laboris irure elit\"\n   }\n  ],\n  \"finding_list\": [\n   {\n    \"field_id\": \"dolore minim\",\n    \"order_no\": \"pariatur consectetur aute\",\n    \"bullet\": \"mollit in\"\n   },\n   {\n    \"field_id\": \"cillum\",\n    \"order_no\": \"deserunt\",\n    \"bullet\": \"commodo Lorem aliqua amet\"\n   }\n  ],\n  \"conclusion_list\": [\n   {\n    \"field_id\": \"sed cillum dolor occaecat\",\n    \"order_no\": \"elit est veniam cupidatat\",\n    \"bullet\": \"nulla in incididunt\"\n   },\n   {\n    \"field_id\": \"est commodo do reprehenderit\",\n    \"order_no\": \"nisi\",\n    \"bullet\": \"occaecat in magna\"\n   }\n  ]\n }\n]"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/safetyreview?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"safetyreview"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The identifier assigned to your account for accessing the API",
+								"key": "user-key",
+								"value": "<string>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/safetyreview?lang=en&type=json&id=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"safetyreview"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "en"
+								},
+								{
+									"key": "type",
+									"value": "json"
+								},
+								{
+									"key": "id",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "https://sr-hc-sc-apicast-production.api.canada.ca/v1/",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
